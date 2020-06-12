@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding-top: 70px;
+}
+
+#information {
+    border: 3px solid aquamarine;
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
+}
+
+#asssignments {
+    padding-top: 50px;
+    align-items: center;
+}
+
+.assignments-table {
+    width: 60%;
+    margin: 0 auto;
+}
+
+div.assignments-table table,
+td {
+    /* border: 2px solid green; */
+    border-collapse: collapse;
+}
+
+th {
+    background-color: salmon;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+th {
+    text-align: left;
+}
