@@ -107,6 +107,21 @@
     padding-left: 34px;
 }
 
+.footer-wrapper {
+    min-width: 939px;
+    background-color: #727272;
+}
+
+.footer-content {
+    margin: auto;
+    width: 939px;
+    margin-top: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding: 20px 0px;
+    color: #d4d4d4;
+}
+
 .main-container {
     width: 1002px;
 }
