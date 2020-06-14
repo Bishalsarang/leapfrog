@@ -1,0 +1,28 @@
+.logo {
+    margin-right: 24px;
+    margin-left: 33px;
+}
+
+.search {
+    padding-top: 21px;
+}
+
+.username {
+    font-size: 16px;
+}
+
+.search-button {
+    background: url("../images/search-btn.png");
+    color: white;
+    border: none;
+    width: 53px;
+    height: 20px;
+    font-size: 8px;
+}
+
+a {
+    color: #3b464a;
+    text-decoration: none;
+}
+
+.menu-item {}
