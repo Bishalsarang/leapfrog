@@ -1,3 +1,7 @@
+body {
+    font-size: 12px;
+}
+
 .logo {
     margin-right: 24px;
     margin-left: 33px;
@@ -7,10 +11,11 @@
     padding-top: 21px;
 }
 
-.username {
-    font-size: 12px;
+.user-name {
     font-weight: bold;
+    font-size: 18px;
     text-align: right;
+    margin-right: 32px;
 }
 
 .search-button {
@@ -36,6 +41,9 @@ a {
 .subtitle {
     font-size: 12px;
     text-align: center;
+    display: inline-block;
+    margin-left: 90px;
+    margin-bottom: 15px;
 }
 
 .entry-button {
@@ -57,20 +65,17 @@ a {
     list-style: none;
 }
 
-.entry-updates {
-    font-size: 12px;
-}
+
 
 .entry-item {
-    /* height: 101px; */
-    margin-bottom: 16px;
+    height: 69px;
     border-bottom: 1px solid #d8d8d8;
-    padding: 16px 16px;
+    padding-bottom: 17px;
+    padding-top: 16px;
 
 }
 
 .entry-title {
-    font-size: 12px;
     font-weight: bold;
 }
 
@@ -80,9 +85,10 @@ a {
 }
 
 .entry-meta-item {
-    border-right: 1px bold black;
-    font-size: 12px;
+    border-right: 1px solid #888888;
     display: inline;
+    padding-left: 7px;
+    padding-right: 7px;
 
 }
 
@@ -91,13 +97,14 @@ a {
     font-weight: bold;
 }
 
-.entry-source {
-    font-size: 12px;
-}
 
 .text-light {
     color: #888888;
     /* font-weight: bold; */
+}
+
+.entries-header {
+    border-bottom: 2px solid #2fc1da;
 }
 
 .entry-button-selected {
@@ -111,7 +118,7 @@ a {
 }
 
 .subscription-selected {
-    color: #94a76f;
+    color: #709521;
     font-weight: bold;
 }
 
@@ -137,7 +144,6 @@ a {
 }
 
 .recent-searches-list-item {
-    font-size: 12px;
     padding: 9px;
 }
 
@@ -156,7 +162,6 @@ a {
     color: white;
     padding-top: 15px;
     padding-left: 11px;
-    font-size: 12px;
     background-color: #2fc1da;
 }
 
@@ -169,4 +174,12 @@ a {
     text-align: left;
     outline: none;
     border: none;
+}
+
+.video-tutorials-list {
+    list-style: none;
+}
+
+.video-tutorials-list-item {
+    padding-top: 24px;
 }
