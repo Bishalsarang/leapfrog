@@ -87,9 +87,17 @@ a {
 .entry-meta-item {
     border-right: 1px solid #888888;
     display: inline;
-    padding-left: 7px;
     padding-right: 7px;
+    padding-left: 7px;
 
+}
+
+.entry-meta-item:first-child {
+    padding-left: 0px;
+}
+
+.entry-meta-item:last-child {
+    border-right: none;
 }
 
 .text-blue {
@@ -169,11 +177,15 @@ a {
     width: 267px;
     height: 20px;
     font-size: 10px;
-    background-image: url("../images/search-bar.png");
+    background-image: url("../images/search-bar-with-placeholder_03.png");
     padding-left: 10px;
     text-align: left;
     outline: none;
     border: none;
+}
+
+.search-query:focus {
+    background-image: url("../images/search-bar.png");
 }
 
 .video-tutorials-list {
