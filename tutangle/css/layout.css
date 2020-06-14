@@ -23,9 +23,10 @@
 
 .header-right-menu-item {
     display: inline;
-    font-size: 9px;
+    font-size: 12px;
     padding: 3px 5px;
     font-weight: bold;
+    text-align: right;
     border-right: 1px solid black;
 }
 
@@ -60,6 +61,11 @@
 .notification-item {
     display: inline;
     padding-left: 33px;
+}
+
+.col-left-body {
+    width: 519px;
+    margin-right: 25px;
 }
 
 .body {

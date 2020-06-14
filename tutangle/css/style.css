@@ -8,7 +8,9 @@
 }
 
 .username {
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
 }
 
 .search-button {
@@ -26,3 +28,68 @@ a {
 }
 
 .menu-item {}
+
+.body-header {
+    font-size: 26px;
+}
+
+.subtitle {
+    font-size: 10px;
+}
+
+.entry-button {
+    margin-right: 46px;
+}
+
+.entry-list {
+    list-style: none;
+}
+
+.entry-item {
+    /* height: 101px; */
+    margin-bottom: 16px;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 16px 16px;
+
+}
+
+.entry-title {
+    font-size: 13px;
+}
+
+.entry-meta-list {
+    list-style: none;
+
+}
+
+.entry-meta-item {
+    border-right: 1px bold black;
+    display: inline;
+
+}
+
+.text-blue {
+    color: #2fc1da;
+    font-weight: bold;
+}
+
+
+.text-light {
+    color: #888888;
+    /* font-weight: bold; */
+}
+
+.text-red {
+    color: red;
+    /* font-weight: bold; */
+}
+
+.subscription-selected {
+    color: #94a76f;
+    font-weight: bold;
+}
+
+.photo {
+    width: 70px;
+    padding-right: 10px;
+}

@@ -67,7 +67,7 @@
             <!-- bottom-header ends here -->
             <div class="body">
                 <div class="body-container-wrapper clearfix">
-                    <div class="col-left clearfix">
+                    <div class="col-left clearfix left">
                         <div class="col-left-sidebar left">
                             <h2 class="sidebar-header">Recent Searches</h2>
                             <ul class="recent-searches-list">
@@ -111,14 +111,14 @@
                             </ul>
                         </div>
                         <!--  col -left-sidebar ends here-->
-                        <div class="col-left-body right">
+                        <div class="col-left-body left">
                             <h1 class="body-header">Entries</h1>
                             <div class="entries-header clearfix">
                                 <div class="entries-nav left">
                                     <h2 class="subtitle">All Entries</h2>
                                     <div class="entries-left-buttons">
                                         <div class="entry-button selected left">All members</div>
-                                        <div class="entry-button right">All members</div>
+                                        <div class="entry-button right">Friends</div>
                                     </div>
                                 </div>
                                 <!-- entries nav left ends here -->
@@ -132,33 +132,37 @@
                                 <!-- entries nav right ends here -->
                             </div>
                             <!--  entries header ends here -->
-                            <div class="entry-list">
-                                <ul>
+                            <div class="entry-list-wrapper">
+                                <ul class="entry-list">
                                     <li class="entry-item">
                                         <div class="entry-wrapper clear-fix">
                                             <div class="photo left">
                                                 <img src="images/person1.png" alt="Person photo">
                                             </div>
                                             <!-- photo ends here -->
-                                            <div class="entry-description right">
+                                            <div class="entry-description">
                                                 <div class="entry-updates"></div>
                                                 <!-- entry-updates ends here -->
                                                 <div class="entry-title">Day for Night by François Truffaut, a ground
                                                     breaking film</div>
                                                 <!-- entry-title ends here -->
-                                                <div class="entry-meta">
-                                                    <p>by </p>
-                                                    <div class="author">Alan Coe</div>
-                                                    <p>|</p>
-                                                    <div class="publish-date">
+                                                <ul class="entry-meta-list">
+                                                    by
+                                                    <li class="entry-meta-item text-blue">
+                                                        Allan Coe
+                                                    </li>
+                                                    <li class="entry-meta-item text-light">
                                                         February 10, 2012
-                                                    </div>
-                                                    <div class="subscription subscription-selected">Subscribed</div>
-                                                </div>
+                                                    </li>
+                                                    <li class="entry-meta-item subscription subscription-selected">
+                                                        Subscribed
+                                                    </li>
+
+                                                </ul>
                                                 <!-- entry-meta ends here -->
                                                 <div class="entry-source">
-                                                    <p>From Topic Box: </p>
-                                                    <span>My Favourite Movies</span>
+                                                    <span class="text-light">From Topic Box: </span>
+                                                    <span class="text-blue">My Favourite Movies</span>
                                                 </div>
                                                 <!-- entry-source ends here -->
                                             </div>
@@ -166,31 +170,36 @@
                                         </div>
                                         <!-- entry-wrapper ends here -->
                                     </li>
+                                    <!-- <div class="clearfix"></div> -->
                                     <!-- entry-item ends here -->
-                                    <li class="entry-item">
+                                    <li class="entry-item clearfix">
                                         <div class="entry-wrapper clear-fix">
                                             <div class="photo left">
                                                 <img src="images/person2.png" alt="Person photo">
                                             </div>
                                             <!-- photo ends here -->
-                                            <div class="entry-description right">
-                                                <div class="entry-updates">NEW ENTRY!</div>
+                                            <div class="entry-description">
+                                                <div class="entry-updates text-blue">NEW ENTRY!</div>
                                                 <!-- entry-updates ends here -->
                                                 <div class="entry-title">Blade Runner, The Director's Cut</div>
                                                 <!-- entry-title ends here -->
-                                                <div class="entry-meta">
-                                                    <p>by </p>
-                                                    <div class="author">Mary Pilot</div>
-                                                    <p>|</p>
-                                                    <div class="publish-date">
+                                                <ul class="entry-meta-list">
+                                                    by
+                                                    <li class="entry-meta-item text-blue">
+                                                        Mary Pilot
+                                                    </li>
+                                                    <li class="entry-meta-item text-light">
                                                         February 8, 2012
-                                                    </div>
-                                                    <div class="subscription subscription-selected"></div>
-                                                </div>
+                                                    </li>
+                                                    <li class="entry-meta-item subscription">
+
+                                                    </li>
+
+                                                </ul>
                                                 <!-- entry-meta ends here -->
                                                 <div class="entry-source">
-                                                    <p>From Topic Box: </p>
-                                                    <span>Behind the Scene</span>
+                                                    <span class="text-light">From Topic Box: </span>
+                                                    <span class="text-blue">Behind the Scene</span>
                                                 </div>
                                                 <!-- entry-source ends here -->
                                             </div>
@@ -199,32 +208,34 @@
                                         <!-- entry-wrapper ends here -->
                                     </li>
                                     <!-- entry-item ends here -->
-                                    <li class="entry-item">
-                                        <div class="entry-wrapper clearfix">
+                                    <li class="entry-item clearfix">
+                                        <div class="entry-wrapper clear-fix">
                                             <div class="photo left">
                                                 <img src="images/person3.png" alt="Person photo">
                                             </div>
                                             <!-- photo ends here -->
-                                            <div class="entry-description right">
-                                                <div class="entry-updates">NEW COMMENT!</div>
+                                            <div class="entry-description">
+                                                <div class="entry-updates text-blue">NEW COMMENT!</div>
                                                 <!-- entry-updates ends here -->
-                                                <div class="entry-title">The Best French Restaurant in Chicago</div>
+                                                <div class="entry-title">The Best French Restaurant in Chicago?</div>
                                                 <!-- entry-title ends here -->
-                                                <div class="entry-meta">
-                                                    <p>by </p>
-                                                    <div class="author">
+                                                <ul class="entry-meta-list">
+                                                    by
+                                                    <li class="entry-meta-item text-blue">
                                                         Jim Roy
-                                                    </div>
-                                                    <p>|</p>
-                                                    <div class="publish-date">
+                                                    </li>
+                                                    <li class="entry-meta-item text-light">
                                                         February 7, 2012
-                                                    </div>
-                                                    <div class="subscription subscription-selected">Subscribed</div>
-                                                </div>
+                                                    </li>
+                                                    <li class="entry-meta-item subscription subscription-selected">
+                                                        Subscribed
+                                                    </li>
+
+                                                </ul>
                                                 <!-- entry-meta ends here -->
                                                 <div class="entry-source">
-                                                    <p>From Topic Box: </p>
-                                                    <span>Chicago Restaurant Reviews</span>
+                                                    <span class="text-light">From Topic Box: </span>
+                                                    <span class="text-blue">Chicago Restaurants Reviews</span>
                                                 </div>
                                                 <!-- entry-source ends here -->
                                             </div>
@@ -232,32 +243,35 @@
                                         </div>
                                         <!-- entry-wrapper ends here -->
                                     </li>
-                                    <!-- entry-item ends here -->
-                                    <li class="entry-item">
-                                        <div class="entry-wrapper">
+                                    <li class="entry-item clearfix">
+                                        <div class="entry-wrapper clear-fix">
                                             <div class="photo left">
                                                 <img src="images/person4.png" alt="Person photo">
                                             </div>
                                             <!-- photo ends here -->
-                                            <div class="entry-description right">
-                                                <div class="entry-updates"></div>
+                                            <div class="entry-description">
+                                                <div class="entry-updates text-blue"></div>
                                                 <!-- entry-updates ends here -->
                                                 <div class="entry-title">The Meaning of Night. Dark Book but incredibly
                                                     well written.</div>
                                                 <!-- entry-title ends here -->
-                                                <div class="entry-meta">
-                                                    <p>by </p>
-                                                    <div class="author">John-Peter Moise </div>
-                                                    <p>|</p>
-                                                    <div class="publish-date">
+                                                <ul class="entry-meta-list">
+                                                    by
+                                                    <li class="entry-meta-item text-blue">
+                                                        John-Peter Moise
+                                                    </li>
+                                                    <li class="entry-meta-item text-light">
                                                         February 7, 2012
-                                                    </div>
-                                                    <div class="subscription subscription-selected">Subscribed</div>
-                                                </div>
+                                                    </li>
+                                                    <li class="entry-meta-item subscription subscription-selected">
+                                                        Subscribed
+                                                    </li>
+
+                                                </ul>
                                                 <!-- entry-meta ends here -->
                                                 <div class="entry-source">
-                                                    <p>From Topic Box: </p>
-                                                    <span>Books Read & Books to Read</span>
+                                                    <span class="text-light">From Topic Box: </span>
+                                                    <span class="text-blue">Books Read & Books to Read</span>
                                                 </div>
                                                 <!-- entry-source ends here -->
                                             </div>
@@ -265,33 +279,35 @@
                                         </div>
                                         <!-- entry-wrapper ends here -->
                                     </li>
-                                    <!-- entry-item ends here -->
-                                    <li class="entry-item">
-                                        <div class="entry-wrapper">
+                                    <li class="entry-item clearfix">
+                                        <div class="entry-wrapper clear-fix">
                                             <div class="photo left">
                                                 <img src="images/person5.png" alt="Person photo">
                                             </div>
                                             <!-- photo ends here -->
-                                            <div class="entry-description right">
-                                                <div class="entry-updates">TOPIC BOX INVITE!</div>
+                                            <div class="entry-description">
+                                                <div class="entry-updates text-red">
+                                                    TOPIC BOX INVITE!</div>
                                                 <!-- entry-updates ends here -->
-                                                <div class="entry-title">Pea Pesto</div>
+                                                <div class="entry-title">Blade Runner, The Director's Cut</div>
                                                 <!-- entry-title ends here -->
-                                                <div class="entry-meta">
-                                                    <p>by </p>
-                                                    <div class="author">
+                                                <ul class="entry-meta-list">
+                                                    by
+                                                    <li class="entry-meta-item text-blue">
                                                         Marianne Gig
-                                                    </div>
-                                                    <p>|</p>
-                                                    <div class="publish-date">
+                                                    </li>
+                                                    <li class="entry-meta-item text-light">
                                                         February 6, 2012
-                                                    </div>
-                                                    <div class="subscription"></div>
-                                                </div>
+                                                    </li>
+                                                    <li class="entry-meta-item subscription">
+
+                                                    </li>
+
+                                                </ul>
                                                 <!-- entry-meta ends here -->
                                                 <div class="entry-source">
-                                                    <p>From Topic Box: </p>
-                                                    <span>Favourite Recipes</span>
+                                                    <span class="text-light">From Topic Box: </span>
+                                                    <span class="text-blue">Favorite Recipes</span>
                                                 </div>
                                                 <!-- entry-source ends here -->
                                             </div>
@@ -299,8 +315,8 @@
                                         </div>
                                         <!-- entry-wrapper ends here -->
                                     </li>
-                                    <!-- entry-item ends here -->
                                 </ul>
+                                <!-- entry-list ends here -->
                             </div>
 
                         </div>
