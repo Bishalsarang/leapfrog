@@ -8,7 +8,7 @@
 }
 
 .username {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     text-align: right;
 }
@@ -34,15 +34,31 @@ a {
 }
 
 .subtitle {
-    font-size: 10px;
+    font-size: 12px;
+    text-align: center;
 }
 
 .entry-button {
-    margin-right: 46px;
+    width: 115px;
+    height: 17px;
+    text-align: center;
+    padding-top: 11px;
+    background-image: url("../images/gray-button.png");
+    /* padding-left: 10px; */
+    margin-right: 10px;
+}
+
+.entry-button:hover {
+    color: white;
+    background: url("../images/blue-btn.png") no-repeat;
 }
 
 .entry-list {
     list-style: none;
+}
+
+.entry-updates {
+    font-size: 12px;
 }
 
 .entry-item {
@@ -54,7 +70,8 @@ a {
 }
 
 .entry-title {
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .entry-meta-list {
@@ -64,6 +81,7 @@ a {
 
 .entry-meta-item {
     border-right: 1px bold black;
+    font-size: 12px;
     display: inline;
 
 }
@@ -73,10 +91,18 @@ a {
     font-weight: bold;
 }
 
+.entry-source {
+    font-size: 12px;
+}
 
 .text-light {
     color: #888888;
     /* font-weight: bold; */
+}
+
+.entry-button-selected {
+    color: white;
+    background: url("../images/blue-btn.png");
 }
 
 .text-red {
@@ -92,4 +118,55 @@ a {
 .photo {
     width: 70px;
     padding-right: 10px;
+}
+
+.footer-items {}
+
+.footer-item {
+    float: left;
+    margin-left: 30px;
+    /* display: inline; */
+}
+
+.copyright {
+    padding-right: 35px;
+}
+
+.recent-searches-list {
+    list-style: none;
+}
+
+.recent-searches-list-item {
+    font-size: 12px;
+    padding: 9px;
+}
+
+.recent-searches-item-right {
+    /* padding-top: 3px; */
+    margin-left: 10px;
+}
+
+.recent-searches-item-left {
+    display: inline-block;
+    color: black;
+}
+
+.sidebar-header {
+    height: 40px;
+    color: white;
+    padding-top: 15px;
+    padding-left: 11px;
+    font-size: 12px;
+    background-color: #2fc1da;
+}
+
+.search-query {
+    width: 267px;
+    height: 20px;
+    font-size: 10px;
+    background-image: url("../images/search-bar.png");
+    padding-left: 10px;
+    text-align: left;
+    outline: none;
+    border: none;
 }
