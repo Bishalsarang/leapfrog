@@ -161,15 +161,12 @@ a:hover {
 
 .footer-item:first-child {
   list-style: none;
+  margin-left: 0px;
 }
 
 .footer-item {
   float: left;
   margin-left: 30px;
-}
-
-.copyright {
-  padding-right: 35px;
 }
 
 .recent-searches-list {
