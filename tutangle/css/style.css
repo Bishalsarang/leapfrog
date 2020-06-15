@@ -3,6 +3,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.header {
+    font-weight: bold;
+}
+
 .logo {
     margin-right: 24px;
     margin-left: auto;
@@ -116,10 +120,18 @@ a {
 }
 
 .entries-nav {
-    background: url("../images/button-2.png");
+
     padding-left: 8px;
     padding-top: 10px;
     margin-top: 3px;
+}
+
+.entries-nav-left {
+    background: url("../images/button-left.png");
+}
+
+.entries-nav-right {
+    background: url("../images/button-right.png");
 }
 
 .entry-button-selected {
@@ -142,7 +154,9 @@ a {
     padding-right: 10px;
 }
 
-.footer-items {}
+.footer-item:first-child {
+    list-style: none;
+}
 
 .footer-item {
     float: left;

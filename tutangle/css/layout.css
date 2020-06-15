@@ -52,7 +52,7 @@
 
 .bottom-header {
     height: 36px;
-    padding-top: 14px;
+    /* padding-top: 14px; */
     margin-left: auto;
     margin-right: auto;
     height: 39px;
@@ -61,7 +61,12 @@
 }
 
 .bottom-header-menu {
-    padding-left: 10px;
+    padding: 10px;
+    list-style: none;
+}
+
+.bottom-header-notifications {
+    padding: 10px;
     list-style: none;
 }
 
@@ -74,9 +79,7 @@
 }
 
 
-.bottom-header-notifications {
-    list-style: none;
-}
+
 
 .notification-item {
     display: inline;
@@ -85,6 +88,7 @@
 
 .col-left-sidebar {
     width: 194px;
+    height: 618px;
     margin-right: 26px;
     background-color: #f5f5f5;
 }
@@ -92,7 +96,7 @@
 .col-right-sidebar {
     background-color: #f5f5f5;
     width: 176px;
-    height: 598px;
+    height: 618px;
 }
 
 .col-left-body {
