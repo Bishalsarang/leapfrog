@@ -79,7 +79,7 @@ a:hover {
 }
 
 .entry-title {
-  font-weight: bold;
+  font-size: 13px;
 }
 
 .entry-meta-list {
@@ -147,6 +147,9 @@ a:hover {
   color: white;
 }
 
+.entry-description {
+  width: calc(100% - 74px);
+}
 .subscription-selected {
   color: #709521;
   font-weight: bold;
@@ -154,7 +157,6 @@ a:hover {
 
 .photo {
   width: 70px;
-  padding-right: 10px;
 }
 
 .footer-item:first-child {
