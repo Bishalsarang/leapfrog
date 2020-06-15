@@ -1,5 +1,6 @@
 body {
     font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .logo {
@@ -114,6 +115,13 @@ a {
     border-bottom: 2px solid #2fc1da;
 }
 
+.entries-nav {
+    background: url("../images/button-2.png");
+    padding-left: 8px;
+    padding-top: 10px;
+    margin-top: 3px;
+}
+
 .entry-button-selected {
     color: white;
     background: url("../images/blue-btn.png");
@@ -152,21 +160,25 @@ a {
 
 .recent-searches-list-item {
     padding: 9px;
+
 }
 
 .recent-searches-item-right {
     /* padding-top: 3px; */
     margin-left: 10px;
+
 }
 
 .recent-searches-item-left {
     display: inline-block;
     color: black;
+    width: 141px;
 }
 
 .recent-searches-list-item:hover,
 .video-tutorials-list-item:hover {
-    background-color: #d8d8d8;
+    background-color: white;
+    cursor: pointer;
 }
 
 .sidebar-header {
@@ -197,5 +209,5 @@ a {
 }
 
 .video-tutorials-list-item {
-    padding-top: 24px;
+    padding: 11px;
 }

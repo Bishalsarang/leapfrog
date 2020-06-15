@@ -1,6 +1,6 @@
 .main-container-wrapper {
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: white;
     min-width: 939px;
 }
 
@@ -8,6 +8,7 @@
     width: 939px;
     margin: auto;
 }
+
 
 
 .top-header {
@@ -50,11 +51,12 @@
 }
 
 .bottom-header {
-    height: 40px;
+    height: 36px;
     padding-top: 14px;
     margin-left: auto;
     margin-right: auto;
-    width: 946px;
+    height: 39px;
+    /* width: 946px; */
     background-color: #f5f5f5;
 }
 
@@ -84,6 +86,13 @@
 .col-left-sidebar {
     width: 194px;
     margin-right: 26px;
+    background-color: #f5f5f5;
+}
+
+.col-right-sidebar {
+    background-color: #f5f5f5;
+    width: 176px;
+    height: 598px;
 }
 
 .col-left-body {
@@ -94,6 +103,7 @@
 .body {
     margin-right: auto;
     margin-left: auto;
+    margin-top: 30px;
     width: 946px;
 }
 
