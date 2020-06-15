@@ -196,10 +196,11 @@ a {
 }
 
 .sidebar-header {
-    height: 40px;
     color: white;
-    padding-top: 15px;
-    padding-left: 11px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 12px;
+    font-size: 12px;
     background-color: #2fc1da;
 }
 
