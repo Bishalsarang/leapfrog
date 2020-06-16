@@ -1,5 +1,5 @@
 .main-container-wrapper {
-  min-width: 529px;
+  min-width: 560px;
   width: 100%;
 }
 
@@ -27,7 +27,8 @@
 }
 
 .body-container-wrapper {
-  width: 100%;
+  width: 93.41%;
+  margin: auto;
 }
 
 .header-right-menu-item {
@@ -149,4 +150,23 @@
   padding-right: 32px;
   padding: 20px 0px;
   color: #d4d4d4;
+}
+
+@media (min-width: 768px) {
+  .col-right {
+    width: 25%;
+    display: inline-block;
+  }
+
+  .col-left-body {
+    width: 100%;
+  }
+
+  .col-left {
+    width: 72.8%;
+  }
+  .col-right-sidebar {
+    display: inline-block;
+    width: 25%;
+  }
 }
