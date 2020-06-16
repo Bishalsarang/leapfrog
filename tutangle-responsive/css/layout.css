@@ -1,6 +1,6 @@
 .main-container-wrapper {
   width: 100%;
-  min-width: 427px;
+  min-width: 559px;
 }
 
 .top-header {
@@ -25,7 +25,7 @@
 }
 
 .body-container-wrapper {
-  min-width: 939px;
+  width: 100%;
 }
 
 .header-right-menu-item {
@@ -93,29 +93,37 @@
 .mbl-menu-item {
   margin: 10px;
 }
+
+.col-left {
+  width: 93.43%;
+  margin: 30px;
+  /* margin: 100px; */
+}
 .col-left-sidebar {
   width: 194px;
   height: 618px;
   margin-right: 26px;
   background-color: #f5f5f5;
+  display: none;
 }
 
 .col-right-sidebar {
   background-color: #f5f5f5;
   width: 176px;
   height: 618px;
+  display: none;
 }
 
 .col-left-body {
-  width: 519px;
-  margin-right: 25px;
+  width: 100%;
+  /* margin-right: 25px; */
 }
 
 .body {
   margin-right: auto;
   margin-left: auto;
   margin-top: 30px;
-  width: 946px;
+  width: 100%;
 }
 
 .footer {

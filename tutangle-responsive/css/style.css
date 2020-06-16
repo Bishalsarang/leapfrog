@@ -133,11 +133,13 @@ a:hover {
 }
 
 .entries-nav-left {
-  background: url("../images/button-left.png");
+  background-color: #f5f5f5;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .entries-nav-right {
-  background: url("../images/button-right.png");
+  background-color: #f5f5f5;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .entry-button-selected {
