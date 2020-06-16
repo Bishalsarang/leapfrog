@@ -70,9 +70,8 @@ a:hover {
   height: 17px;
   text-align: center;
   padding-top: 11px;
-  background-color: #dddddd;
+  background-image: url("../images/gray-button.png");
   margin-right: 10px;
-  border-radius: 18px 18px 18px 18px;
 }
 
 .entry-button:hover {
@@ -137,18 +136,16 @@ a:hover {
 .entries-nav-left {
   background-color: #f5f5f5;
   border-radius: 20px 20px 0px 0px;
-  width: 48%;
 }
 
 .entries-nav-right {
   background-color: #f5f5f5;
   border-radius: 20px 20px 0px 0px;
-  width: 48%;
 }
 
 .entry-button-selected {
   color: white;
-  background-color: #2fc1da;
+  background: url("../images/blue-btn.png");
 }
 
 .text-red {
@@ -228,7 +225,6 @@ a:hover {
   padding-left: 10px;
   text-align: left;
   border: none;
-  border-radius: 21px;
   outline: none;
 }
 
