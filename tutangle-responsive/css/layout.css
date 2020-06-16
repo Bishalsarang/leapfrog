@@ -1,6 +1,6 @@
 .main-container-wrapper {
   width: 100%;
-  min-width: 357px;
+  min-width: 427px;
 }
 
 .top-header {
@@ -17,12 +17,14 @@
 
 .header-right {
   text-align: center;
+  padding-top: 24px;
 }
 
 .header-right-menu {
   list-style: none;
   margin-right: auto;
   margin-top: 10px;
+  display: none;
 }
 
 .body-container-wrapper {

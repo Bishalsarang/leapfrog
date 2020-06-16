@@ -7,9 +7,14 @@ body {
   font-weight: bold;
 }
 
+.mbl-menu-icon {
+  font-size: 43px;
+}
 .logo {
   margin-right: 24px;
   margin-left: auto;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .search {
