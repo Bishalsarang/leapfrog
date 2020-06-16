@@ -1,0 +1,133 @@
+.main-container-wrapper {
+  width: 100%;
+  background-color: white;
+  min-width: 939px;
+}
+
+.container {
+  width: 939px;
+  margin: auto;
+}
+
+.top-header {
+  padding-top: 20px;
+  background-color: #7dd9e8;
+  height: 66px;
+}
+
+.header-right {
+  text-align: center;
+}
+
+.header-right-menu {
+  list-style: none;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.body-container-wrapper {
+  min-width: 939px;
+}
+
+.header-right-menu-item {
+  display: inline;
+  font-size: 12px;
+  /* padding: 3px 5px; */
+  padding-right: 7px;
+  padding-left: 7px;
+  font-weight: bold;
+  text-align: right;
+  border-right: 1px solid black;
+}
+
+.header-right-menu-item:last-child {
+  border-right: none;
+  padding: none;
+}
+
+.bottom-header {
+  height: 36px;
+  /* padding-top: 14px; */
+  margin-left: auto;
+  margin-right: auto;
+  height: 39px;
+  /* width: 946px; */
+  background-color: #f5f5f5;
+}
+
+.bottom-header-menu {
+  padding: 10px;
+  list-style: none;
+}
+
+.bottom-header-notifications {
+  padding: 10px;
+  list-style: none;
+}
+
+.menu-item {
+  display: inline;
+  font-size: 12px;
+  margin-right: 34px;
+  color: #3b464a;
+  font-weight: bold;
+}
+
+.notification-item {
+  display: inline;
+  padding-left: 33px;
+}
+
+.col-left-sidebar {
+  width: 194px;
+  height: 618px;
+  margin-right: 26px;
+  background-color: #f5f5f5;
+}
+
+.col-right-sidebar {
+  background-color: #f5f5f5;
+  width: 176px;
+  height: 618px;
+}
+
+.col-left-body {
+  width: 519px;
+  margin-right: 25px;
+}
+
+.body {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  width: 946px;
+}
+
+.footer {
+  background-color: #727272;
+  color: white;
+  height: 23px;
+  font-size: 12px;
+  padding-top: 13px;
+  padding-bottom: 10px;
+  padding-left: 34px;
+}
+
+.footer-wrapper {
+  min-width: 939px;
+  background-color: #727272;
+}
+
+.footer-content {
+  margin: auto;
+  width: 939px;
+  margin-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding: 20px 0px;
+  color: #d4d4d4;
+}
+
+.main-container {
+  width: 1002px;
+}
