@@ -30,14 +30,19 @@ body {
 }
 
 .search-button {
-  background: url("../images/search-btn.png");
+  background-color: #284f56;
   color: white;
   border: none;
+  border-radius: 20px;
   width: 53px;
   height: 20px;
   font-size: 8px;
+  cursor: pointer;
 }
 
+.search-button:hover {
+  background-color: #2fc1da;
+}
 a {
   color: #3c3c3c;
   text-decoration: none;
@@ -213,15 +218,11 @@ a:hover {
   width: 267px;
   height: 20px;
   font-size: 10px;
-  background-image: url("../images/search-bar-with-placeholder_03.png");
+  background-color: #caeff7;
   padding-left: 10px;
   text-align: left;
-  outline: none;
   border: none;
-}
-
-.search-query:focus {
-  background-image: url("../images/search-bar.png");
+  outline: none;
 }
 
 .video-tutorials-list {
