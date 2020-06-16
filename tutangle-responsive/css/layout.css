@@ -1,18 +1,18 @@
 .main-container-wrapper {
   width: 100%;
-  background-color: white;
-  min-width: 939px;
-}
-
-.container {
-  width: 939px;
-  margin: auto;
+  min-width: 357px;
 }
 
 .top-header {
   padding-top: 20px;
   background-color: #7dd9e8;
   height: 66px;
+}
+.container {
+  width: 93.41%;
+  max-width: 939px;
+
+  margin: auto;
 }
 
 .header-right {
@@ -126,8 +126,4 @@
   padding-right: 32px;
   padding: 20px 0px;
   color: #d4d4d4;
-}
-
-.main-container {
-  width: 1002px;
 }
