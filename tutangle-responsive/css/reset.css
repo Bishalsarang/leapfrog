@@ -11,6 +11,9 @@
   float: right;
 }
 
+.hide {
+  display: none;
+}
 .clearfix::after {
   clear: both;
   content: "";

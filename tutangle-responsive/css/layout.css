@@ -10,9 +10,6 @@
 }
 .container {
   width: 93.41%;
-  max-width: 939px;
-
-  margin: auto;
 }
 
 .header-right {
@@ -54,7 +51,8 @@
   margin-right: auto;
   height: 39px;
   /* width: 946px; */
-  background-color: #f5f5f5;
+  display: none;
+  /* background-color: #f5f5f5; */
 }
 
 .bottom-header-menu {
@@ -68,11 +66,11 @@
 }
 
 .menu-item {
-  display: inline;
   font-size: 12px;
   margin-right: 34px;
   color: #3b464a;
   font-weight: bold;
+  list-style: none;
 }
 
 .notification-item {
@@ -80,6 +78,20 @@
   padding-left: 33px;
 }
 
+.mbl-menu {
+  padding: 10px;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.mbl-menu-items {
+  padding: 10px;
+  padding-top: 0px;
+  list-style: none;
+}
+
+.mbl-menu-item {
+  margin: 10px;
+}
 .col-left-sidebar {
   width: 194px;
   height: 618px;
