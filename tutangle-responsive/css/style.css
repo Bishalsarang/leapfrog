@@ -20,7 +20,6 @@ body {
 
 .search {
   padding-top: 21px;
-  display: none;
 }
 
 .user-name {
@@ -44,6 +43,7 @@ body {
 .search-button:hover {
   background-color: #2fc1da;
 }
+
 a {
   color: #3c3c3c;
   text-decoration: none;
@@ -220,6 +220,7 @@ a:hover {
   background-color: #caeff7;
   padding-left: 10px;
   text-align: left;
+  border-radius: 20px;
   border: none;
   outline: none;
 }
