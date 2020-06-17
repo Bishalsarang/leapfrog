@@ -3,11 +3,12 @@
   padding: 0;
 }
 
-html, body{
+html,
+body {
   overflow-x: hidden;
 }
 
-body{
+body {
   position: relative;
 }
 .left {
