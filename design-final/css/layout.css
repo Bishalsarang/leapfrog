@@ -3,13 +3,22 @@
   width: 100%;
 }
 
+.container {
+  padding: 0 15px;
+  max-width: 1170px;
+  margin: 0 auto;
+}
 .header {
   width: 100%;
 }
 
 .works-section {
   background-color: #ffffff;
+  margin-bottom: 75px;
 }
 
+.recent-work-section {
+  background-color: #54d154;
+}
 @media (min-width: 992px) {
 }

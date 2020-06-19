@@ -23,6 +23,7 @@
 .header {
   background-image: url("../images/banner-background.png");
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
@@ -68,8 +69,6 @@
 
 .header-wrapper {
   padding-top: 9px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 .logo-wrapper {
@@ -115,20 +114,65 @@
 }
 
 .works-section-subheader {
+  display: inline-block;
   text-align: center;
+  margin-top: 27px;
 }
 
+.work-items-list {
+  list-style: none;
+}
+.work-item {
+  margin: 0px auto;
+}
 .work-item-image-wrapper {
   text-align: center;
+  width: 143px;
+  height: 143px;
+  margin: auto;
+  background-image: url("../images/work-bg.png");
 }
 
 .work-item-image {
   width: 87px;
-  border: 8px solid red;
+  padding-top: 34px;
+}
+
+.work-item-title {
+  color: #828181;
+  font-weight: bold;
+}
+
+.work-item-detail {
+  color: #828181;
 }
 .work-item-description {
   text-align: center;
 }
+
+.btn-learn-more {
+  width: 120px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  background-color: #54d154;
+  color: white;
+}
+.recent-work-section-header {
+  text-align: center;
+  /* text-transform: uppercase; */
+}
+
+.recent-work-section-subheader {
+  text-align: center;
+  display: block;
+}
+.recent-works-items {
+  list-style: none;
+  display: inline-block;
+}
+
 .txt-white {
   color: white;
 }
@@ -136,12 +180,21 @@
 .txt-gray {
   color: #b7b3b3;
 }
+
+.txt-green {
+  color: #54d154;
+}
+
+.bg-white {
+  background-color: white;
+}
+
 .bg-ghee {
   background-color: #f1e7dc;
 }
 
 .bg-green {
-  background-color: #54d154;
+  background-color: #2b9b2b;
 }
 
 .btn-round {
@@ -149,6 +202,13 @@
   outline: none;
   width: 208px;
   border-radius: 12px;
+}
+
+@media (min-width: 600px) {
+  .work-item {
+    width: 180px;
+    float: left;
+  }
 }
 
 @media (min-width: 992px) {
@@ -171,5 +231,15 @@
 
   .search-form {
     display: inline;
+  }
+
+  .work-items-wrapper {
+    width: 88.196%;
+    margin: 0 auto;
+  }
+
+  .work-item {
+    width: 270px;
+    height: 338px;
   }
 }
