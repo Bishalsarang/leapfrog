@@ -25,7 +25,6 @@
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
 .mbl-menu-icon,
@@ -92,10 +91,18 @@
   display: block;
   margin: auto;
   margin-bottom: 10px;
-  width: 208px;
-  height: 47px;
 }
 
+.career-btn {
+  width: 209px;
+  height: 48px;
+}
+.scroll-btn {
+  margin-top: 217px;
+  margin-bottom: 11px;
+  width: 121px;
+  height: 26px;
+}
 .search-wrapper {
   float: right;
 }
