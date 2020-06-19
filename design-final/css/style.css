@@ -97,19 +97,45 @@
   width: 209px;
   height: 48px;
 }
+
 .scroll-btn {
   margin-top: 217px;
   margin-bottom: 11px;
   width: 121px;
   height: 26px;
 }
+
 .search-wrapper {
   float: right;
+}
+
+.works-section-header {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.works-section-subheader {
+  text-align: center;
+}
+
+.work-item-image-wrapper {
+  text-align: center;
+}
+
+.work-item-image {
+  width: 87px;
+  border: 8px solid red;
+}
+.work-item-description {
+  text-align: center;
 }
 .txt-white {
   color: white;
 }
 
+.txt-gray {
+  color: #b7b3b3;
+}
 .bg-ghee {
   background-color: #f1e7dc;
 }
