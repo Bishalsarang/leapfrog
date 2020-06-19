@@ -19,6 +19,7 @@
   src: url("fonts/Proxima\ Nova\ Bold.otf");
   font-weight: bold;
 }
+
 .header {
   background-image: url("../images/banner-background.png");
   background-size: cover;
@@ -26,13 +27,14 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .mbl-menu-icon,
 .mbl-search-icon {
   color: white;
   font-size: 32px;
 }
 
-.mbl-menus {
+.menus {
   float: left;
 }
 .mbl-menus-items {
@@ -40,11 +42,25 @@
   /* background-color: #333; */
 }
 
-.mbl-menus-items a {
-  color: white;
+.mbl-menus-items a,
+.menus-items a {
+  color: #c6c9c3;
   text-decoration: none;
 }
 
+.menus-items {
+  list-style: none;
+}
+
+.menus-item {
+  display: inline-block;
+  margin-right: 23px;
+  cursor: pointer;
+}
+
+.menus-item {
+  color: red;
+}
 .banner-text {
   padding-top: 150px;
   text-align: center;
@@ -59,8 +75,9 @@
 
 .logo-wrapper {
   float: left;
-  /* width: 98%; */
-  margin-left: calc((100% - 32px -84px) / 2);
+  width: 75%;
+  text-align: center;
+  /* margin-left: calc((100% - 32px -84px) / 2); */
 }
 
 .logo {
@@ -99,4 +116,27 @@
   outline: none;
   width: 208px;
   border-radius: 12px;
+}
+
+@media (min-width: 992px) {
+  .menus-items {
+    display: block;
+    padding: 10px;
+  }
+
+  .mbl-menu-icon {
+    display: none;
+  }
+
+  .mbl-search-icon {
+    display: none;
+  }
+
+  .logo-wrapper {
+    width: 58%;
+  }
+
+  .search-form {
+    display: inline;
+  }
 }
