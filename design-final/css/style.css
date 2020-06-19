@@ -75,6 +75,8 @@
   display: block;
   margin: auto;
   margin-bottom: 10px;
+  width: 208px;
+  height: 47px;
 }
 
 .search-wrapper {
