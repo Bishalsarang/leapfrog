@@ -226,6 +226,10 @@
   list-style: none;
 }
 
+.recent-work-gallery-items li:nth-last-of-type(-n + 7) {
+  display: none;
+}
+
 .recent-work-gallery-item {
   display: inline-block;
 }
@@ -298,16 +302,26 @@
   list-style: none;
 }
 
-.team-gallery-wrapper {
+/* .team-gallery-wrapper {
   width: 123px;
+} */
+
+.team-gallery-image-wrapper {
+  width: 124px;
 }
+
+.mbl-team-gallery-item {
+  margin: 10px;
+}
+
 .mbl-team-gallery-wrapper {
   width: 260px;
   margin: auto;
 }
+
 .mbl-team-info {
   padding: 19px;
-  width: max-content;
+  width: calc(100% - 124px);
 }
 
 .member-name {
@@ -450,5 +464,9 @@
   .work-items-wrapper {
     width: 100%;
     margin: 0 auto;
+  }
+  /* Unhide hidden list items in mobile view */
+  .recent-work-gallery-items li:nth-last-of-type(-n + 7) {
+    display: inline-block;
   }
 }
