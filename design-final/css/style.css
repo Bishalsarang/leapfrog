@@ -120,6 +120,7 @@
 .separator-wrapper {
   text-align: center;
 }
+
 .work-items-list {
   list-style: none;
 }
@@ -238,6 +239,36 @@
   background-color: #dddcdc;
   color: #a59d9d;
 }
+
+.team-gallery-items {
+  list-style: none;
+}
+
+.team-gallery-wrapper {
+  width: 123px;
+}
+.mbl-team-gallery-wrapper {
+  width: 280px;
+  margin: auto;
+}
+.mbl-team-info {
+  padding: 19px;
+  width: max-content;
+}
+
+.member-name {
+  display: block;
+  text-align: center;
+}
+
+.social-media-wrapper {
+  text-align: center;
+  background-image: url(../images/social-media-bg.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  padding: 4px;
+}
+
 .txt-white {
   color: white;
 }
@@ -287,6 +318,18 @@
     width: 490px;
     font-size: 16px;
     margin: auto;
+  }
+
+  .mbl-team-gallery-wrapper {
+    display: none;
+  }
+
+  .team-gallery-wrapper {
+    display: block;
+  }
+  .team-gallery-item {
+    width: 128px;
+    margin: 24px;
   }
 }
 
