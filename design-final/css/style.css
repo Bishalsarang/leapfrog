@@ -28,6 +28,15 @@
   background-repeat: no-repeat;
 }
 
+.section-header {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section-subheader {
+  display: block;
+  text-align: center;
+}
 .mbl-menu-icon,
 .mbl-search-icon {
   color: white;
@@ -108,17 +117,6 @@
   float: right;
 }
 
-.works-section-header {
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.works-section-subheader {
-  display: inline-block;
-  text-align: center;
-  margin-top: 27px;
-}
-
 .work-items-list {
   list-style: none;
 }
@@ -159,15 +157,7 @@
   background-color: #54d154;
   color: white;
 }
-.recent-work-section-header {
-  text-align: center;
-  /* text-transform: uppercase; */
-}
 
-.recent-work-section-subheader {
-  text-align: center;
-  display: block;
-}
 .recent-works-items {
   list-style: none;
 }
@@ -201,8 +191,49 @@
   color: white;
   border: none;
   outline: none;
-  margin: auto;
+  margin-top: 45px;
   border-radius: 12px;
+}
+
+.testimonial-txt {
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 37px;
+}
+
+.testimonial-person {
+  width: 205px;
+  margin: auto;
+}
+
+.avatar {
+  width: 46px;
+}
+
+.avatar-info {
+  width: calc(100% - 46px);
+}
+
+.clients-logo-items {
+  list-style: none;
+}
+
+.client-logo-item {
+  display: inline-block;
+}
+
+.client-logo-image-wrapper {
+  width: 152px;
+}
+
+.btn-see-all-client {
+  width: 190px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #dddcdc;
+  color: #a59d9d;
 }
 .txt-white {
   color: white;
@@ -248,6 +279,11 @@
   }
   .recent-work-gallery-items-carousel {
     display: none;
+  }
+  .testimonial-txt {
+    width: 490px;
+    font-size: 16px;
+    margin: auto;
   }
 }
 
