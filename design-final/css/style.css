@@ -184,6 +184,15 @@
   display: inline-block;
 }
 
+.recent-work-gallery-image-wrapper {
+  width: 160px;
+  margin: 15px;
+}
+
+.recent-work-gallery-items-carousel {
+  width: 160px;
+  margin: 0px auto;
+}
 .txt-white {
   color: white;
 }
@@ -222,6 +231,12 @@
   }
   .scroll-btn {
     margin-top: 217px;
+  }
+  .recent-work-gallery-items {
+    display: block;
+  }
+  .recent-work-gallery-items-carousel {
+    display: none;
   }
 }
 
