@@ -44,7 +44,9 @@
 .footer {
   color: white;
 }
+
 .top-footer {
+  padding-top: 32px;
   background-color: #333333;
 }
 @media (min-width: 992px) {

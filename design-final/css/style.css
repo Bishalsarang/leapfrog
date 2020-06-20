@@ -76,6 +76,10 @@
   margin-right: 23px;
   cursor: pointer;
 }
+.nav-link:hover {
+  color: white;
+  border-top: 5px solid #54d154;
+}
 
 .menus-item {
   color: red;
@@ -106,8 +110,14 @@
   text-decoration: none;
 }
 
+.logo:hover {
+  border-bottom: 4px solid green;
+}
 .career-btn,
-.scroll-btn {
+.btn-scroll-down {
+  outline: none;
+  border: none;
+  border-radius: 30px;
   display: block;
   margin: auto;
   margin-bottom: 10px;
@@ -118,15 +128,26 @@
   height: 48px;
 }
 
-.scroll-btn {
+.btn-scroll-down {
   /* margin-top: 217px; */
   margin-bottom: 11px;
   width: 121px;
   height: 26px;
 }
 
+.btn-scroll-down:hover {
+  background-color: #d6d2d2;
+}
+
 .search-wrapper {
   float: right;
+}
+
+.search-form input[type="text"] {
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  padding-left: 14px;
 }
 
 .separator-wrapper {
@@ -170,6 +191,9 @@
   text-align: center;
 }
 
+.work-item-description > a > span:hover {
+  text-decoration: underline;
+}
 .btn-learn-more {
   width: 120px;
   height: 30px;
@@ -179,6 +203,10 @@
   border-radius: 12px;
   background-color: #54d154;
   color: white;
+}
+
+.btn-learn-more:hover {
+  background-color: #7cf77c;
 }
 
 .latest-work-catg-buttons {
@@ -198,11 +226,16 @@
 }
 
 .btn-photography {
-  /* width: 122px; */
   color: white;
-  background-color: #2b9b2b;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
+}
+
+.active,
+.btn-photography:active,
+.btn-design:active,
+.btn-print:active {
+  background-color: #2b9b2b;
 }
 
 .btn-design,
@@ -211,13 +244,20 @@
   background-color: white;
 }
 
+.btn-design:hover,
+.btn-print:hover {
+  background-color: #97c797;
+  color: white;
+}
 .btn-design {
   width: 69px;
 }
+
 .btn-print {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
+
 .recent-works-items {
   list-style: none;
 }
@@ -243,6 +283,9 @@
   margin: 15px;
 }
 
+.recent-work-gallery-image:hover {
+  box-shadow: 3px 3px 4px 3px #ddd;
+}
 .btn-view-more-work {
   width: 190px;
   height: 40px;
@@ -254,6 +297,9 @@
   border-radius: 12px;
 }
 
+.btn-view-more-work:hover {
+  background-color: #3db63d;
+}
 .testimonial-txt {
   font-size: 12px;
   text-align: center;
@@ -293,13 +339,18 @@
 }
 
 .btn-see-all-client {
-  width: 190px;
+  width: 186px;
   height: 40px;
   border: none;
   outline: none;
   margin-top: 10px;
+  border-radius: 30px;
   background-color: #dddcdc;
   color: #a59d9d;
+}
+
+.btn-see-all-client:hover {
+  background-color: #f2ecec;
 }
 
 .team-gallery-items {
@@ -364,6 +415,10 @@
   font-size: 18.63px;
 }
 
+.btn-work-with-us:hover {
+  background-color: #7cf77c;
+}
+
 .txt-white {
   color: white;
 }
@@ -404,6 +459,12 @@
   padding: 10px;
   text-align: center;
 }
+
+.contact-us-wrapper {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
 .contact-info-wrapper span {
   display: block;
   text-align: center;
@@ -413,7 +474,7 @@
   .work-item {
     width: 180px;
   }
-  .scroll-btn {
+  .btn-scroll-down {
     margin-top: 217px;
   }
   .recent-work-gallery-items {
