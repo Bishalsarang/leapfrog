@@ -26,6 +26,10 @@
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+
+  -moz-box-shadow: inset 0 0 90px #000000;
+  -webkit-box-shadow: inset 0 0 90px #000000;
+  box-shadow: inset 0 0 90px #000000;
 }
 
 .section-header {
@@ -229,11 +233,6 @@
 .recent-work-gallery-image-wrapper {
   width: 160px;
   margin: 15px;
-}
-
-.recent-work-gallery-items-carousel {
-  width: 160px;
-  margin: 0px auto;
 }
 
 .btn-view-more-work {
