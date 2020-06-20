@@ -176,6 +176,14 @@
   display: inline-block;
 }
 
+.recent-work-gallery-items {
+  list-style: none;
+}
+
+.recent-work-gallery-item {
+  display: inline-block;
+}
+
 .txt-white {
   color: white;
 }
