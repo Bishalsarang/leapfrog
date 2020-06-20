@@ -273,6 +273,24 @@
   padding: 4px;
 }
 
+.meet-the-team-footer {
+  background-color: #3eba3e;
+  height: 94px;
+}
+
+.btn-work-with-us {
+  text-transform: uppercase;
+  height: 40px;
+  width: 176px;
+  border: none;
+  outline: none;
+  background-color: #54d154;
+  color: white;
+  margin-top: 27px;
+  margin-bottom: 27px;
+  border-radius: 12px;
+}
+
 .txt-white {
   color: white;
 }
