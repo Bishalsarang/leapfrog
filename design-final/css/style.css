@@ -129,7 +129,10 @@
   list-style: none;
 }
 .work-item {
-  margin: 0px auto;
+  display: inline-block;
+  margin-top: 38px;
+  margin-left: 74px;
+  margin-right: 44px;
 }
 .work-item-image-wrapper {
   text-align: center;
@@ -147,6 +150,9 @@
 .work-item-title {
   color: #828181;
   font-weight: bold;
+  margin-top: 27px;
+  margin-bottom: 24px;
+  display: inline-block;
 }
 
 .work-item-detail {
@@ -161,6 +167,7 @@
   height: 30px;
   outline: none;
   border: none;
+  margin-top: 30px;
   border-radius: 12px;
   background-color: #54d154;
   color: white;
@@ -388,7 +395,6 @@
 @media (min-width: 600px) {
   .work-item {
     width: 180px;
-    float: left;
   }
   .scroll-btn {
     margin-top: 217px;
@@ -443,12 +449,7 @@
   }
 
   .work-items-wrapper {
-    width: 88.196%;
+    width: 100%;
     margin: 0 auto;
-  }
-
-  .work-item {
-    width: 270px;
-    height: 338px;
   }
 }
