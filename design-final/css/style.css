@@ -166,6 +166,43 @@
   color: white;
 }
 
+.latest-work-catg-buttons {
+  text-align: center;
+  padding-bottom: 45px;
+  padding-top: 60px;
+}
+
+.recent-work-section button {
+  border: none;
+  outline: none;
+  border: 1px solid #2b9b2b;
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-top: 11px;
+  padding-bottom: 8px;
+}
+
+.btn-photography {
+  /* width: 122px; */
+  color: white;
+  background-color: #2b9b2b;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.btn-design,
+.btn-print {
+  color: #2b9b2b;
+  background-color: white;
+}
+
+.btn-design {
+  width: 69px;
+}
+.btn-print {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
 .recent-works-items {
   list-style: none;
 }
@@ -223,12 +260,17 @@
   width: calc(100% - 46px);
 }
 
+.clients-logo-wrapper {
+  padding-top: 85px;
+  padding-bottom: 60px;
+}
 .clients-logo-items {
   list-style: none;
 }
 
 .client-logo-item {
   display: inline-block;
+  vertical-align: middle;
 }
 
 .client-logo-image-wrapper {
@@ -240,6 +282,7 @@
   height: 40px;
   border: none;
   outline: none;
+  margin-top: 60px;
   background-color: #dddcdc;
   color: #a59d9d;
 }
@@ -280,15 +323,20 @@
 
 .btn-work-with-us {
   text-transform: uppercase;
-  height: 40px;
-  width: 176px;
+  /* height: 40px;
+  width: 176px; */
   border: none;
   outline: none;
   background-color: #54d154;
   color: white;
   margin-top: 27px;
   margin-bottom: 27px;
-  border-radius: 12px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 13px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  font-size: 18.63px;
 }
 
 .txt-white {
@@ -320,6 +368,20 @@
   outline: none;
   width: 208px;
   border-radius: 12px;
+}
+
+.about-us-txt {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.contact-info-wrapper {
+  padding: 10px;
+  text-align: center;
+}
+.contact-info-wrapper span {
+  display: block;
+  text-align: center;
 }
 
 @media (min-width: 600px) {

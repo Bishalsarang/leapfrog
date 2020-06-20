@@ -41,5 +41,11 @@
   background-color: #54d154;
 }
 
+.footer {
+  color: white;
+}
+.top-footer {
+  background-color: #333333;
+}
 @media (min-width: 992px) {
 }
