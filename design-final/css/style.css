@@ -329,10 +329,12 @@
   }
 
   .team-gallery-wrapper {
+    width: 100%;
     display: block;
   }
   .team-gallery-item {
     width: 128px;
+    display: inline-block;
     margin: 24px;
   }
 }
