@@ -80,6 +80,10 @@
   padding-top: 9px;
 }
 
+.align-center {
+  text-align: center;
+}
+
 .logo-wrapper {
   float: left;
   width: 75%;
@@ -248,7 +252,7 @@
   width: 123px;
 }
 .mbl-team-gallery-wrapper {
-  width: 280px;
+  width: 260px;
   margin: auto;
 }
 .mbl-team-info {
