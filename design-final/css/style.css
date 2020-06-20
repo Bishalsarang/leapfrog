@@ -271,6 +271,7 @@
 .client-logo-item {
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 50px;
 }
 
 .client-logo-image-wrapper {
@@ -282,7 +283,7 @@
   height: 40px;
   border: none;
   outline: none;
-  margin-top: 60px;
+  margin-top: 10px;
   background-color: #dddcdc;
   color: #a59d9d;
 }
