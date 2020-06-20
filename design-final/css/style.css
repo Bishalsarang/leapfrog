@@ -193,6 +193,17 @@
   width: 160px;
   margin: 0px auto;
 }
+
+.btn-view-more-work {
+  width: 190px;
+  height: 40px;
+  background-color: #2b9b2b;
+  color: white;
+  border: none;
+  outline: none;
+  margin: auto;
+  border-radius: 12px;
+}
 .txt-white {
   color: white;
 }
