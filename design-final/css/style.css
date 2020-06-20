@@ -117,6 +117,9 @@
   float: right;
 }
 
+.separator-wrapper {
+  text-align: center;
+}
 .work-items-list {
   list-style: none;
 }

@@ -38,6 +38,7 @@
 .team-section {
   padding-top: 37px;
   padding-bottom: 25px;
+  background-color: #54d154;
 }
 
 @media (min-width: 992px) {
