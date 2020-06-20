@@ -98,7 +98,7 @@
 }
 
 .scroll-btn {
-  margin-top: 217px;
+  /* margin-top: 217px; */
   margin-bottom: 11px;
   width: 121px;
   height: 26px;
@@ -170,6 +170,9 @@
 }
 .recent-works-items {
   list-style: none;
+}
+
+.recent-work-catg-item {
   display: inline-block;
 }
 
@@ -208,6 +211,9 @@
   .work-item {
     width: 180px;
     float: left;
+  }
+  .scroll-btn {
+    margin-top: 217px;
   }
 }
 
