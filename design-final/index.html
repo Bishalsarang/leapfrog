@@ -34,13 +34,13 @@
                                     <a href="#" class="nav-link">Home</a>
                                 </li>
                                 <li class="menus-item">
-                                    <a href="#" class="nav-link">What we do?</a>
+                                    <a href="#work" class="nav-link">What we do?</a>
                                 </li>
                                 <li class="menus-item">
-                                    <a href="#" class="nav-link">Testimonial</a>
+                                    <a href="#testimonial" class="nav-link">Testimonial</a>
                                 </li>
                                 <li class="menus-item">
-                                    <a href="#" class="nav-link">Contact us</a>
+                                    <a href="#contact-us" class="nav-link">Contact us</a>
                                 </li>
 
                             </ul>
@@ -61,8 +61,8 @@
 
                         <form class="search-form hide clearfix">
 
-                            <input type="text" placeholder="Search..." class="left"><button><i
-                                    class="fas fa-search right"></i></button>
+                            <input label="Search" type="text" placeholder="Search..." class="left"
+                                id="search-keyword"><i class="fas fa-search desktop-search-icon right"></i>
                         </form>
                         <!-- search-form ends here -->
                     </div>
@@ -73,13 +73,13 @@
                             <a href="#" title="Home - Switch">Home</a>
                         </li>
                         <li class="mbl-menu-item">
-                            <a href="#" title="Work - Switch">What we do?</a>
+                            <a href="#work" title="Work - Switch">What we do?</a>
                         </li>
                         <li class="mbl-menu-item">
-                            <a href="#" title="Testimonial - Switch">Testimonial</a>
+                            <a href="#testimonial" title="Testimonial - Switch">Testimonial</a>
                         </li>
                         <li class="mbl-menu-item">
-                            <a href="#" title="Contact - Switch">Contact us</a>
+                            <a href="#mbl-contact-us" title="Contact - Switch">Contact us</a>
                         </li>
 
                     </ul>
@@ -97,7 +97,7 @@
         <!-- header ends here -->
         <main>
             <div class="main-body-wrapper container">
-                <div class="works-section">
+                <div class="works-section" id="work">
                     <h2 class="section-header">What we do</h2>
                     <div class="separator-wrapper">
                         <img src="images/separator-grey.png" alt="separator">
@@ -237,7 +237,7 @@
                         <button class="btn-view-more-work">View more work <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-                <div class="testimonial-section">
+                <div class="testimonial-section" id="testimonial">
                     <h2 class="section-header"> Testimonials </h2>
                     <div class="separator-wrapper">
                         <img src="images/separator-grey.png" alt="separator">
@@ -281,32 +281,32 @@
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/MSFT_logo_png.png" alt="Google Logo">
+                                    <img src="images/MSFT_logo_png.png" alt="Microsoft Logo">
                                 </div>
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/intel.png" alt="Google Logo">
+                                    <img src="images/intel.png" alt="Intel Logo">
                                 </div>
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/qualcomm.png" alt="Google Logo">
+                                    <img src="images/qualcomm.png" alt="Qualcomm Logo">
                                 </div>
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/Cisco_logo.png" alt="Google Logo">
+                                    <img src="images/Cisco_logo.png" alt="Cisco Logo">
                                 </div>
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/Apple-logo.png" alt="Google Logo">
+                                    <img src="images/Apple-logo.png" alt="Apple Logo">
                                 </div>
                             </li>
                             <li class="client-logo-item">
                                 <div class="client-logo-image-wrapper">
-                                    <img src="images/ASUS_Logo.png" alt="Google Logo">
+                                    <img src="images/ASUS_Logo.png" alt="Asus Logo">
                                 </div>
                             </li>
                         </ul>
@@ -593,7 +593,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="contact-us-wrapper">
+                        <div class="contact-us-wrapper" id="mbl-contact-us">
                             <h2 class="section-header">Contact Us </h2>
                             <div class="separator-wrapper">
                                 <img src="images/separator-grey.png" alt="separator">
@@ -606,9 +606,9 @@
                                 <span>Fax: +1 (0) 321 4567 890</span>
                             </div>
                             <form class="contact-form hide">
-                                <input type="text" placeholder="Your Name..">
-                                <input type="email" placeholder="Your Email..">
-                                <input type="text" placeholder="Your Mesage..">
+                                <input type="text" label="Your Name" placeholder="Your Name..">
+                                <input type="email" label="Your Email" placeholder="Your Email..">
+                                <input type="text" label="Your message" placeholder="Your Mesage..">
                                 <button>SEND</button>
                             </form>
 
@@ -703,7 +703,7 @@
                             </div>
                         </div>
 
-                        <div class="desktop-contact-us-wrapper right">
+                        <div class="desktop-contact-us-wrapper right" id="contact-us">
                             <h2 class="section-header">Contact Us </h2>
                             <div class="separator-wrapper">
                                 <img src="images/separator-grey.png" alt="separator">
@@ -716,9 +716,9 @@
                                 <span>Fax: +1 (0) 321 4567 890</span>
                             </div>
                             <form class="contact-form">
-                                <input type="text" placeholder="Your Name..">
-                                <input type="email" placeholder="Your Email..">
-                                <input type="text" placeholder="Your Mesage.." id="message">
+                                <input type="text" label="Your Name" placeholder="Your Name..">
+                                <input type="email" label="Your Email" placeholder="Your Email..">
+                                <input type="text" label="Your Message" placeholder="Your Mesage.." id="message">
                                 <button type="submit" id="btn-submit-msg">SEND</button>
                             </form>
 
