@@ -659,6 +659,10 @@ button:hover {
   color: inherit;
 }
 
+.post-description-link:hover {
+  color: wheat;
+}
+
 @media (min-width: 768px) {
   .work-item {
     width: 180px;
