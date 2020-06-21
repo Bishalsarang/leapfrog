@@ -11,7 +11,6 @@
 @font-face {
   font-family: ProximaNovaLight;
   src: url("fonts/Proxima\ Nova\ Light.otf");
-  font-weight: light;
 }
 
 @font-face {
@@ -20,6 +19,14 @@
   font-weight: bold;
 }
 
+body {
+  font-family: ProximaNova;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
 .header {
   background-image: url("../images/banner-background.png");
   background-size: cover;
@@ -32,14 +39,20 @@
   box-shadow: inset 0 0 90px #000000;
 }
 
-.section-header {
+.section-header,
+.section-subheader {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+.section-header {
   text-transform: uppercase;
+  font-size: 20px;
 }
 
 .section-subheader {
   display: block;
-  text-align: center;
+  font-size: 15px;
 }
 
 .menu-logo-wrapper {
@@ -54,6 +67,7 @@
 
 .menus {
   width: 50%;
+  font-family: ProximaNova, sans-serif;
 }
 
 .mbl-menus-items {
@@ -79,6 +93,7 @@
 .nav-link:hover {
   color: white;
   border-top: 5px solid #54d154;
+  font-weight: bold;
 }
 
 .menus-item {
@@ -88,6 +103,9 @@
   padding-top: 150px;
   text-align: center;
   padding-bottom: 31px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 55px;
+  font-weight: bold;
 }
 
 .header-wrapper {
@@ -113,6 +131,7 @@
 .logo:hover {
   border-bottom: 4px solid green;
 }
+
 .career-btn,
 .btn-scroll-down {
   outline: none;
@@ -129,8 +148,9 @@
 }
 
 .btn-scroll-down {
-  /* margin-top: 217px; */
   margin-bottom: 11px;
+  font-family: ProximaNova;
+  font-size: 16px;
   width: 121px;
   height: 26px;
 }
@@ -177,8 +197,9 @@
 }
 
 .work-item-title {
+  font-family: ProximaNovaBold;
+  font-size: 24px;
   color: #828181;
-  font-weight: bold;
   margin-top: 27px;
   margin-bottom: 24px;
   display: inline-block;
@@ -186,7 +207,11 @@
 
 .work-item-detail {
   color: #828181;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
 }
+
 .work-item-description {
   text-align: center;
 }
@@ -194,6 +219,7 @@
 .work-item-description > a > span:hover {
   text-decoration: underline;
 }
+
 .btn-learn-more {
   width: 120px;
   height: 30px;
@@ -202,6 +228,8 @@
   margin-top: 30px;
   border-radius: 12px;
   background-color: #54d154;
+  font-family: ProximaNovaBold;
+  font-size: 16px;
   color: white;
 }
 
@@ -223,6 +251,8 @@
   padding-right: 17px;
   padding-top: 11px;
   padding-bottom: 8px;
+  font-family: ProximaNova;
+  font-size: 16px;
 }
 
 .btn-photography {
@@ -248,9 +278,6 @@
 .btn-print:hover {
   background-color: #97c797;
   color: white;
-}
-.btn-design {
-  width: 69px;
 }
 
 .btn-print {
@@ -321,6 +348,15 @@
   width: calc(100% - 46px);
 }
 
+.testimonal-person-name,
+.testimonial-person-designation {
+  font-family: ProximaNovaBold;
+  font-size: 16px;
+}
+
+.testimonial-person-designation {
+  color: #cccccc;
+}
 .clients-logo-wrapper {
   padding-top: 85px;
   padding-bottom: 60px;
@@ -381,6 +417,9 @@
 }
 
 .member-name {
+  font-family: ProximaNova;
+  font-size: 16px;
+  color: white;
   display: block;
   text-align: center;
 }
@@ -525,6 +564,16 @@
 
 .recent-posts-items {
   list-style: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.post-description p {
+  font-size: 16px;
+}
+
+.post-description button {
+  font-size: 12.6px;
 }
 
 .recent-post-image-wrapper {
@@ -614,6 +663,10 @@
     display: block;
   }
 
+  .desktop-about-us-wrapper {
+    font-family: ProximaNova;
+    font-size: 16px;
+  }
   .desktop-contact-us-wrapper {
     display: none;
   }
