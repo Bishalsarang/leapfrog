@@ -28,6 +28,10 @@ a {
   text-decoration: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .header {
   background-image: url("../images/banner-background.png");
   background-size: cover;
@@ -649,6 +653,10 @@ a {
   outline: none;
   /* border: none; */
   padding-left: 14px;
+}
+
+.post-description-link {
+  color: inherit;
 }
 
 @media (min-width: 768px) {
