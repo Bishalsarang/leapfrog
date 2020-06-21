@@ -27,6 +27,7 @@ body {
 a {
   text-decoration: none;
 }
+
 .header {
   background-image: url("../images/banner-background.png");
   background-size: cover;
@@ -48,6 +49,7 @@ a {
 .section-header {
   text-transform: uppercase;
   font-size: 20px;
+  color: #828181;
 }
 
 .section-subheader {
@@ -59,6 +61,15 @@ a {
   width: 65%;
 }
 
+.btn-transparent {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.nav-btn:hover {
+  color: rgb(243, 243, 177);
+}
 .mbl-menu-icon,
 .mbl-search-icon {
   color: white;
@@ -359,7 +370,6 @@ a {
 }
 .clients-logo-wrapper {
   padding-top: 85px;
-  padding-bottom: 60px;
 }
 .clients-logo-items {
   list-style: none;
@@ -492,7 +502,7 @@ a {
 }
 
 .txt-green {
-  color: #54d154;
+  color: #207b20;
 }
 
 .bg-white {
