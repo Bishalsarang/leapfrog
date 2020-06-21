@@ -55,5 +55,8 @@
   background-color: #222222;
 }
 
+@media (min-width: 768px) {
+}
+
 @media (min-width: 992px) {
 }

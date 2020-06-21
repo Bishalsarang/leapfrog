@@ -70,6 +70,7 @@ a {
 .nav-btn:hover {
   color: rgb(243, 243, 177);
 }
+
 .mbl-menu-icon,
 .mbl-search-icon {
   color: white;
@@ -92,6 +93,19 @@ a {
   text-decoration: none;
 }
 
+.mbl-menu-item {
+  border-top: 2px solid white;
+}
+
+.mbl-menu-item:hover {
+  cursor: pointer;
+  font-size: 18px;
+  color: rgb(204, 194, 194);
+}
+
+.mbl-menu-item:last-child {
+  border-bottom: 2px solid white;
+}
 .menus-items {
   list-style: none;
 }
@@ -140,7 +154,7 @@ a {
 }
 
 .logo:hover {
-  border-bottom: 4px solid green;
+  color: #beb7b7;
 }
 
 .career-btn,
@@ -621,19 +635,23 @@ a {
   padding-left: 14px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .work-item {
     width: 180px;
   }
+
   .btn-scroll-down {
     margin-top: 217px;
   }
+
   .recent-work-gallery-items {
     display: block;
   }
+
   .recent-work-gallery-items-carousel {
     display: none;
   }
+
   .testimonial-txt {
     width: 490px;
     font-size: 16px;
@@ -695,6 +713,7 @@ a {
   .about-us-recent-post-wrapper {
     width: 75%;
   }
+
   .menu-logo-wrapper {
     width: 70%;
   }
@@ -702,8 +721,10 @@ a {
   .menus {
     width: 59%;
   }
+
   .logo-wrapper {
     width: 41%;
+    padding-top: 13px;
   }
 
   .menus-items {
@@ -730,5 +751,9 @@ a {
   /* Unhide hidden list items in mobile view */
   .recent-work-gallery-items li:nth-last-of-type(-n + 6) {
     display: inline-block;
+  }
+
+  .search-wrapper {
+    padding-top: 18px;
   }
 }
