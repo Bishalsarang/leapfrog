@@ -424,10 +424,20 @@
   width: 94.7%;
   margin: 0px auto;
 }
+.about-us-recent-post-wrapper {
+  width: 75%;
+}
 
 .desktop-about-us-wrapper {
-  width: 33.26%;
-  margin-right: 90px;
+  width: 50%;
+  /* margin-right: 90px; */
+}
+
+.post-description button {
+  border: none;
+  outline: none;
+  color: white;
+  padding: 4px;
 }
 
 .txt-white {
@@ -444,6 +454,15 @@
 
 .bg-white {
   background-color: white;
+}
+.bg-orange {
+  background-color: #f34d04;
+}
+.bg-blue {
+  background-color: #089dea;
+}
+.bg-yellow {
+  background-color: #ffba00;
 }
 
 .bg-ghee {
@@ -504,6 +523,20 @@
   list-style: none;
 }
 
+.recent-post-image-wrapper {
+  margin: 8px;
+  width: 54px;
+}
+
+.desktop-recent-posts {
+  width: 40%;
+}
+
+.post-description {
+  width: calc(100% - 54px - 16px);
+  padding-top: 16px;
+}
+
 @media (min-width: 600px) {
   .work-item {
     width: 180px;
@@ -550,6 +583,10 @@
 
   .mbl-footer {
     display: none;
+  }
+
+  .desktop-footer {
+    display: block;
   }
 }
 
