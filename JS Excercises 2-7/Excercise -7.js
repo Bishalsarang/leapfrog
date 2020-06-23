@@ -23,20 +23,21 @@ var output = {
   '6': { id: 6, name: 'Peter' }
 };
 
-var newObj = {}
-var newArr = []
-var tempArray = [];
 
-function normalize(inputObject){
-  console.log(inputObject);
-  newArr.push(inputObject);
-  if('children' in inputObject){
+
+var output = {};
+
+function normalize(currentObject){
+  output[currentObject["id"]] = currentObject;
+
+  if(currentObject["children"]){
     tempArray = [];
-    inputObject['children'].forEach(function(value){
+    currentObject['children'].forEach(function(value){
       tempArray.push(value.id);
-      inputObject.children = tempArray;
+      currentObject.children = tempArray;
       normalize(value);
     });
+    
   }
 }
 
@@ -44,8 +45,4 @@ Object.values(input).forEach(function(value){
   normalize(value);
 });
 
-var ans = newArr.map(function(value, index){
-  console.log(value["id"], value);
-
-})
-console.log(ans);
+console.log(output);

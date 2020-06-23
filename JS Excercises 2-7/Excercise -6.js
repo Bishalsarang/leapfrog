@@ -17,9 +17,8 @@ var arr = [
 
 function sortBy(array, key) {
   return array.slice().sort(function (a, b) {
-    if(a[key] < b[key])
-      return -1;
-    else if(b[key] < a[key]){
+    if (a[key] < b[key]) return -1;
+    else if (b[key] < a[key]) {
       return 1;
     }
     return 0;

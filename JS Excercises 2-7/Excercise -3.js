@@ -5,7 +5,7 @@
 myInformation = {
   name: "Bishal Sarangkoti",
   address: "28 Kilo, DHulikhel",
-  email: "sarangbishal@gmail.com",
+  email: ["sarangbishal@gmail.com", "bishalsarang@gmail.com"]
   interests: ["Programming", "Reading", "Series", "Movies"],
   education: [
     {

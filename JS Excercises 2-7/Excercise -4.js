@@ -23,9 +23,16 @@ function searchByKey(container, key, value) {
   return {};
 }
 
-var fruits = [
-  { id: 1, name: "Banana", color: "Yellow" },
-  { id: 2, name: "Apple", color: "Red" },
+var fruits = [{
+    id: 1,
+    name: "Banana",
+    color: "Yellow"
+  },
+  {
+    id: 2,
+    name: "Apple",
+    color: "Red"
+  },
 ];
 
 // console.log(searchByName(fruits, 'apple'));
