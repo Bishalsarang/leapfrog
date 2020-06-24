@@ -17,15 +17,18 @@ function drawCanvas(canvasWidth, canvasHeight) {
   return canvas;
 }
 
-function createPointElement() {
+function createPointElement(x, y) {
   var point = document.createElement("div");
   point.setAttribute("class", "point");
+ 
   point.style.width = POINT_SIZE + "px";
   point.style.height = POINT_SIZE + "px";
   point.style.borderRadius = POINT_SIZE + "px";
-  point.style.margin = "0 auto";
+  point.style.left = x + "px";
+  point.style.top = y + "px";
   point.style.backgroundColor = "#4499CB";
   point.style.position = "absolute";
+ 
   canvas.appendChild(point);
   return point;
 }
@@ -38,10 +41,10 @@ function plot(x, y) {
 canvas = drawCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 document.body.appendChild(canvas);
 
-var point = createPointElement();
 
 startX = CANVAS_WIDTH / 2;
 startY = 0;
+var point = createPointElement(startX, startY);
 
 var parity = 1;
 var x = startX,
