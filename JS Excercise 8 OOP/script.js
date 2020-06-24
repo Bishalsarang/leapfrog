@@ -9,7 +9,7 @@ function Canvas(canvasWidth, canvasHeight, container){
   /* 
     Constructor function to create a container div
   */
-  var that = this;
+  let that = this;
   this.container = container;
   this.canvas = document.createElement('div')
   this.canvas.setAttribute("id", "canvas");
@@ -21,16 +21,16 @@ function Canvas(canvasWidth, canvasHeight, container){
   this.canvas.style.left = 10 + 'px';
 
   this.getCanvas = function(){
-    return that.canvas;
+    return this.canvas;
   }
 
   this.render = function(){
-    that.container.appendChild(this.canvas);
+    this.container.appendChild(this.canvas);
   }
 }
 
 function Point(x, y, container){
-  var that = this;
+  let that = this;
   this.point = document.createElement("div");
   this.point.setAttribute("class", "point");
   this.point.style.width = POINT_SIZE + "px";
@@ -44,26 +44,38 @@ function Point(x, y, container){
   this.container = container;
 
   this.getPoint = function(){
-    return that.point;
+    return this.point;
+  }
+
+  this.point.addEventListener('click', function(){
+    that.setColor('green');
+  })
+
+  this.setColor = function(color){
+    this.color = color;
+    this.point.style.backgroundColor = this.color;
   }
 
   this.render = function(){
-    that.container.appendChild(this.point);
+    this.container.appendChild(this.point);
   }
 
 }
 
-var canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT, document.body)
+let canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT, document.body)
 canvas.render(); // render canvas on DOM
 
-var sampleSize = 100;
+let sampleSize = 100;
 
-for (var i = 0; i < sampleSize; i++) {
+let points = Array(sampleSize)
+  .fill(null)
+  .map(() => ({
+    x: Math.random() * (CANVAS_WIDTH - POINT_SIZE),
+    y: Math.random() * (CANVAS_HEIGHT - POINT_SIZE),
+  }));
 
-  // Generate Random Points
-  var x = Math.random() * (CANVAS_WIDTH - POINT_SIZE);
-  var y = Math.random() * (CANVAS_HEIGHT - POINT_SIZE);
+points.forEach((point) => {
+  let pointElement = new Point(point.x, point.y, canvas.getCanvas());
+  pointElement.render(); // Render point on DOM
+});
 
-  var point = new Point(x, y, canvas.getCanvas());
-  point.render(); // Render point on DOM
-}
