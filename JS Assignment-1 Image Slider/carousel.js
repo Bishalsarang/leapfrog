@@ -9,51 +9,129 @@ class Carousel {
         this.numberOfImages = this.wrapper.childElementCount;
         this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
         this.wrapper.classList.add('clearfix');
+        
         this.width = parseInt(
             window.getComputedStyle(container).getPropertyValue("width")
         );
         this.height = parseInt(
             window.getComputedStyle(container).getPropertyValue("height")
         );
-
-        this.leftButton = this.createButton(0, this.height / 2, "<");
+        
+      
+        this.leftButton = this.createNavButton(0, this.height / 2,  '&#9001;');
         this.leftButton.addEventListener("click", function () {
-            that.slide(true);
+             that.slide(true, null);
         });
 
-        this.rightButton = this.createButton(this.width - 22, this.height / 2, ">");
+        this.transitionSpeed = 30;
+        this.rightButton = this.createNavButton(this.width - 22, this.height / 2,   '&#9002;');
         this.rightButton.addEventListener("click", function () {
-            that.slide(false);
+            that.slide(false, null);
         });
+
+       this.carouselButtonWrapper = this.createCarouselButtonWrapper();
+       this.createCarouselButtons();
     }
 
-    createButton(x, y, character) {
-        let button = document.createElement("div");
+    createCarouselButtons(){
+        let that = this;
+        for(let i = 0; i < this.numberOfImages; i++){
+            let element = document.createElement('div');
+            element.id = i + '-carousel-button';
+            element.style.width = 10 + 'px';
+            element.style.height = 10 + 'px';
+            element.style.borderRadius = 10 + 'px';
+            element.style.display = 'inline-block';
+            element.style.backgroundColor = "#D6EEFF";
+            element.style.margin = 10 + 'px';
+
+            element.addEventListener('click', function(){
+                // Get left property of carousel-image-wrapper
+                let initialLeft = parseInt(window.getComputedStyle(that.wrapper).getPropertyValue("left"));
+                let finalLeft = parseInt(element.id) * -IMAGE_WIDTH;
+                that.slide(initialLeft < finalLeft, finalLeft);
+            });
+            this.carouselButtonWrapper.appendChild(element);     
+        }
+    }
+
+    createCarouselButtonWrapper(){
+        let element = document.createElement('div');
+        element.classList.add('carousel-button-wrapper');
+        element.style.position = 'absolute';
+        element.style.top = (this.height - 20) + 'px';
+       
+        element.style.left =  '50' + '%';
+        element.style.transform = 'translate(-50%, 0)';
+        element.style.cursor = 'pointer';
+        this.container.appendChild(element);
+        return element;
+    }
+
+    
+    createNavButton(x, y, character) {
+        let button = document.createElement("button");
         button.style.position = "absolute";
         button.style.left = x + "px";
         button.style.top = y + "px";
         button.style.position = "absolute";
+        button.style.backgroundColor= 'transparent';
         button.style.color = "#D6EEFF";
+        button.style.outline = 'none';
+        button.style.border = 'none';
         button.style.fontSize = 40 + "px";
         button.style.cursor = "pointer";
-        button.innerText = character;
+        button.innerHTML = character;
         this.container.appendChild(button);
         return button;
     }
 
-    slide(isLeft) {
+    slide(isLeft, isFinalVal) {
         let initialLeft = parseInt(window.getComputedStyle(this.wrapper).getPropertyValue("left"));
-        let finalLeft = isLeft ? initialLeft + IMAGE_WIDTH : initialLeft - IMAGE_WIDTH;
+        let finalLeft = isFinalVal || (isLeft ? initialLeft + IMAGE_WIDTH : initialLeft - IMAGE_WIDTH);
+        if(isFinalVal == 0){
+            finalLeft = 0;
+        }
+        
         let wrapper = this.wrapper;
+        let transitionSpeed = this.transitionSpeed;
+        let previousLeft = initialLeft;
         var id = setInterval(function () {
+            
             if (initialLeft == finalLeft && finalLeft % IMAGE_WIDTH == 0) {
+                // Color current button
+                let currentButtonNum = Math.abs(finalLeft / IMAGE_WIDTH);
+                let currentButton = document.getElementById(currentButtonNum + '-carousel-button');
+                if(currentButton){
+                    currentButton.style.backgroundColor = 'blue';
+                }
+
+                let previousButtonNum = Math.abs(previousLeft / IMAGE_WIDTH);
+                let previousButton = document.getElementById(previousButtonNum + '-carousel-button');
+                if(previousButton){
+                    previousButton.style.backgroundColor = '#D6EEFF';
+                }
+                
                 clearInterval(id);
             }
             if (isLeft) {
-                wrapper.style.left = (initialLeft++) + 'px';
-            } else {
-                wrapper.style.left = (initialLeft--) + 'px';
+                console.log("yo",finalLeft);
+                if(initialLeft + transitionSpeed > finalLeft){
+                    initialLeft = finalLeft;
+                }
+                else{
+                    wrapper.style.left = (initialLeft += transitionSpeed ) + 'px';
+                }
+            } else{
+                
+                if(initialLeft - transitionSpeed < finalLeft){
+                    initialLeft = finalLeft;
+                }
+                else{
+                    wrapper.style.left = (initialLeft -= transitionSpeed) + 'px';
+            
+                }
             }
-        }, 8);
+        }, 1000/60);
     }
 }
