@@ -43,8 +43,7 @@ function Point(x, y, pointSize, speed, container){
   this.point.style.position = "absolute";
   this.container = container;
   this.canvasHeight = window.getComputedStyle(container).getPropertyValue('height');
-  console.log(this.canvasHeight);
-
+  
   this.getPoint = function(){
     return this.point;
   }
