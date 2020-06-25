@@ -56,7 +56,7 @@ function Point(x, y, pointSize, speed, container){
   this.animate = function(){
     let parity = 1;
     function step(){
-      
+    
       window.requestAnimationFrame(step);
       
       if (that.y <= 0) {
