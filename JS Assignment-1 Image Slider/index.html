@@ -9,17 +9,24 @@
 </head>
 
 <body>
+    <h1>Image Carousel</h1>
     <div class="carousel-container">
-        <div class="carousel-image-wrapper clearfix">
-            <img class="carousel-item" src="https://picsum.photos/id/400/200/300" alt="">
-            <img class="carousel-item" src="https://picsum.photos/id/237/200/300" alt="">
-            <img class="carousel-item" src="https://picsum.photos/id/3/200/300" alt="">
+        <div class="carousel-image-wrapper">
+            <img class="carousel-item" src="https://picsum.photos/id/400/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/237/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/3/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/654/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/786/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/564/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/897/600/400" alt="">
+            <img class="carousel-item" src="https://picsum.photos/id/908/600/400" alt="">
         </div>
     </div>
     <script src="carousel.js"></script>
     <script>
         var container = document.querySelector('.carousel-container');
-        var carousel = new Carousel(container);
+        var imageWrapper = document.querySelector('.carousel-image-wrapper');
+        var carousel = new Carousel(container, imageWrapper);
     </script>
 </body>
 

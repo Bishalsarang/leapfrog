@@ -3,9 +3,13 @@
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+}
+
 .carousel-container {
-  width: 200px;
-  height: 300px;
+  width: 600px;
+  height: 400px;
   margin: auto;
   position: relative;
   overflow: hidden;
@@ -13,7 +17,6 @@
 
 .carousel-image-wrapper {
   position: absolute;
-  width: 600px;
   left: 0px;
   top: 40px;
 }

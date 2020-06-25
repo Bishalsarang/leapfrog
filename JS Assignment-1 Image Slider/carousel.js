@@ -1,68 +1,59 @@
-
-const IMAGE_WIDTH = 200;
-let imageWrapper = document.querySelector('.carousel-image-wrapper');
+const IMAGE_WIDTH = 600;
 let currentIndex = 0;
-let numberOfImages = imageWrapper.childElementCount;
 
-
-class Carousel{
-    constructor(container) {
+class Carousel {
+    constructor(container, wrapper) {
         var that = this;
         this.container = container;
-        this.width = parseInt(window.getComputedStyle(container).getPropertyValue('width'));
-        this.height =  parseInt(window.getComputedStyle(container).getPropertyValue('height'));
+        this.wrapper = wrapper;
+        this.numberOfImages = this.wrapper.childElementCount;
+        this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
+        this.wrapper.classList.add('clearfix');
+        this.width = parseInt(
+            window.getComputedStyle(container).getPropertyValue("width")
+        );
+        this.height = parseInt(
+            window.getComputedStyle(container).getPropertyValue("height")
+        );
 
-        this.leftButton = this.createButton(0, this.height / 2, '<');
-        this.leftButton.addEventListener('click', function(){
-            console.log("CLicked left");
+        this.leftButton = this.createButton(0, this.height / 2, "<");
+        this.leftButton.addEventListener("click", function () {
             that.slide(true);
         });
 
-        this.rightButton = this.createButton(this.width - 22, this.height / 2, '>');
-        this.rightButton.addEventListener('click', function(){
-            console.log(("clicked right"));
+        this.rightButton = this.createButton(this.width - 22, this.height / 2, ">");
+        this.rightButton.addEventListener("click", function () {
             that.slide(false);
-        });   
+        });
     }
 
-    createButton(x, y, character){
-        let button = document.createElement('div');
-        button.style.position = 'absolute';
-        button.style.left = x + 'px';
-        button.style.top = y + 'px';
-        button.style.position = 'absolute';
-        button.style.color = '#D6EEFF';
-        // button.style.backgroundColor = '#C08497';
-        button.style.fontSize = 40 + 'px';
-        button.style.cursor = 'pointer';
+    createButton(x, y, character) {
+        let button = document.createElement("div");
+        button.style.position = "absolute";
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+        button.style.position = "absolute";
+        button.style.color = "#D6EEFF";
+        button.style.fontSize = 40 + "px";
+        button.style.cursor = "pointer";
         button.innerText = character;
         this.container.appendChild(button);
         return button;
     }
 
-
-   slide(isLeft){
-        let x = IMAGE_WIDTH;
-        let sign = -1;
-        window.requestAnimationFrame(step);
-        if(isLeft){
-            currentIndex--;
-            if(currentIndex == -1){
-                currentIndex = numberOfImages - 1;
+    slide(isLeft) {
+        let initialLeft = parseInt(window.getComputedStyle(this.wrapper).getPropertyValue("left"));
+        let finalLeft = isLeft ? initialLeft + IMAGE_WIDTH : initialLeft - IMAGE_WIDTH;
+        let wrapper = this.wrapper;
+        var id = setInterval(function () {
+            if (initialLeft == finalLeft && finalLeft % IMAGE_WIDTH == 0) {
+                clearInterval(id);
             }
-        }
-        else{
-            currentIndex++;
-            if(currentIndex == numberOfImages){
-                currentIndex = 0;
+            if (isLeft) {
+                wrapper.style.left = (initialLeft++) + 'px';
+            } else {
+                wrapper.style.left = (initialLeft--) + 'px';
             }
-            // sign = -1;
-        }
-        imageWrapper.style.left = (currentIndex * sign * IMAGE_WIDTH) + 'px';
-    
-        function step(){
-            window.requestAnimationFrame(step);
-          }    
+        }, 8);
     }
 }
-
