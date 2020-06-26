@@ -25,7 +25,7 @@ class Carousel {
     });
 
     this.rightButton = this.createNavButton(
-      this.width - 22,
+      this.width - 13,
       this.height / 2,
       "&#9002;"
     );
