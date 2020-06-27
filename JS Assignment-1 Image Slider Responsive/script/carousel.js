@@ -1,14 +1,15 @@
 const IMAGE_WIDTH = 600;
 
 function Carousel(container, wrapper) {
-  var that = this;
-  
-  this.container = container;
-  this.container.classList.add('carousel-container-props');
+	var that = this;
+
+	this.container = container;
+	this.container.classList.add('carousel-container-props');
 	this.wrapper = wrapper;
 	this.numberOfImages = this.wrapper.childElementCount;
 	this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
 	this.wrapper.classList.add('clearfix');
+	this.wrapper.classList.add('carousel-image-wrapper-props');
 	this.resetTransitionSpeed();
 
 	this.width = parseInt(
@@ -19,55 +20,54 @@ function Carousel(container, wrapper) {
 	);
 
 	this.currentIndex = 0;
-  
-  this.leftButton = NavButton(0, this.height / 2, '&#9001;');
-  this.container.appendChild(this.leftButton)
+
+	this.leftButton = NavButton(0, this.height / 2, '&#9001;');
+	this.container.appendChild(this.leftButton);
 	this.leftButton.addEventListener('click', function () {
 		that.slide(true, null);
 	});
 
-
-  this.rightButton = NavButton(this.width - 13, this.height / 2, '&#9002;');
-  this.container.appendChild(this.rightButton)
+	this.rightButton = NavButton(this.width - 13, this.height / 2, '&#9002;');
+	this.container.appendChild(this.rightButton);
 	this.rightButton.addEventListener('click', function () {
 		that.slide(false, null);
-  });
+	});
 
 	this.carouselButtonWrapper = this.createIndicatorButtonWrapper();
 	this.createIndicatorButtons();
 }
 
-function Button(){
-  this.el =  document.createElement('button');
-  // this.el.style.position = 'absolute';
-	
+function Button() {
+	this.el = document.createElement('button');
+	// this.el.style.position = 'absolute';
+
 	this.el.style.color = '#D6EEFF';
 	this.el.style.outline = 'none';
 	this.el.style.border = 'none';
 	this.el.style.fontSize = 40 + 'px';
-  this.el.style.cursor = 'pointer';
-  return this.el;
+	this.el.style.cursor = 'pointer';
+	return this.el;
 }
 
-function NavButton(x, y, character){ 
-  Button.call(this);
-  this.el.style.left = x + 'px';
-  this.el.style.backgroundColor = 'transparent';
-  this.el.style.position = 'absolute';
+function NavButton(x, y, character) {
+	Button.call(this);
+	this.el.style.left = x + 'px';
+	this.el.style.backgroundColor = 'transparent';
+	this.el.style.position = 'absolute';
 	this.el.style.top = y + 'px';
-  this.el.innerHTML = character;
-  return this.el;
+	this.el.innerHTML = character;
+	return this.el;
 }
 
-function IndicatorButton(id, radius, margin){
-  Button.call(this);
-  this.el.id = id + '-carousel-button';
-  this.el.style.width = radius * 2 + 'px';
-  this.el.style.height = radius * 2+ 'px';
-  this.el.style.borderRadius = radius * 2 + 'px';
-  this.el.style.display = 'inline-block';
-  this.el.style.margin = margin + 'px';
-  return this.el;
+function IndicatorButton(id, radius, margin) {
+	Button.call(this);
+	this.el.id = id + '-carousel-button';
+	this.el.style.width = radius * 2 + 'px';
+	this.el.style.height = radius * 2 + 'px';
+	this.el.style.borderRadius = radius * 2 + 'px';
+	this.el.style.display = 'inline-block';
+	this.el.style.margin = margin + 'px';
+	return this.el;
 }
 
 Carousel.prototype.resetTransitionSpeed = function () {
@@ -77,7 +77,7 @@ Carousel.prototype.resetTransitionSpeed = function () {
 Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
 	for (let i = 0; i < this.numberOfImages; i++) {
-    let indicatorButton = IndicatorButton(i, 5, 10);
+		let indicatorButton = IndicatorButton(i, 5, 10);
 		indicatorButton.addEventListener('click', function () {
 			// Get left property of carousel-image-wrapper
 			let initialLeft = parseInt(
@@ -91,16 +91,16 @@ Carousel.prototype.createIndicatorButtons = function () {
 };
 
 Carousel.prototype.createIndicatorButtonWrapper = function () {
-	let element = document.createElement('div');
-	element.classList.add('carousel-button-wrapper');
-	element.style.position = 'absolute';
-	element.style.top = this.height - 20 + 'px';
+	let el = document.createElement('div');
+	el.classList.add('carousel-button-wrapper');
+	el.style.position = 'absolute';
+	el.style.top = this.height - 20 + 'px';
 
-	element.style.left = '50' + '%';
-	element.style.transform = 'translate(-50%, 0)';
-	element.style.cursor = 'pointer';
-	this.container.appendChild(element);
-	return element;
+	el.style.left = '50' + '%';
+	el.style.transform = 'translate(-50%, 0)';
+	el.style.cursor = 'pointer';
+	this.container.appendChild(el);
+	return el;
 };
 
 Carousel.prototype.slide = function (isLeft, isFinalVal) {

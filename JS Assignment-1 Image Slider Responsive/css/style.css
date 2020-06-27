@@ -15,12 +15,7 @@ h1 {
 	overflow: hidden;
 }
 
-.carousel-image-wrapper {
-	position: absolute;
-	left: 0px;
-	top: 40px;
-}
-.carousel-image-wrapper-1 {
+.carousel-image-wrapper-props {
 	position: absolute;
 	left: 0px;
 	top: 40px;
