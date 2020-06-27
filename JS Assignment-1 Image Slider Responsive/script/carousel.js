@@ -19,6 +19,7 @@ class Carousel {
     );
 
     this.currentIndex = 0;
+
     this.leftButton = this.createNavButton(0, this.height / 2, "&#9001;");
     this.leftButton.addEventListener("click", function () {
       that.slide(true, null);
@@ -44,7 +45,7 @@ class Carousel {
   createCarouselButtons() {
     let that = this;
     for (let i = 0; i < this.numberOfImages; i++) {
-      let element = document.createElement("div");
+      let element = document.createElement("button");
       element.id = i + "-carousel-button";
       element.style.width = 10 + "px";
       element.style.height = 10 + "px";
@@ -96,34 +97,40 @@ class Carousel {
   }
 
   slide(isLeft, isFinalVal) {
+
     let that = this;
     let initialLeft = parseInt(
       window.getComputedStyle(this.wrapper).getPropertyValue("left")
     );
+   
+  initialLeft = -this.currentIndex * IMAGE_WIDTH;
     let finalLeft =
       isFinalVal ||
       (isLeft ? initialLeft + IMAGE_WIDTH : initialLeft - IMAGE_WIDTH);
     if (isFinalVal == 0) {
       finalLeft = 0;
     }
-    this.currentIndex = -(finalLeft / IMAGE_WIDTH);
+    this.currentIndex = -Math.ceil(finalLeft / IMAGE_WIDTH);
 
+    // Transition to last when we click left on first slide
+    // and to first slide when we click right on last slide 
     if (isLeft && this.currentIndex == -1) {
       finalLeft = -IMAGE_WIDTH * (this.numberOfImages - 1);
       this.transitionSpeed = Math.abs(initialLeft - finalLeft);
-      isLeft = false;
+      this.currentIndex = (this.numberOfImages - 1)
     }
+    
     if (!isLeft && this.currentIndex == this.numberOfImages) {
       finalLeft = 0;
       this.transitionSpeed = Math.abs(initialLeft - finalLeft);
-      isLeft = true;
+      this.currentIndex = 0;
     }
 
     let wrapper = this.wrapper;
     let transitionSpeed = this.transitionSpeed;
     let previousLeft = initialLeft;
     var id = setInterval(function () {
-      if (initialLeft == finalLeft && finalLeft % IMAGE_WIDTH == 0) {
+      if (initialLeft == finalLeft) {
         // Color current button
         let currentButtonNum = Math.abs(finalLeft / IMAGE_WIDTH);
         let currentButton = document.getElementById(
