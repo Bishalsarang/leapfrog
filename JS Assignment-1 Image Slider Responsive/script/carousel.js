@@ -1,8 +1,10 @@
 const IMAGE_WIDTH = 600;
 
 function Carousel(container, wrapper) {
-	var that = this;
-	this.container = container;
+  var that = this;
+  
+  this.container = container;
+  this.container.classList.add('carousel-container-props');
 	this.wrapper = wrapper;
 	this.numberOfImages = this.wrapper.childElementCount;
 	this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
@@ -72,7 +74,7 @@ Carousel.prototype.resetTransitionSpeed = function () {
 	this.transitionSpeed = 35;
 };
 
-Carousel.prototype.createIndicatorlButtons = function () {
+Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
 	for (let i = 0; i < this.numberOfImages; i++) {
     let indicatorButton = IndicatorButton(i, 5, 10);
