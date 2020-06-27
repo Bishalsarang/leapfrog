@@ -130,22 +130,29 @@ class Carousel {
     let transitionSpeed = this.transitionSpeed;
     let previousLeft = initialLeft;
     var id = setInterval(function () {
-      if (initialLeft == finalLeft) {
-        // Color current button
-        let currentButtonNum = Math.abs(finalLeft / IMAGE_WIDTH);
+      function colorButton(buttonNum, color){
         let currentButton = document.getElementById(
-          currentButtonNum + "-carousel-button"
+          buttonNum + "-carousel-button"
         );
         if (currentButton) {
-          currentButton.style.backgroundColor = "blue";
+          currentButton.style.backgroundColor = color;
         }
+      }
+      // // Color current button
 
-        let previousButtonNum = Math.abs(previousLeft / IMAGE_WIDTH);
-        let previousButton = document.getElementById(
-          previousButtonNum + "-carousel-button"
-        );
-        if (previousButton) {
-          previousButton.style.backgroundColor = "#D6EEFF";
+      let currentButtonNum = Math.round(Math.abs(initialLeft/ IMAGE_WIDTH));
+      colorButton(currentButtonNum, 'blue');
+      let previousButtonNum = Math.abs(previousLeft / IMAGE_WIDTH);
+      colorButton(previousButtonNum, "#D6EEFF")
+      
+      if (initialLeft == finalLeft) {
+        for(let i = 0; i < that.numberOfImages; i++){
+          if(i != currentButtonNum){
+            colorButton(i, "#D6EEFF");
+          }
+          else{
+            colorButton(i, "blue");
+          }
         }
         that.resetTransitionSpeed();
         clearInterval(id);
