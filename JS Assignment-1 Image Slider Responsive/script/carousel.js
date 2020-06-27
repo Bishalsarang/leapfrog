@@ -1,5 +1,4 @@
 const IMAGE_WIDTH = 600;
-let currentIndex = 0;
 
 function Carousel(container, wrapper) {
 	var that = this;
@@ -18,58 +17,65 @@ function Carousel(container, wrapper) {
 	);
 
 	this.currentIndex = 0;
-
-	this.leftButton = this.createNavButton(0, this.height / 2, '&#9001;');
+  
+  this.leftButton = NavButton(0, this.height / 2, '&#9001;');
+  this.container.appendChild(this.leftButton)
 	this.leftButton.addEventListener('click', function () {
 		that.slide(true, null);
 	});
 
-	this.rightButton = this.createNavButton(
-		this.width - 13,
-		this.height / 2,
-		'&#9002;'
-	);
+
+  this.rightButton = NavButton(this.width - 13, this.height / 2, '&#9002;');
+  this.container.appendChild(this.rightButton)
 	this.rightButton.addEventListener('click', function () {
 		that.slide(false, null);
-	});
-
+  });
 	this.carouselButtonWrapper = this.createCarouselButtonWrapper();
 	this.createCarouselButtons();
 }
+
+function Button(){
+  this.el =  document.createElement('button');
+  this.el.style.position = 'absolute';
+	this.el.style.backgroundColor = 'transparent';
+	this.el.style.color = '#D6EEFF';
+	this.el.style.outline = 'none';
+	this.el.style.border = 'none';
+	this.el.style.fontSize = 40 + 'px';
+  this.el.style.cursor = 'pointer';
+
+  return this.el;
+}
+
+function NavButton(x, y, character){ 
+  Button.call(this);
+  this.el.style.left = x + 'px';
+	this.el.style.top = y + 'px';
+  this.el.innerHTML = character;
+  return this.el;
+}
+
 
 Carousel.prototype.resetTransitionSpeed = function () {
 	this.transitionSpeed = 35;
 };
 
-Carousel.prototype.createNavButton = function (x, y, character) {
-	let button = document.createElement('button');
-	button.style.position = 'absolute';
-	button.style.left = x + 'px';
-	button.style.top = y + 'px';
-	button.style.position = 'absolute';
-	button.style.backgroundColor = 'transparent';
-	button.style.color = '#D6EEFF';
-	button.style.outline = 'none';
-	button.style.border = 'none';
-	button.style.fontSize = 40 + 'px';
-	button.style.cursor = 'pointer';
-	button.innerHTML = character;
-	this.container.appendChild(button);
-	return button;
-};
-
-Carousel.prototype.createCarouselButtonWrapper = function () {
-	let element = document.createElement('div');
-	element.classList.add('carousel-button-wrapper');
-	element.style.position = 'absolute';
-	element.style.top = this.height - 20 + 'px';
-
-	element.style.left = '50' + '%';
-	element.style.transform = 'translate(-50%, 0)';
-	element.style.cursor = 'pointer';
-	this.container.appendChild(element);
-	return element;
-};
+// Carousel.prototype.createNavButton = function (x, y, character) {
+// 	let button = document.createElement('button');
+// 	button.style.position = 'absolute';
+// 	button.style.left = x + 'px';
+// 	button.style.top = y + 'px';
+// 	button.style.position = 'absolute';
+// 	button.style.backgroundColor = 'transparent';
+// 	button.style.color = '#D6EEFF';
+// 	button.style.outline = 'none';
+// 	button.style.border = 'none';
+// 	button.style.fontSize = 40 + 'px';
+// 	button.style.cursor = 'pointer';
+// 	button.innerHTML = character;
+// 	this.container.appendChild(button);
+// 	return button;
+// };
 
 Carousel.prototype.createCarouselButtons = function () {
 	let that = this;
@@ -94,6 +100,21 @@ Carousel.prototype.createCarouselButtons = function () {
 		this.carouselButtonWrapper.appendChild(element);
 	}
 };
+
+Carousel.prototype.createCarouselButtonWrapper = function () {
+	let element = document.createElement('div');
+	element.classList.add('carousel-button-wrapper');
+	element.style.position = 'absolute';
+	element.style.top = this.height - 20 + 'px';
+
+	element.style.left = '50' + '%';
+	element.style.transform = 'translate(-50%, 0)';
+	element.style.cursor = 'pointer';
+	this.container.appendChild(element);
+	return element;
+};
+
+
 
 Carousel.prototype.slide = function (isLeft, isFinalVal) {
 	let that = this;
