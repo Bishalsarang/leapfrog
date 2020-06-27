@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.carousel-container {
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-image-wrapper {
+  position: absolute;
+  left: 0px;
+  top: 40px;
+}
+
+.carousel-item {
+  float: left;
+}
+
+.carousel-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  color: red;
+  background-color: aqua;
+}
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
