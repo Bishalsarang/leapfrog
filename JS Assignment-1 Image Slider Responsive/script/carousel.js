@@ -1,10 +1,10 @@
 const IMAGE_WIDTH = 600;
-
+const FPS = 60;
 function Carousel(container, wrapper) {
 	var that = this;
 	// Keep track of how many instances are created
 	this.objId = Carousel.counter++;
-	
+
 	this.container = container;
 	this.container.classList.add('carousel-container-props');
 	this.wrapper = wrapper;
@@ -15,7 +15,8 @@ function Carousel(container, wrapper) {
 	this.wrapper.classList.add('carousel-image-wrapper-props');
 
 	this.animationId = null;
-	
+	this.autoAnimationId = null;
+
 	this.tick = 0;
 	this.resetTransitionSpeed();
 
@@ -33,12 +34,11 @@ function Carousel(container, wrapper) {
 	this.leftButton = new NavButton(0, this.height / 2, '&#9001;');
 	this.container.appendChild(this.leftButton);
 	this.leftButton.addEventListener('click', function () {
-		
 		that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
-		if(that.nextIndex == -1){
+		if (that.nextIndex == -1) {
 			that.nextIndex = that.numberOfImages - 1;
 		}
-		
+
 		that.animationId = requestAnimationFrame(that.slide.bind(that));
 	});
 
@@ -52,47 +52,69 @@ function Carousel(container, wrapper) {
 	this.carouselButtonWrapper = this.createIndicatorButtonWrapper();
 	this.createIndicatorButtons();
 
-
-	this.slide = function () {
-		this.animationId = window.requestAnimationFrame(this.slide.bind(this));
+	this.animate = function () {
 		let initialLeft = parseInt(this.wrapper.style.left);
 		let finalLeft = -this.nextIndex * IMAGE_WIDTH;
 		// If we want to go to higher index keep adding negative transition speed;
-		let sgn = this.nextIndex > this.currentIndex? -1: 1;
-		
-		let nextLeft = initialLeft + sgn * this.transitionSpeed;
+		let sgn = this.nextIndex > this.currentIndex ? -1 : 1;
 
+		let nextLeft = initialLeft + sgn * (IMAGE_WIDTH / FPS);
 
-		for(let i = 0; i < this.numberOfImages; i++){
-			if(i != this.currentIndex){
-				let el = document.getElementById(i + '-carousel-btn-' + (this.objId + 1));
+		for (let i = 0; i < this.numberOfImages; i++) {
+			if (i != this.currentIndex) {
+				let el = document.getElementById(
+					i + '-carousel-btn-' + (this.objId + 1)
+				);
 				el.classList.remove('btn-active');
 			}
 		}
 		// If currentIndex has changed
-		if(this.currentIndex != Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))){
-			let el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
-			console.log(this.currentIndex + '-carousel-btn-' + this.objId);
+		if (this.currentIndex != Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))) {
+			let el = document.getElementById(
+				this.currentIndex + '-carousel-btn-' + (this.objId + 1)
+			);
 			el.classList.remove('btn-active');
-			this.currentIndex = Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))
+			this.currentIndex = Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH));
 
-			el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
+			el = document.getElementById(
+				this.currentIndex + '-carousel-btn-' + (this.objId + 1)
+			);
 			el.classList.add('btn-active');
-		
 		}
-		
-		if((sgn == - 1 && nextLeft <= finalLeft) || (sgn ==  1 &&  nextLeft >= finalLeft)){
-			nextLeft = finalLeft
+
+		if (
+			(sgn == -1 && nextLeft <= finalLeft) ||
+			(sgn == 1 && nextLeft >= finalLeft)
+		) {
+			nextLeft = finalLeft;
 			this.wrapper.style.left = nextLeft + 'px';
 			this.currentIndex = this.nextIndex;
 			cancelAnimationFrame(this.animationId);
+			that.autoAnimationId = window.requestAnimationFrame(
+				that.autoSlide.bind(that)
+			);
 		}
 		this.wrapper.style.left = nextLeft + 'px';
-	}
+	};
 
-	this.autoSlide = function(){
-		window.requestAnimationFrame(this.autoSlide.bind(this));
-	}
+	this.slide = function () {
+		cancelAnimationFrame(that.autoAnimationId);
+		that.tick = 0;
+		this.animationId = window.requestAnimationFrame(this.slide.bind(this));
+		this.animate();
+	};
+
+	this.autoSlide = function () {
+		that.tick++;
+		if (that.tick % (FPS * 2) == 0) {
+			this.rightButton.click();
+			cancelAnimationFrame(that.autoAnimationId);
+		}
+		that.autoAnimationId = window.requestAnimationFrame(
+			that.autoSlide.bind(that)
+		);
+	};
+	this.autoAnimationId = requestAnimationFrame(this.autoSlide.bind(this));
 }
 
 Carousel.counter = 0;
@@ -120,7 +142,7 @@ function NavButton(x, y, character) {
 
 function IndicatorButton(id, radius, margin) {
 	Button.call(this);
-	if(id == 0){
+	if (id == 0) {
 		this.el.classList.add('btn-active');
 	}
 	this.el.id = id + '-carousel-btn-' + Carousel.counter;
@@ -138,7 +160,6 @@ Carousel.prototype.resetTransitionSpeed = function () {
 
 Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
-	console.log(that);
 	for (let i = 0; i < this.numberOfImages; i++) {
 		let indicatorButton = new IndicatorButton(i, 5, 10);
 		indicatorButton.addEventListener('click', function (e) {
@@ -163,4 +184,3 @@ Carousel.prototype.createIndicatorButtonWrapper = function () {
 	this.container.appendChild(el);
 	return el;
 };
-
