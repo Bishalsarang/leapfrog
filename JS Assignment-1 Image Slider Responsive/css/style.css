@@ -25,17 +25,12 @@ h1 {
 	float: left;
 }
 
-.carousel-button {
-	width: 10px;
-	height: 10px;
-	border-radius: 10px;
-	text-align: center;
-	display: inline-block;
-	color: red;
-	background-color: aqua;
-}
 .clearfix::after {
 	clear: both;
 	content: '';
 	display: table;
+}
+
+.btn-active {
+	background-color: blue;
 }

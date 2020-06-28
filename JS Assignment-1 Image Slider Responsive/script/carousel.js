@@ -2,14 +2,20 @@ const IMAGE_WIDTH = 600;
 
 function Carousel(container, wrapper) {
 	var that = this;
-
+	// Keep track of how many instances are created
+	this.objId = Carousel.counter++;
+	
 	this.container = container;
 	this.container.classList.add('carousel-container-props');
 	this.wrapper = wrapper;
 	this.numberOfImages = this.wrapper.childElementCount;
 	this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
+	this.wrapper.style.left = 0 + 'px';
 	this.wrapper.classList.add('clearfix');
 	this.wrapper.classList.add('carousel-image-wrapper-props');
+
+	this.animationId = null;
+	this.tick = 0;
 	this.resetTransitionSpeed();
 
 	this.width = parseInt(
@@ -20,23 +26,62 @@ function Carousel(container, wrapper) {
 	);
 
 	this.currentIndex = 0;
+	this.nextIndex = 0;
+	this.currentPosition = -0;
 
-	this.leftButton = NavButton(0, this.height / 2, '&#9001;');
+	this.leftButton = new NavButton(0, this.height / 2, '&#9001;');
 	this.container.appendChild(this.leftButton);
 	this.leftButton.addEventListener('click', function () {
-		that.slide(true, null);
+		
+		that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
+		if(that.nextIndex == -1){
+			that.nextIndex = that.numberOfImages - 1;
+		}
+		
+		that.animationId = requestAnimationFrame(that.slide.bind(that));
 	});
 
-	this.rightButton = NavButton(this.width - 13, this.height / 2, '&#9002;');
+	this.rightButton = new NavButton(this.width - 13, this.height / 2, '&#9002;');
 	this.container.appendChild(this.rightButton);
 	this.rightButton.addEventListener('click', function () {
-		that.slide(false, null);
+		that.nextIndex = (that.currentIndex + 1) % that.numberOfImages;
+		that.animationId = requestAnimationFrame(that.slide.bind(that));
 	});
 
 	this.carouselButtonWrapper = this.createIndicatorButtonWrapper();
 	this.createIndicatorButtons();
+
+
+	this.slide = function () {
+		this.animationId = window.requestAnimationFrame(this.slide.bind(this));
+		let initialLeft = parseInt(this.wrapper.style.left);
+		let finalLeft = -this.nextIndex * IMAGE_WIDTH;
+		// If we want to go to higher index keep adding negative transition speed;
+		let sgn = this.nextIndex > this.currentIndex? -1: 1;
+		
+		let nextLeft = initialLeft + sgn * this.transitionSpeed;
+		if(this.currentIndex != Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))){
+			let el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
+			console.log(this.currentIndex + '-carousel-btn-' + this.objId);
+			el.classList.remove('btn-active');
+			this.currentIndex = Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))
+			el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
+			el.classList.add('btn-active');
+		
+		}
+		
+		if((sgn == - 1 && nextLeft <= finalLeft) || (sgn ==  1 &&  nextLeft >= finalLeft)){
+			nextLeft = finalLeft
+			this.tick = 0;
+			this.wrapper.style.left = nextLeft + 'px';
+			this.currentIndex = this.nextIndex;
+			cancelAnimationFrame(this.animationId);
+		}
+		this.wrapper.style.left = nextLeft + 'px';
+	}
 }
 
+Carousel.counter = 0;
 function Button() {
 	this.el = document.createElement('button');
 	// this.el.style.position = 'absolute';
@@ -61,7 +106,10 @@ function NavButton(x, y, character) {
 
 function IndicatorButton(id, radius, margin) {
 	Button.call(this);
-	this.el.id = id + '-carousel-button';
+	if(id == 0){
+		this.el.classList.add('btn-active');
+	}
+	this.el.id = id + '-carousel-btn-' + Carousel.counter;
 	this.el.style.width = radius * 2 + 'px';
 	this.el.style.height = radius * 2 + 'px';
 	this.el.style.borderRadius = radius * 2 + 'px';
@@ -71,20 +119,19 @@ function IndicatorButton(id, radius, margin) {
 }
 
 Carousel.prototype.resetTransitionSpeed = function () {
-	this.transitionSpeed = 35;
+	this.transitionSpeed = 15;
 };
 
 Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
+	console.log(that);
 	for (let i = 0; i < this.numberOfImages; i++) {
-		let indicatorButton = IndicatorButton(i, 5, 10);
-		indicatorButton.addEventListener('click', function () {
-			// Get left property of carousel-image-wrapper
-			let initialLeft = parseInt(
-				window.getComputedStyle(that.wrapper).getPropertyValue('left')
-			);
-			let finalLeft = parseInt(indicatorButton.id) * -IMAGE_WIDTH;
-			that.slide(initialLeft < finalLeft, finalLeft);
+		let indicatorButton = new IndicatorButton(i, 5, 10);
+		indicatorButton.addEventListener('click', function (e) {
+			let el = e.target;
+			// Initally set active the first slide
+			that.nextIndex = parseInt(el.id);
+			that.animationId = requestAnimationFrame(that.slide.bind(that));
 		});
 		this.carouselButtonWrapper.appendChild(indicatorButton);
 	}
@@ -103,79 +150,36 @@ Carousel.prototype.createIndicatorButtonWrapper = function () {
 	return el;
 };
 
-Carousel.prototype.slide = function (isLeft, isFinalVal) {
+Carousel.prototype.slide = function () {
+	this.animationId = requestAnimationFrame(this.slide.bind(this));
 	let that = this;
-	let initialLeft = parseInt(
-		window.getComputedStyle(this.wrapper).getPropertyValue('left')
-	);
-
-	initialLeft = -this.currentIndex * IMAGE_WIDTH;
-	let finalLeft =
-		isFinalVal ||
-		(isLeft ? initialLeft + IMAGE_WIDTH : initialLeft - IMAGE_WIDTH);
-	if (isFinalVal == 0) {
-		finalLeft = 0;
-	}
-	this.currentIndex = -Math.ceil(finalLeft / IMAGE_WIDTH);
-
-	// Transition to last when we click left on first slide
-	// and to first slide when we click right on last slide
-	if (isLeft && this.currentIndex == -1) {
-		finalLeft = -IMAGE_WIDTH * (this.numberOfImages - 1);
-		this.transitionSpeed = Math.abs(initialLeft - finalLeft);
-		this.currentIndex = this.numberOfImages - 1;
-	}
-
-	if (!isLeft && this.currentIndex == this.numberOfImages) {
-		finalLeft = 0;
-		this.transitionSpeed = Math.abs(initialLeft - finalLeft);
-		this.currentIndex = 0;
-	}
-
+	
+	let initialLeft = -this.currentIndex * IMAGE_WIDTH;
+	let finalLeft = -this.nextIndex * IMAGE_WIDTH;
 	let wrapper = this.wrapper;
-	let transitionSpeed = this.transitionSpeed;
-	let previousLeft = initialLeft;
-	var id = setInterval(function () {
-		function colorButton(buttonNum, color) {
-			let currentButton = document.getElementById(
-				buttonNum + '-carousel-button'
-			);
-			if (currentButton) {
-				currentButton.style.backgroundColor = color;
+	console.log(initialLeft, finalLeft);
+	initialLeft = -parseInt(window.getComputedStyle(this.wrapper).getPropertyValue('left')) * IMAGE_WIDTH;
+	
+	if(initialLeft <= finalLeft){
+		console.log("ssf");
+		cancelAnimationFrame(this.animationId);
+	}
+	else{
+		console.log("fdd");
+		if((initialLeft + 1) % IMAGE_WIDTH == 0){
+			if(this.nextIndex > this.currentIndex){
+				this.currentIndex += 1;
+			}
+			else{
+				this.currentIndex -= 1;
 			}
 		}
-		// // Color current button
+		
+		
+	// console.log(this.currentIndex, this.nextIndex, this);
+		wrapper.style.left = (initialLeft++) + 'px'
 
-		let currentButtonNum = Math.round(Math.abs(initialLeft / IMAGE_WIDTH));
-		colorButton(currentButtonNum, 'blue');
-		let previousButtonNum = Math.abs(previousLeft / IMAGE_WIDTH);
-		colorButton(previousButtonNum, '#D6EEFF');
 
-		if (initialLeft == finalLeft) {
-			for (let i = 0; i < that.numberOfImages; i++) {
-				if (i != currentButtonNum) {
-					colorButton(i, '#D6EEFF');
-				} else {
-					colorButton(i, 'blue');
-				}
-			}
-			that.resetTransitionSpeed();
-			clearInterval(id);
-		}
-		if (isLeft) {
-			if (initialLeft + transitionSpeed > finalLeft) {
-				initialLeft = finalLeft;
-				wrapper.style.left = finalLeft + 'px';
-			} else {
-				wrapper.style.left = (initialLeft += transitionSpeed) + 'px';
-			}
-		} else {
-			if (initialLeft - transitionSpeed < finalLeft) {
-				initialLeft = finalLeft;
-				wrapper.style.left = finalLeft + 'px';
-			} else {
-				wrapper.style.left = (initialLeft -= transitionSpeed) + 'px';
-			}
-		}
-	}, 1000 / 60);
-};
+
+	}
+}
