@@ -15,6 +15,7 @@ function Carousel(container, wrapper) {
 	this.wrapper.classList.add('carousel-image-wrapper-props');
 
 	this.animationId = null;
+	
 	this.tick = 0;
 	this.resetTransitionSpeed();
 
@@ -60,11 +61,21 @@ function Carousel(container, wrapper) {
 		let sgn = this.nextIndex > this.currentIndex? -1: 1;
 		
 		let nextLeft = initialLeft + sgn * this.transitionSpeed;
+
+
+		for(let i = 0; i < this.numberOfImages; i++){
+			if(i != this.currentIndex){
+				let el = document.getElementById(i + '-carousel-btn-' + (this.objId + 1));
+				el.classList.remove('btn-active');
+			}
+		}
+		// If currentIndex has changed
 		if(this.currentIndex != Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))){
 			let el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
 			console.log(this.currentIndex + '-carousel-btn-' + this.objId);
 			el.classList.remove('btn-active');
 			this.currentIndex = Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))
+
 			el = document.getElementById(this.currentIndex + '-carousel-btn-' + (this.objId + 1))
 			el.classList.add('btn-active');
 		
@@ -72,12 +83,15 @@ function Carousel(container, wrapper) {
 		
 		if((sgn == - 1 && nextLeft <= finalLeft) || (sgn ==  1 &&  nextLeft >= finalLeft)){
 			nextLeft = finalLeft
-			this.tick = 0;
 			this.wrapper.style.left = nextLeft + 'px';
 			this.currentIndex = this.nextIndex;
 			cancelAnimationFrame(this.animationId);
 		}
 		this.wrapper.style.left = nextLeft + 'px';
+	}
+
+	this.autoSlide = function(){
+		window.requestAnimationFrame(this.autoSlide.bind(this));
 	}
 }
 
@@ -150,36 +164,3 @@ Carousel.prototype.createIndicatorButtonWrapper = function () {
 	return el;
 };
 
-Carousel.prototype.slide = function () {
-	this.animationId = requestAnimationFrame(this.slide.bind(this));
-	let that = this;
-	
-	let initialLeft = -this.currentIndex * IMAGE_WIDTH;
-	let finalLeft = -this.nextIndex * IMAGE_WIDTH;
-	let wrapper = this.wrapper;
-	console.log(initialLeft, finalLeft);
-	initialLeft = -parseInt(window.getComputedStyle(this.wrapper).getPropertyValue('left')) * IMAGE_WIDTH;
-	
-	if(initialLeft <= finalLeft){
-		console.log("ssf");
-		cancelAnimationFrame(this.animationId);
-	}
-	else{
-		console.log("fdd");
-		if((initialLeft + 1) % IMAGE_WIDTH == 0){
-			if(this.nextIndex > this.currentIndex){
-				this.currentIndex += 1;
-			}
-			else{
-				this.currentIndex -= 1;
-			}
-		}
-		
-		
-	// console.log(this.currentIndex, this.nextIndex, this);
-		wrapper.style.left = (initialLeft++) + 'px'
-
-
-
-	}
-}
