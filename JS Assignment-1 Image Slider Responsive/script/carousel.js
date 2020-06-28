@@ -1,6 +1,6 @@
 const IMAGE_WIDTH = 600;
 const FPS = 60;
-function Carousel(container, wrapper) {
+function Carousel(container, wrapper, holdTime, transitionTime) {
 	var that = this;
 	// Keep track of how many instances are created
 	this.objId = Carousel.counter++;
@@ -18,6 +18,8 @@ function Carousel(container, wrapper) {
 	this.autoAnimationId = null;
 
 	this.tick = 0;
+	this.holdTime = holdTime || 3; // hold time in sec
+	this.transitionTime = transitionTime || 1; 
 	this.resetTransitionSpeed();
 
 	this.width = parseInt(
@@ -104,9 +106,10 @@ function Carousel(container, wrapper) {
 		this.animate();
 	};
 
-	this.autoSlide = function () {
+	this.autoSlide = function (time) {
+		console.log(time);
 		that.tick++;
-		if (that.tick % (FPS * 2) == 0) {
+		if (that.tick % (FPS * this.holdTime) == 0) {
 			this.rightButton.click();
 			cancelAnimationFrame(that.autoAnimationId);
 		}
@@ -117,6 +120,9 @@ function Carousel(container, wrapper) {
 	this.autoAnimationId = requestAnimationFrame(this.autoSlide.bind(this));
 }
 
+/*
+	Track total number of instances
+*/
 Carousel.counter = 0;
 function Button() {
 	this.el = document.createElement('button');
@@ -161,7 +167,7 @@ Carousel.prototype.resetTransitionSpeed = function () {
 Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
 	for (let i = 0; i < this.numberOfImages; i++) {
-		let indicatorButton = new IndicatorButton(i, 5, 10);
+		let indicatorButton = new IndicatorButton(i, 10, 10);
 		indicatorButton.addEventListener('click', function (e) {
 			let el = e.target;
 			// Initally set active the first slide
@@ -176,7 +182,7 @@ Carousel.prototype.createIndicatorButtonWrapper = function () {
 	let el = document.createElement('div');
 	el.classList.add('carousel-button-wrapper');
 	el.style.position = 'absolute';
-	el.style.top = this.height - 20 + 'px';
+	el.style.top = this.height - 30 + 'px';
 
 	el.style.left = '50' + '%';
 	el.style.transform = 'translate(-50%, 0)';
