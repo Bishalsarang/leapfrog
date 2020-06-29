@@ -38,7 +38,7 @@ class Canvas {
 				x,
 				y,
 				radius,
-				5,
+				4,
 				this.randomGenerator.getRandomColor(),
                 this.randomGenerator.getRandomInt(-1, 1),
                 this.randomGenerator.getRandomInt(-1, 1),
@@ -57,25 +57,24 @@ class Canvas {
 
 		this.ballList.forEach((ball, index) => {
 			let { x, y, radius, speed, color } = ball;
-			ball.move();
-			// cx.beginPath();
-			// cx.arc(x, y, radius, 0, 360);
-			// cx.fillStyle = color;
-			// cx.fill();
-			// cx.closePath();
-			ball.isWallCollision(this.canvas.width, this.canvas.height);
-			let [isCollision, collidedBall] = ball.doesCollide(this.ballList, index);
-			if (isCollision) {
-                ball.exchangeDirection(collidedBall);
-                
-            }
-            
-            cx.beginPath();
+			cx.beginPath();
 			cx.arc(x, y, radius, 0, 360);
 			cx.fillStyle = color;
 			cx.fill();
 			cx.closePath();
-		});
+            ball.move(); 
+            ball.isWallCollision(this.canvas.width, this.canvas.height);
+            // ball.move();
+			let [isCollision, collidedBall] = ball.doesCollide(this.ballList, index);
+			if (isCollision) {
+                ball.exchangeDirection(collidedBall);
+                // collidedBall.isWallCollision(this.canvas.width, this.canvas.height);
+                ball.move();
+            }
+            
+               
+        });
+        
 		window.requestAnimationFrame(this.draw.bind(this));
 	}
 
@@ -112,6 +111,6 @@ class RandomPropertiesGenerator {
 	}
 }
 
-cv = new Canvas(1024, 480, 100, 'canvas');
+cv = new Canvas(1024, 480, 20, 'canvas');
 cv.init();
 cv.start();

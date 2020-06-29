@@ -18,14 +18,17 @@ class Ball {
 	}
 
 	exchangeDirection(ball) {
-
-		let tempDx = this.dx;
-		this.dx = ball.dx;
-        ball.dx = tempDx;
+        this.dx = -this.dx;
+        this.dy = -this.dy;
+        ball.dx = -ball.dx;
+        ball.dy = -ball.dy;
+		// let tempDx = this.dx;
+		// this.dx = ball.dx;
+        // ball.dx = tempDx;
         
-        let tempDy = this.dy;
-        this.dy = ball.dy;
-        ball.dy = tempDy;
+        // let tempDy = this.dy;
+        // this.dy = ball.dy;
+        // ball.dy = tempDy;
 	}
 
 	isWallCollision(width, height) {
