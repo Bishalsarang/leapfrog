@@ -1,73 +1,85 @@
-
 const FPS = 60;
 function Carousel(container, wrapper, holdTime, transitionTime) {
 	var that = this;
-	// Keep track of how many instances are created
-	this.objId = Carousel.counter++;
+	this.objId = Carousel.counter++; // Keep track of how many instances are created
 
-	this.container = container;
-	this.container.classList.add('carousel-container-props');
-	this.wrapper = wrapper;
-	this.numberOfImages = this.wrapper.childElementCount;
-	this.wrapper.style.width = this.numberOfImages * this.imageWidth + 'px';
-	this.wrapper.style.left = 0 + 'px';
-	this.wrapper.classList.add('clearfix');
-	this.wrapper.classList.add('carousel-image-wrapper-props');
+	this.init = function(){
+		this.container = container;
+		this.wrapper = wrapper;
 
-	this.animationId = null;
-	this.autoAnimationId = null;
+		this.animationId = null;
+		this.autoAnimationId = null;
 
-	this.tick = 0;
-	this.holdTime = holdTime || 3; // hold time in sec
-	this.transitionTime = transitionTime || 1; 
-	this.resetTransitionSpeed();
+		this.tick = 0; // tick variable to track FPS
+		this.holdTime = holdTime || 3; // hold time in sec
+		this.transitionTime = transitionTime || 1;
 
-	this.width = parseInt(
-		window.getComputedStyle(container).getPropertyValue('width')
-	);
-	this.height = parseInt(
-		window.getComputedStyle(container).getPropertyValue('height')
-	);
+		this.currentIndex = 0;
+		this.nextIndex = 0;
 
-	this.imageWidth = parseInt(
-		window.getComputedStyle(document.querySelector('.carousel-item')).getPropertyValue('width')
-	);
-	this.imageHeight = parseInt(
-		window.getComputedStyle(document.querySelector('.carousel-item')).getPropertyValue('height')
-	);
-	this.currentIndex = 0;
-	this.nextIndex = 0;
-	this.currentPosition = -0;
+		this.numberOfImages = this.wrapper.childElementCount;
+		this.wrapper.style.width = this.numberOfImages * this.imageWidth + 'px';
+		this.wrapper.style.left = 0 + 'px';
 
-	this.leftButton = new NavButton('left');
-	this.container.appendChild(this.leftButton);
-	this.leftButton.addEventListener('click', function () {
-		that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
-		if (that.nextIndex == -1) {
-			that.nextIndex = that.numberOfImages - 1;
-		}
+		this.width = parseInt(
+			window.getComputedStyle(container).getPropertyValue('width')
+		);
+		this.height = parseInt(
+			window.getComputedStyle(container).getPropertyValue('height')
+		);
+	
+		this.imageWidth = parseInt(
+			window
+				.getComputedStyle(document.querySelector('.carousel-item'))
+				.getPropertyValue('width')
+		);
+		this.imageHeight = parseInt(
+			window
+				.getComputedStyle(document.querySelector('.carousel-item'))
+				.getPropertyValue('height')
+		);
+	
+	}
 
-		that.animationId = requestAnimationFrame(that.slide.bind(that));
-	});
+	this.addDefaultClass = function(){
+		this.container.classList.add('carousel-container-props');
+		this.wrapper.classList.add('clearfix');
+		this.wrapper.classList.add('carousel-image-wrapper-props');
+	}
 
-	this.rightButton = new NavButton('right');
-	this.container.appendChild(this.rightButton);
-	this.rightButton.addEventListener('click', function () {
-		that.nextIndex = (that.currentIndex + 1) % that.numberOfImages;
-		that.animationId = requestAnimationFrame(that.slide.bind(that));
-	});
+	this.resetTransitionSpeed = function () {
+		this.transitionSpeed = 15;
+	};
 
-	this.carouselButtonWrapper = this.createIndicatorButtonWrapper();
-	this.createIndicatorButtons();
+	this.createNavButtons = function(){
+		this.leftButton = new NavButton('left');
+		this.container.appendChild(this.leftButton);
+		this.leftButton.addEventListener('click', function () {
+			that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
+			if (that.nextIndex == -1) {
+				that.nextIndex = that.numberOfImages - 1;
+			}
+	
+			that.animationId = requestAnimationFrame(that.slide.bind(that));
+		});
+	
+		this.rightButton = new NavButton('right');
+		this.container.appendChild(this.rightButton);
+		this.rightButton.addEventListener('click', function () {
+			that.nextIndex = (that.currentIndex + 1) % that.numberOfImages;
+			that.animationId = requestAnimationFrame(that.slide.bind(that));
+		});
+	}
 
 	this.animate = function () {
 		let initialLeft = parseInt(this.wrapper.style.left);
 		let finalLeft = -this.nextIndex * this.imageWidth;
-		
+
 		// If we want to go to higher index keep adding negative transition speed;
 		let sgn = this.nextIndex > this.currentIndex ? -1 : 1;
 
-		let nextLeft = initialLeft + sgn * (this.imageWidth / FPS / this.transitionTime);
+		let nextLeft =
+			initialLeft + sgn * (this.imageWidth / FPS / this.transitionTime);
 
 		for (let i = 0; i < this.numberOfImages; i++) {
 			if (i != this.currentIndex) {
@@ -114,16 +126,23 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 	};
 
 	this.autoSlide = function (time) {
-		console.log(time);
 		that.tick++;
 		if (that.tick % (FPS * this.holdTime) == 0) {
 			this.rightButton.click();
 			cancelAnimationFrame(that.autoAnimationId);
 		}
+
 		that.autoAnimationId = window.requestAnimationFrame(
 			that.autoSlide.bind(that)
 		);
 	};
+
+	this.init();
+	this.resetTransitionSpeed();
+	this.addDefaultClass();
+	this.createNavButtons();
+	this.carouselButtonWrapper = this.createIndicatorButtonWrapper();
+	this.createIndicatorButtons();
 	this.autoAnimationId = requestAnimationFrame(this.autoSlide.bind(this));
 }
 
@@ -138,18 +157,18 @@ function Button() {
 	this.el.style.border = 'none';
 	this.el.style.fontSize = 40 + 'px';
 	this.el.style.cursor = 'pointer';
-	
+
 	return this.el;
 }
 
 function NavButton(dirn) {
 	Button.call(this);
-	character = dirn == 'left'? '&#9001;': '&#9002;'
+	character = dirn == 'left' ? '&#9001;' : '&#9002;';
 	this.el.style.backgroundColor = 'transparent';
 	this.el.style.position = 'absolute';
 	this.el.innerHTML = character;
 	this.el.classList.add('nav-' + dirn);
-	
+
 	return this.el;
 }
 
@@ -169,9 +188,7 @@ function IndicatorButton(id, radius, margin) {
 	return this.el;
 }
 
-Carousel.prototype.resetTransitionSpeed = function () {
-	this.transitionSpeed = 15;
-};
+
 
 Carousel.prototype.createIndicatorButtons = function () {
 	let that = this;
@@ -190,7 +207,7 @@ Carousel.prototype.createIndicatorButtons = function () {
 Carousel.prototype.createIndicatorButtonWrapper = function () {
 	let el = document.createElement('div');
 	el.classList.add('carousel-button-wrapper');
-	el.style.position = 'absolute';	
+	el.style.position = 'absolute';
 	this.container.appendChild(el);
 
 	return el;
