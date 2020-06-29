@@ -10,39 +10,72 @@
 
 <body>
     <h1>Image Carousel</h1>
-    <div class="carousel-container">
-        <div class="carousel-image-wrapper">
-            <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
-            <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
-            <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
-            <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
-            <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
-            <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
-            <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
+    <div class="main-wrapper clearfix">
+        <div class="carousel-container">
+            <div class="carousel-image-wrapper">
+                <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
+                <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
+                <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
+                <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
+                <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
+                <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
+                <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
+            </div>
+        </div>
+        <div class="carousel-container-1">
+            <div class="carousel-image-wrapper-1">
+                <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
+                <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
+                <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
+                <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
+                <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
+                <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
+                <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
+            </div>
+        </div>
+        <div class="carousel-container-2">
+            <div class="carousel-image-wrapper-2">
+                <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
+                <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
+                <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
+                <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
+                <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
+                <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
+                <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
+            </div>
+        </div>
+        <div class="carousel-container-3">
+            <div class="carousel-image-wrapper-3">
+                <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
+                <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
+                <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
+                <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
+                <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
+                <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
+                <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
+            </div>
         </div>
     </div>
-    <div class="carousel-container-1">
-        <div class="carousel-image-wrapper-1">
-            <img class="carousel-item" src="images/237-600x400.jpg" alt="Image 1">
-            <img class="carousel-item" src="images/3-600x400.jpg" alt="Image 2">
-            <img class="carousel-item" src="images/400-600x400.jpg" alt="Image 3">
-            <img class="carousel-item" src="images/564-600x400.jpg" alt="Image 4">
-            <img class="carousel-item" src="images/654-600x400.jpg" alt="Image 5">
-            <img class="carousel-item" src="images/786-600x400.jpg" alt="Image 6">
-            <img class="carousel-item" src="images/908-600x400.jpg" alt="Image 7">
-        </div>
-    </div>
+
 
 
     <script src="script/carousel.js"></script>
     <script>
         var container = document.querySelector('.carousel-container');
         var imageWrapper = document.querySelector('.carousel-image-wrapper');
-        var carousel = new Carousel(container, imageWrapper, 1, 1);
+        var carousel = new Carousel(container, imageWrapper, 3, 3);
 
         var container = document.querySelector('.carousel-container-1');
         var imageWrapper = document.querySelector('.carousel-image-wrapper-1');
-        var carousel = new Carousel(container, imageWrapper, 5, 2);
+        var carousel = new Carousel(container, imageWrapper, 3, 4);
+
+        var container = document.querySelector('.carousel-container-2');
+        var imageWrapper = document.querySelector('.carousel-image-wrapper-2');
+        var carousel = new Carousel(container, imageWrapper, 3, 4);
+
+        var container = document.querySelector('.carousel-container-3');
+        var imageWrapper = document.querySelector('.carousel-image-wrapper-3');
+        var carousel = new Carousel(container, imageWrapper, 3, 4);
     </script>
 </body>
 

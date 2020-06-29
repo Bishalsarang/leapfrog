@@ -1,4 +1,4 @@
-const IMAGE_WIDTH = 600;
+
 const FPS = 60;
 function Carousel(container, wrapper, holdTime, transitionTime) {
 	var that = this;
@@ -63,10 +63,11 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 	this.animate = function () {
 		let initialLeft = parseInt(this.wrapper.style.left);
 		let finalLeft = -this.nextIndex * this.imageWidth;
+		
 		// If we want to go to higher index keep adding negative transition speed;
 		let sgn = this.nextIndex > this.currentIndex ? -1 : 1;
 
-		let nextLeft = initialLeft + sgn * (this.imageWidth / FPS);
+		let nextLeft = initialLeft + sgn * (this.imageWidth / FPS / this.transitionTime);
 
 		for (let i = 0; i < this.numberOfImages; i++) {
 			if (i != this.currentIndex) {
@@ -132,25 +133,23 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 Carousel.counter = 0;
 function Button() {
 	this.el = document.createElement('button');
-	// this.el.style.position = 'absolute';
-
 	this.el.style.color = '#D6EEFF';
 	this.el.style.outline = 'none';
 	this.el.style.border = 'none';
 	this.el.style.fontSize = 40 + 'px';
 	this.el.style.cursor = 'pointer';
+	
 	return this.el;
 }
 
 function NavButton(dirn) {
 	Button.call(this);
 	character = dirn == 'left'? '&#9001;': '&#9002;'
-	// this.el.style.left = x + 'px';
 	this.el.style.backgroundColor = 'transparent';
 	this.el.style.position = 'absolute';
-	// this.el.style.top = y + 'px';
 	this.el.innerHTML = character;
 	this.el.classList.add('nav-' + dirn);
+	
 	return this.el;
 }
 
@@ -165,6 +164,7 @@ function IndicatorButton(id, radius, margin) {
 	this.el.style.borderRadius = radius * 2 + 'px';
 	this.el.style.display = 'inline-block';
 	this.el.style.margin = margin + 'px';
+
 	return this.el;
 }
 
@@ -189,8 +189,8 @@ Carousel.prototype.createIndicatorButtons = function () {
 Carousel.prototype.createIndicatorButtonWrapper = function () {
 	let el = document.createElement('div');
 	el.classList.add('carousel-button-wrapper');
-	el.style.position = 'absolute';
-	
+	el.style.position = 'absolute';	
 	this.container.appendChild(el);
+
 	return el;
 };
