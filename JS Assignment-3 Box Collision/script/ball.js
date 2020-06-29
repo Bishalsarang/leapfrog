@@ -1,18 +1,33 @@
+const DIRX = [ -1, -1, -1, 0, 1, 1, 1, 0];
+const DIRY = [-1, 0, 1, -1, 1, 0, -1, 1];
 class Ball{
-    constructor(x, y, radius, speed, color) {
+    constructor(x, y, radius, speed, color, direction) {
         this.x = x;
         this.y = y;
         this.dx = 1;
         this.dy = 1;
         this.radius = radius;
-        this.speed = speed;
+        this.speed = 1;
         this.color = color;
+        this.direction = direction;
     }
     
 
     move(){
-        this.x += this.dx * this.speed;
-        this.y += this.dy * this.speed;
+        this.x += DIRX[this.direction] * this.speed;
+        this.y +=  DIRY[this.direction] * this.speed;
+    }
+
+    exchangeDirection(ball){
+        console.log("Previous")
+        console.log(this);
+        console.log(ball);
+        let temp = this.direction;
+        this.direction = ball.direction;
+        ball.direction = temp;
+        console.log("After")
+        console.log(this);
+        console.log(ball);
     }
 
     isWallCollision(width, height){
