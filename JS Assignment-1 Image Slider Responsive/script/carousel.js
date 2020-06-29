@@ -133,7 +133,7 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 Carousel.counter = 0;
 function Button() {
 	this.el = document.createElement('button');
-	this.el.style.color = '#D6EEFF';
+	this.el.style.color = '#CCCCCC';
 	this.el.style.outline = 'none';
 	this.el.style.border = 'none';
 	this.el.style.fontSize = 40 + 'px';
@@ -164,6 +164,7 @@ function IndicatorButton(id, radius, margin) {
 	this.el.style.borderRadius = radius * 2 + 'px';
 	this.el.style.display = 'inline-block';
 	this.el.style.margin = margin + 'px';
+	this.el.classList.add('indicator-btn');
 
 	return this.el;
 }

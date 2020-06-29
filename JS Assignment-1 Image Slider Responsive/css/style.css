@@ -57,9 +57,15 @@ h1 {
 }
 
 .btn-active {
-	background-color: #f8ad9d;
+	background-color: #f6b93b;
 }
 
+.nav-left:hover,
+.nav-right:hover,
+.indicator-btn:hover {
+	background-color: #ffffa1;
+	color: #ffffa1;
+}
 .nav-left {
 	left: 0px;
 	top: 107px;
