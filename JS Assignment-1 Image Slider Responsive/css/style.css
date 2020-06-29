@@ -45,6 +45,16 @@ h1 {
 	background-color: #f8ad9d;
 }
 
+.nav-left {
+	left: 0px;
+	top: 107px;
+}
+
+.nav-right {
+	left: calc(320px - 20px);
+	top: 107px;
+}
+
 @media (min-width: 768px) {
 	.carousel-container-props {
 		width: 600px;
@@ -62,5 +72,14 @@ h1 {
 		top: calc(400px - 30px);
 		left: 50%;
 		transform: translate(-50%, 0);
+	}
+
+	.nav-left {
+		top: 200px;
+	}
+
+	.nav-right {
+		left: calc(600px - 20px);
+		top: 200px;
 	}
 }

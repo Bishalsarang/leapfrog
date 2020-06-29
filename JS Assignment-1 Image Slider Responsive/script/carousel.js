@@ -39,7 +39,7 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 	this.nextIndex = 0;
 	this.currentPosition = -0;
 
-	this.leftButton = new NavButton(0, this.imageHeight / 2, '&#9001;');
+	this.leftButton = new NavButton('left');
 	this.container.appendChild(this.leftButton);
 	this.leftButton.addEventListener('click', function () {
 		that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
@@ -50,7 +50,7 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 		that.animationId = requestAnimationFrame(that.slide.bind(that));
 	});
 
-	this.rightButton = new NavButton(this.width - 13, this.imageHeight / 2, '&#9002;');
+	this.rightButton = new NavButton('right');
 	this.container.appendChild(this.rightButton);
 	this.rightButton.addEventListener('click', function () {
 		that.nextIndex = (that.currentIndex + 1) % that.numberOfImages;
@@ -142,14 +142,15 @@ function Button() {
 	return this.el;
 }
 
-function NavButton(x, y, character) {
+function NavButton(dirn) {
 	Button.call(this);
-	this.el.style.left = x + 'px';
+	character = dirn == 'left'? '&#9001;': '&#9002;'
+	// this.el.style.left = x + 'px';
 	this.el.style.backgroundColor = 'transparent';
 	this.el.style.position = 'absolute';
-	this.el.style.top = y + 'px';
+	// this.el.style.top = y + 'px';
 	this.el.innerHTML = character;
-	this.el.classList.add('ss');
+	this.el.classList.add('nav-' + dirn);
 	return this.el;
 }
 
