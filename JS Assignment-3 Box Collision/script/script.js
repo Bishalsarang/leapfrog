@@ -40,7 +40,8 @@ class Canvas {
 				radius,
 				5,
 				this.randomGenerator.getRandomColor(),
-				this.randomGenerator.getRandomInt(7, 0)
+                this.randomGenerator.getRandomInt(-1, 1),
+                this.randomGenerator.getRandomInt(-1, 1),
 			);
 			if (!ball.doesCollide(this.ballList, ballIndex)[0]) {
 				this.ballList.push(ball);
@@ -62,17 +63,11 @@ class Canvas {
 			// cx.fillStyle = color;
 			// cx.fill();
 			// cx.closePath();
-			
+			ball.isWallCollision(this.canvas.width, this.canvas.height);
 			let [isCollision, collidedBall] = ball.doesCollide(this.ballList, index);
 			if (isCollision) {
                 ball.exchangeDirection(collidedBall);
-                if (collidedBall.isWallCollision(this.canvas.width, this.canvas.height)) {
-                    collidedBall.direction = (collidedBall.direction + 4) % 8;
-                }
                 
-            }
-            if (ball.isWallCollision(this.canvas.width, this.canvas.height)) {
-				ball.direction = (ball.direction + 4) % 8;
             }
             
             cx.beginPath();
@@ -117,6 +112,6 @@ class RandomPropertiesGenerator {
 	}
 }
 
-cv = new Canvas(1024, 480, 20, 'canvas');
+cv = new Canvas(1024, 480, 100, 'canvas');
 cv.init();
 cv.start();

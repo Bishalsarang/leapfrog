@@ -1,7 +1,7 @@
 const DIRX = [-1, -1, -1, 0, 1, 1, 1, 0];
 const DIRY = [-1, 0, 1, -1, 1, 0, -1, 1];
 class Ball {
-	constructor(x, y, radius, speed, color, direction) {
+	constructor(x, y, radius, speed, color, dx, dy) {
 		this.x = x;
 		this.y = y;
 		this.dx = 1;
@@ -9,22 +9,42 @@ class Ball {
 		this.radius = radius;
 		this.speed = speed;
 		this.color = color;
-		this.direction = direction;
+		// this.direction = direction;
 	}
 
 	move() {
-		this.x += DIRX[this.direction] * this.speed;
-		this.y += DIRY[this.direction] * this.speed;
+		this.x += this.dx * this.speed;
+		this.y += this.dy* this.speed;
 	}
 
 	exchangeDirection(ball) {
 
-		let temp = this.direction;
-		this.direction = ball.direction;
-		ball.direction = temp;
+		let tempDx = this.dx;
+		this.dx = ball.dx;
+        ball.dx = tempDx;
+        
+        let tempDy = this.dy;
+        this.dy = ball.dy;
+        ball.dy = tempDy;
 	}
 
 	isWallCollision(width, height) {
+        if(this.x + this.radius >= width ){
+            this.x = width - this.radius;
+            this.dx = -this.dx;
+        }
+        if(this.x - this.radius <= 0){
+            this.x = this.radius;
+            this.dx = -this.dx;
+        }
+        if(this.y - this.radius <= 0){
+            this.y = this.radius;
+            this.dy = -this.dy;
+        }
+        if(this.y + this.radius > height){
+            this.y = height - this.radius;
+            this.dy = -this.dy;
+        }
 		return (
 			this.x + this.radius >= width ||
 			this.x - this.radius <= 0 ||
