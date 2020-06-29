@@ -8,7 +8,8 @@ h1 {
 }
 
 .carousel-container-props {
-	width: 600px;
+	width: 320px;
+	max-width: 600px;
 	height: 400px;
 	margin: auto;
 	position: relative;
@@ -17,14 +18,23 @@ h1 {
 
 .carousel-image-wrapper-props {
 	position: absolute;
+	object-fit: cover;
 	left: 0px;
 	top: 40px;
+	width: calc(7 * 320px);
 }
 
 .carousel-item {
 	float: left;
+	/* width: 600px; */
+	width: 320px;
+	max-width: 600px;
+	/* height: 400px; */
 }
 
+.carousel-button-wrapper {
+	top: 250px;
+}
 .clearfix::after {
 	clear: both;
 	content: '';
@@ -33,4 +43,24 @@ h1 {
 
 .btn-active {
 	background-color: #f8ad9d;
+}
+
+@media (min-width: 768px) {
+	.carousel-container-props {
+		width: 600px;
+	}
+	.carousel-item {
+		width: 600px;
+		height: 400px;
+	}
+
+	.carousel-image-wrapper-props {
+		width: calc(7 * 600px);
+	}
+
+	.carousel-button-wrapper {
+		top: calc(400px - 30px);
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
 }

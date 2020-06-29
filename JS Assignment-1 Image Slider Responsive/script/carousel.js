@@ -9,7 +9,7 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 	this.container.classList.add('carousel-container-props');
 	this.wrapper = wrapper;
 	this.numberOfImages = this.wrapper.childElementCount;
-	this.wrapper.style.width = this.numberOfImages * IMAGE_WIDTH + 'px';
+	this.wrapper.style.width = this.numberOfImages * this.imageWidth + 'px';
 	this.wrapper.style.left = 0 + 'px';
 	this.wrapper.classList.add('clearfix');
 	this.wrapper.classList.add('carousel-image-wrapper-props');
@@ -29,11 +29,17 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 		window.getComputedStyle(container).getPropertyValue('height')
 	);
 
+	this.imageWidth = parseInt(
+		window.getComputedStyle(document.querySelector('.carousel-item')).getPropertyValue('width')
+	);
+	this.imageHeight = parseInt(
+		window.getComputedStyle(document.querySelector('.carousel-item')).getPropertyValue('height')
+	);
 	this.currentIndex = 0;
 	this.nextIndex = 0;
 	this.currentPosition = -0;
 
-	this.leftButton = new NavButton(0, this.height / 2, '&#9001;');
+	this.leftButton = new NavButton(0, this.imageHeight / 2, '&#9001;');
 	this.container.appendChild(this.leftButton);
 	this.leftButton.addEventListener('click', function () {
 		that.nextIndex = (that.currentIndex - 1) % that.numberOfImages;
@@ -44,7 +50,7 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 		that.animationId = requestAnimationFrame(that.slide.bind(that));
 	});
 
-	this.rightButton = new NavButton(this.width - 13, this.height / 2, '&#9002;');
+	this.rightButton = new NavButton(this.width - 13, this.imageHeight / 2, '&#9002;');
 	this.container.appendChild(this.rightButton);
 	this.rightButton.addEventListener('click', function () {
 		that.nextIndex = (that.currentIndex + 1) % that.numberOfImages;
@@ -56,11 +62,11 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 
 	this.animate = function () {
 		let initialLeft = parseInt(this.wrapper.style.left);
-		let finalLeft = -this.nextIndex * IMAGE_WIDTH;
+		let finalLeft = -this.nextIndex * this.imageWidth;
 		// If we want to go to higher index keep adding negative transition speed;
 		let sgn = this.nextIndex > this.currentIndex ? -1 : 1;
 
-		let nextLeft = initialLeft + sgn * (IMAGE_WIDTH / FPS);
+		let nextLeft = initialLeft + sgn * (this.imageWidth / FPS);
 
 		for (let i = 0; i < this.numberOfImages; i++) {
 			if (i != this.currentIndex) {
@@ -71,12 +77,12 @@ function Carousel(container, wrapper, holdTime, transitionTime) {
 			}
 		}
 		// If currentIndex has changed
-		if (this.currentIndex != Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH))) {
+		if (this.currentIndex != Math.abs(Math.ceil(nextLeft / this.imageWidth))) {
 			let el = document.getElementById(
 				this.currentIndex + '-carousel-btn-' + (this.objId + 1)
 			);
 			el.classList.remove('btn-active');
-			this.currentIndex = Math.abs(Math.ceil(nextLeft / IMAGE_WIDTH));
+			this.currentIndex = Math.abs(Math.ceil(nextLeft / this.imageWidth));
 
 			el = document.getElementById(
 				this.currentIndex + '-carousel-btn-' + (this.objId + 1)
@@ -143,6 +149,7 @@ function NavButton(x, y, character) {
 	this.el.style.position = 'absolute';
 	this.el.style.top = y + 'px';
 	this.el.innerHTML = character;
+	this.el.classList.add('ss');
 	return this.el;
 }
 
@@ -182,11 +189,7 @@ Carousel.prototype.createIndicatorButtonWrapper = function () {
 	let el = document.createElement('div');
 	el.classList.add('carousel-button-wrapper');
 	el.style.position = 'absolute';
-	el.style.top = this.height - 30 + 'px';
-
-	el.style.left = '50' + '%';
-	el.style.transform = 'translate(-50%, 0)';
-	el.style.cursor = 'pointer';
+	
 	this.container.appendChild(el);
 	return el;
 };
