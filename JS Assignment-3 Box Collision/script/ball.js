@@ -2,11 +2,23 @@ class Ball{
     constructor(x, y, radius, speed, color) {
         this.x = x;
         this.y = y;
+        this.dx = 1;
+        this.dy = 1;
         this.radius = radius;
         this.speed = speed;
         this.color = color;
     }
     
+
+    move(){
+        this.x += this.dx * this.speed;
+        this.y += this.dy * this.speed;
+    }
+
+    isWallCollision(width, height){
+        return this.x + this.radius >= width ||   this.x - this.radius <= 0 || this.y + this.radius >= height ||   this.y - this.radius <= 0
+    }
+
     isCollide(ball){  
         let dx = this.x - ball.x;
         let dy = this.y - ball.y;

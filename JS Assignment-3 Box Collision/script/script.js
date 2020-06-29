@@ -1,7 +1,7 @@
 const DIRX = [ 0 ,  1 , 1 , 1 , 0 , -1 , -1 , -1];
 const DIRY = [-1 , -1 , 0 , 1 , 1 ,  1 ,  0 , -1];
 
-
+var i = 0;
 class Canvas {
 	constructor(width, height, totalNumberOfBalls, canvasContainer) {
         var that = this;
@@ -15,6 +15,8 @@ class Canvas {
         this.totalNumberOfBalls = totalNumberOfBalls;
         this.ballList = [];
         this.randomGenerator = new RandomPropertiesGenerator(this.canvasWidth, this.canvasHeight); 
+
+        this.i = 0;
 	}
     
 	init() {
@@ -31,17 +33,39 @@ class Canvas {
     }
     
     draw(){
+        // console.log("heee");
         let cx = this.canvas.getContext('2d');
-        for(let i = 0; i < this.ballList.length; i++){
-            let {x, y, radius, speed, color}  = this.ballList[i];
-            if(!this.ballList[i].doesCollide(this.ballList, i)){
-                cx.fillStyle = color;
-                cx.beginPath();
-                cx.arc(x, y, radius, 0, 360);
-                cx.fill();
+        
+        
+        cx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        this.ballList.forEach((ball, index) =>{
+            let {x, y, radius, speed, color}  = ball;
+            ball.move();
+            // ball.draw();
+            if(ball.isWallCollision(this.canvas.width, this.canvas.height)){
+                ball.speed = -ball.speed;
             }
-        }
+            if(!ball.doesCollide(this.ballList, index)){
+                cx.beginPath();
+                cx.arc(x, y , radius, 0, 360);
+                cx.fillStyle = color;
+                cx.fill();
+                cx.closePath();
+            }
+            else{
+                //Resolve COllision
+
+            }
+           
+        });
+        window.requestAnimationFrame(this.draw.bind(this));
     }
+
+    start(){
+        this.animationId = window.requestAnimationFrame(this.draw.bind(this));
+    }
+    
 }
 
 
@@ -72,9 +96,10 @@ class RandomPropertiesGenerator{
     }
 }
 
-cv = new Canvas(1024, 480, 600, 'canvas')
+cv = new Canvas(1024, 480, 2, 'canvas')
 cv.init();
-cv.draw();
+cv.start();
+// cv.draw();
 
 set = new Set();
 set.add([1, 2]);
