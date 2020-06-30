@@ -1,3 +1,5 @@
+PLAYER_IMG_PATH = "images/resized-mini.png"
+
 class Car{
     constructor(){
         this.x = 0;
@@ -5,6 +7,10 @@ class Car{
     }
 
     draw(){
+        let img = new Image();
+        img.src = PLAYER_IMG_PATH;
+        img.style.width = '10' + 'px';
+        ctx.drawImage(img, 140, 508);
         
     }
 }

@@ -8,6 +8,8 @@ canvas.style.display = 'block';
 ctx = canvas.getContext('2d');
 
 let y =10;
+
+let car1 = new Car();
 function drawLane(){
 
     let animationId = window.requestAnimationFrame(drawLane)
@@ -27,6 +29,8 @@ function drawLane(){
     ctx.moveTo(216, 0);
     ctx.lineTo(216, canvas.height);
     ctx.stroke();
+
+    car1.draw();
 }
 
 drawLane();
