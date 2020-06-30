@@ -29,7 +29,7 @@ class Car{
         return this.currentLane == car.currentLane && Math.abs(this.y - car.y) < CAR_HEIGHT;
     }
 
-    draw(){
+    draw(ctx){
         this.update();
         if(this.isPlayer){
 

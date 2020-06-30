@@ -8,7 +8,7 @@ class Missile{
         
     }
 
-    draw(){
+    draw(ctx){
         this.update();
         ctx.drawImage(this.img, this.x, this.y);
     }
