@@ -10,7 +10,12 @@ ctx = canvas.getContext('2d');
 
 let speed =10;
 
-let player = new Car(isPlayer=true)
+let player = new Car(isPlayer=true);
+let opponent_1 = new Car();
+let opponent_2 = new Car();
+let opponent_3 = new Car();
+
+console.log(opponent_1);
 function drawLane(){
 
     let animationId = window.requestAnimationFrame(drawLane)
@@ -33,6 +38,9 @@ function drawLane(){
     ctx.stroke();
 
     player.draw();
+    opponent_1.draw();
+    opponent_2.draw();
+    opponent_3.draw();
 }
 
 
@@ -53,5 +61,6 @@ window.addEventListener('keydown', (e)=>{
             player.move(false);
 
         }
+        console.log(player.x, player.y);
     });
 

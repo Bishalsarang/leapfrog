@@ -1,45 +1,84 @@
-
+const VALUE_X = [PLAYER_START_X - 116, PLAYER_START_X, PLAYER_START_X + 116];
 
 class Car{
     constructor(isPlayer=false){
+       
+        this.isPlayer = isPlayer;
         this.x = 141;
         this.y = 508;
-        this.isPlayer = isPlayer;
-        this.imageSrc = isPlayer ? PLAYER_IMG_PATH: OPPONENT_IMG_PATH;
+
+        this.currentLane = isPlayer ? 1: this.getRandomLane();
+        if(!this.isPlayer){
+            this.x = VALUE_X[this.currentLane];
+            this.y = 0;
+        }
+
+      
+       
+        console.log(this.imageSrc);
         this.img = new Image();
-        this.img.src = PLAYER_IMG_PATH;
+        this.img.src = isPlayer ? PLAYER_IMG_PATH: OPPONENT_IMG_PATH;
+    }
+
+    getRandomLane() {
+		return getRandomInt(3);
+    }
+    
+    getRandomPosition(){
+
     }
 
     draw(){
+        this.update();
         if(this.isPlayer){
 
         }
         else{
 
         }
-       
         ctx.drawImage(this.img, this.x, this.y);
     }
 
-    isInsideBoundary(x){
+    isInsideBoundaryWidth(x){
         return x >= 0 && x < CANVAS_WIDTH;
+    }
+
+    isValidLane(lane){
+        return lane >= 0 && lane < 3;
+    }
+
+    isInsideBoundaryHeight(y){
+        return y >= 0 && y < CANVAS_HEIGHT;
     }
 
     move(isLeft){
         if(this.isPlayer){
             let offset = 29;
-            let nextX = 0;
+            let nextLane = 0;
             if(isLeft){
-                nextX = this.x -  (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
+
+                nextLane = this.currentLane - 1; 
             }
             else{
-                nextX = this.x + (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
+                nextLane = this.currentLane + 1;
             }
-            if(this.isInsideBoundary(nextX)){
-                this.x = nextX;
+            if(this.isValidLane(nextLane)){
+                this.currentLane = nextLane;
+                this.x = VALUE_X[this.currentLane]
             }
         }
-       
+
+    }
+
+    update(){
+        if(!this.isPlayer){
+            this.y++;
+            if(!this.isInsideBoundaryHeight(this.y)){
+                this.y = 0;
+                this.currentLane = this.getRandomLane();
+                this.x = VALUE_X[this.currentLane];
+            }
+        }
 
     }
 }
