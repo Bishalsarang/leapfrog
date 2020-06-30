@@ -1,6 +1,7 @@
+
 canvas = document.querySelector('canvas');
-canvas.width = 328;
-canvas.height = 600;
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 canvas.style.padding = 0;
 canvas.style.margin = 'auto';
 canvas.style.display = 'block';
@@ -9,7 +10,7 @@ ctx = canvas.getContext('2d');
 
 let speed =10;
 
-let car1 = new Car();
+let player = new Car(isPlayer=true)
 function drawLane(){
 
     let animationId = window.requestAnimationFrame(drawLane)
@@ -17,20 +18,21 @@ function drawLane(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.setLineDash([10, 30]);
-    ctx.lineDashOffset = speed++;
+    ctx.setLineDash([40, ]);
+    ctx.lineDashOffset = (speed += 5);
     ctx.strokeStyle = 'white';
+    ctx.lineWidth = LANE_SEPARATOR_WIDTH;
     ctx.beginPath();
-    ctx.moveTo(108, 0);
-    ctx.lineTo(108, canvas.height);
+    ctx.moveTo(106, 0);
+    ctx.lineTo(106, canvas.height);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(216, 0);
-    ctx.lineTo(216, canvas.height);
+    ctx.moveTo(217, 0);
+    ctx.lineTo(217, canvas.height);
     ctx.stroke();
 
-    car1.draw();
+    player.draw();
 }
 
 
@@ -42,13 +44,13 @@ window.addEventListener('keydown', (e)=>{
         // Left arrow
         if(e.keyCode == 37){
             console.log('left');
-            car1.x -= 80;
+            player.move(left=true);
 
         }
         // right arrow
         else if(e.keyCode == 39){
             console.log('right');
-            car1.x += 80;
+            player.move(false);
 
         }
     });
