@@ -8,7 +8,7 @@ canvas.style.position = 'relative';
 canvas.style.border = '1px solid red';
 
 ANT_IMAGE_PATH = 'images/ant.png';
-const RADIUS = 10;
+const RADIUS = 7;
 const ANT_WIDTH = RADIUS * 4;
 const ANT_HEIGHT = RADIUS * 4;
 
@@ -20,7 +20,7 @@ class Ant {
         this.y = y;
         this.dx = 1;
         this.dy = 1;
-        this.speed = 1.5;
+        this.speed = 1.1;
         this.el = document.createElement('img');
         this.el.src = ANT_IMAGE_PATH;
         this.radius = 10;
