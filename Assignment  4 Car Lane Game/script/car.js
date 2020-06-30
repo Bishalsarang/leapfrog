@@ -21,14 +21,22 @@ class Car{
         ctx.drawImage(this.img, this.x, this.y);
     }
 
+    isInsideBoundary(x){
+        return x >= 0 && x < CANVAS_WIDTH;
+    }
+
     move(isLeft){
         if(this.isPlayer){
             let offset = 29;
+            let nextX = 0;
             if(isLeft){
-                this.x -=  (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
+                nextX = this.x -  (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
             }
             else{
-                this.x += (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
+                nextX = this.x + (offset * 2 + LANE_SEPARATOR_WIDTH + CAR_WIDTH);
+            }
+            if(this.isInsideBoundary(nextX)){
+                this.x = nextX;
             }
         }
        
