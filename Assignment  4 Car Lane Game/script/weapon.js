@@ -1,7 +1,7 @@
 class Missile{
-    constructor(x, y=PLAYER_START_Y){
-        this.x = x;
-        this.y = y - 20;
+    constructor(car){
+        this.x = car.x + 15;
+        this.y = PLAYER_START_Y - 20;
         this.speed = 2;
         this.img = new Image();
         this.img.src = MISSILE_IMG_PATH;
@@ -15,5 +15,9 @@ class Missile{
 
     update(){
         this.y -= this.speed;
+    }
+
+    hits(){
+
     }
 }
