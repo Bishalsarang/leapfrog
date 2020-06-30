@@ -10,9 +10,10 @@ class Game{
         this.canvas.height = CANVAS_HEIGHT;
         this.canvas.style.padding = 0;
         this.canvas.style.margin = 'auto';
-        this.canvas.style.display = 'block';
+        this.canvas.style.display = 'inline-block';
         
         this.ctx = this.canvas.getContext('2d');
+        this.score = 0;
 
         this.isStartScreen = true;
         this.gameRunning = false;
@@ -86,10 +87,15 @@ class Game{
 
     drawCharacters() {
         this.carList.forEach((car, index) => {
-            if (index != 0 && car.doesCollide(this.carList[0])) {
-    
-            }
             car.draw(this.ctx);
+            if (index != 0 && car.doesCollide(this.carList[0])) {
+                console.log("collides");
+                this.collidedX = car.x;
+                this.collidedY = car.y;
+                this.gameOver = true;
+                // cancelAnimationFrame(this.animationId)
+            }
+            
         });
     
         if(this.missile) this.missile.draw(this.ctx);
@@ -116,10 +122,32 @@ class Game{
         
     }
 
+    drawGameOverScreen(){
+        let img = new Image();
+        img.src = BOOM_IMG_PATH;
+        this.ctx.drawImage(img, this.collidedX - CAR_WIDTH, this.collidedY - CAR_HEIGHT);
+
+        img = new Image();
+        img.src = GAME_OVER_IMG_PATH;
+        this.ctx.drawImage(img, 0, 0);
+
+        this.ctx.font = 'bold 18px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx. textBaseline = 'middle';
+        this.ctx.fillStyle = '#9E2A2B';  
+        this.ctx.fillText('Your Score: ' + this.score, CANVAS_WIDTH / 2, CANVAS_HEIGHT - 300); 
+    }
+
     render(){
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
-        this.drawLane();
-        this.drawCharacters();
+        if(!this.gameOver){
+            this.drawLane();
+            this.drawCharacters();
+        }
+        else{
+            this.drawGameOverScreen();
+        }
+        
     }
 }
 
@@ -127,5 +155,8 @@ class Game{
 
 game1 = new Game('canvas');
 game1.startGame();
+
+// game2 = new Game('.multi');
+// game2.startGame();
 
 
