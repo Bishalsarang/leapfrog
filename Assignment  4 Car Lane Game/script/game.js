@@ -7,6 +7,16 @@ canvas.style.display = 'block';
 
 ctx = canvas.getContext('2d');
 
+let isStartScreen = true;
+let gameRunning = false;
+let gameOver = false;
+
+class Game{
+
+}
+
+
+
 carList = [];
 
 let speed = 10;
@@ -28,8 +38,7 @@ let missile;
 function drawCharacters() {
 	carList.forEach((car, index) => {
 		if (index != 0 && car.doesCollide(carList[0])) {
-			// console.log('collisions');
-			// console.log(car, carList[0]);
+
 		}
 		car.draw();
 	});
@@ -38,6 +47,25 @@ function drawCharacters() {
 }
 
 let animationId = 0;
+
+function drawStartScreen(){
+    ctx.fillStyle = '#6C8EAD';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = 'bold 30px Arial';
+    ctx.textAlign = 'center';
+    ctx. textBaseline = 'middle';
+    ctx.fillStyle = 'white';  
+    ctx.fillText('CAR LANE RACE', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 5); 
+    ctx.font = 'italic 24px Georgia';
+    ctx.fillText('Instructions: ', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 3 ); 
+    ctx.font = 'italic 13px Georgia';
+    ctx.fillText('A: Use left and right arrow key to move left or right', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 3 + 24); 
+    ctx.fillText('B: Press Space to fire the bullet', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 3 + 48); 
+    ctx.font = 'bold 20px Arial';
+    ctx.fillText('Press "Enter" to start the game', CANVAS_WIDTH / 2, CANVAS_HEIGHT  - 200); 
+
+}
+
 function drawLane() {
 	animationId = window.requestAnimationFrame(drawLane);
 
@@ -60,8 +88,9 @@ function drawLane() {
 	drawCharacters();
 }
 
-drawLane();
+// drawLane();
 
+drawStartScreen()
 let isRunning = true;
 window.addEventListener('keydown', (e) => {
 	// console.log('key press');
@@ -78,8 +107,14 @@ window.addEventListener('keydown', (e) => {
 			player.move(false);
 		}
     }
-    if(e.key === "Enter"){
+    if(isStartScreen && e.key === "Enter"){
         console.log("enter");
+        isStartScreen = false;
+        drawLane();
+        
+    }
+    if(isRunning && e.keyCode == 32){
+        console.log("Space");
         missile = new Missile(carList[0]);
     }
 
