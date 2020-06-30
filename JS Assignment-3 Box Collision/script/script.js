@@ -21,16 +21,6 @@ class Canvas {
 
 	init() {
 		let ballIndex = 0;
-		// let radius = this.randomGenerator.getRandomInt(20, 8);
-		//     let [x, y] = this.randomGenerator.getRandomCoordinateBall(radius);
-		//     let ball = new Ball(100, 100, 5, 5, this.randomGenerator.getRandomColor(), 5);
-		//     this.ballList.push(ball)
-
-		//      ball = new Ball(300, 100, 5, 5, this.randomGenerator.getRandomColor(), 1);
-		//     this.ballList.push(ball)
-
-		// ball = new Ball(this.canvas.width - 10, 10, radius, 5, this.randomGenerator.getRandomColor(), this.randomGenerator.getRandomInt(7, 0));
-		// this.ballList.push(ball)
 		while (ballIndex < this.totalNumberOfBalls) {
 			let radius = this.randomGenerator.getRandomInt(20, 8);
 			let [x, y] = this.randomGenerator.getRandomCoordinateBall(radius);
@@ -40,8 +30,8 @@ class Canvas {
 				radius,
 				4,
 				this.randomGenerator.getRandomColor(),
-                this.randomGenerator.getRandomInt(-1, 1),
-                this.randomGenerator.getRandomInt(-1, 1),
+				this.randomGenerator.getRandomInt(-1, 1),
+				this.randomGenerator.getRandomInt(-1, 1),
 			);
 			if (!ball.doesCollide(this.ballList, ballIndex)[0]) {
 				this.ballList.push(ball);
@@ -56,25 +46,29 @@ class Canvas {
 		cx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 		this.ballList.forEach((ball, index) => {
-			let { x, y, radius, speed, color } = ball;
+			let {
+				x,
+				y,
+				radius,
+				speed,
+				color
+			} = ball;
 			cx.beginPath();
 			cx.arc(x, y, radius, 0, 360);
 			cx.fillStyle = color;
 			cx.fill();
 			cx.closePath();
-            ball.move(); 
-            ball.isWallCollision(this.canvas.width, this.canvas.height);
-            // ball.move();
+			ball.move();
+			ball.isWallCollision(this.canvas.width, this.canvas.height);
 			let [isCollision, collidedBall] = ball.doesCollide(this.ballList, index);
 			if (isCollision) {
-                ball.exchangeDirection(collidedBall);
-                // collidedBall.isWallCollision(this.canvas.width, this.canvas.height);
-                ball.move();
-            }
-            
-               
-        });
-        
+				ball.exchangeDirection(collidedBall);
+				ball.move();
+			}
+
+
+		});
+
 		window.requestAnimationFrame(this.draw.bind(this));
 	}
 

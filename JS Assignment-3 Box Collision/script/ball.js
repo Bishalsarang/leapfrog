@@ -9,45 +9,37 @@ class Ball {
 		this.radius = radius;
 		this.speed = speed;
 		this.color = color;
-		// this.direction = direction;
 	}
 
 	move() {
 		this.x += this.dx * this.speed;
-		this.y += this.dy* this.speed;
+		this.y += this.dy * this.speed;
 	}
 
 	exchangeDirection(ball) {
-        this.dx = -this.dx;
-        this.dy = -this.dy;
-        ball.dx = -ball.dx;
-        ball.dy = -ball.dy;
-		// let tempDx = this.dx;
-		// this.dx = ball.dx;
-        // ball.dx = tempDx;
-        
-        // let tempDy = this.dy;
-        // this.dy = ball.dy;
-        // ball.dy = tempDy;
+		this.dx = -this.dx;
+		this.dy = -this.dy;
+		ball.dx = -ball.dx;
+		ball.dy = -ball.dy;
 	}
 
 	isWallCollision(width, height) {
-        if(this.x + this.radius >= width ){
-            this.x = width - this.radius;
-            this.dx = -this.dx;
-        }
-        if(this.x - this.radius <= 0){
-            this.x = this.radius;
-            this.dx = -this.dx;
-        }
-        if(this.y - this.radius <= 0){
-            this.y = this.radius;
-            this.dy = -this.dy;
-        }
-        if(this.y + this.radius > height){
-            this.y = height - this.radius;
-            this.dy = -this.dy;
-        }
+		if (this.x + this.radius >= width) {
+			this.x = width - this.radius;
+			this.dx = -this.dx;
+		}
+		if (this.x - this.radius <= 0) {
+			this.x = this.radius;
+			this.dx = -this.dx;
+		}
+		if (this.y - this.radius <= 0) {
+			this.y = this.radius;
+			this.dy = -this.dy;
+		}
+		if (this.y + this.radius > height) {
+			this.y = height - this.radius;
+			this.dy = -this.dy;
+		}
 		return (
 			this.x + this.radius >= width ||
 			this.x - this.radius <= 0 ||
@@ -69,7 +61,13 @@ class Ball {
 
 	doesCollide(ballList, index) {
 		for (let i = 0; i < ballList.length; i++) {
-			let { x, y, radius, speed, color } = ballList[i];
+			let {
+				x,
+				y,
+				radius,
+				speed,
+				color
+			} = ballList[i];
 			if (i != index) {
 				if (this.isCollide(ballList[i])) {
 					return [true, ballList[i]];
