@@ -26,7 +26,7 @@ class Car{
 
     doesCollide(car){
        
-        return this.currentLane == car.currentLane && Math.abs(this.y - car.y) < CAR_HEIGHT;
+        return this.currentLane == car.currentLane && Math.abs(this.y - car.y) <   CAR_HEIGHT;
     }
 
     draw(ctx){
