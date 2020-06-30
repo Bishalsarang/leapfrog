@@ -1,16 +1,23 @@
-PLAYER_IMG_PATH = "images/resized-mini.png"
+
 
 class Car{
-    constructor(){
-        this.x = 0;
-        this.y = 0;
+    constructor(isPlayer){
+        this.x = 140;
+        this.y = 508;
+        this.isPlayer = isPlayer;
+        this.imageSrc = isPlayer ? PLAYER_IMG_PATH: OPPONENT_IMG_PATH;
+        this.img = new Image();
+        this.img.src = PLAYER_IMG_PATH;
     }
 
     draw(){
-        let img = new Image();
-        img.src = PLAYER_IMG_PATH;
-        img.style.width = '10' + 'px';
-        ctx.drawImage(img, 140, 508);
-        
+        if(this.isPlayer){
+
+        }
+        else{
+
+        }
+       
+        ctx.drawImage(this.img, this.x, this.y);
     }
 }

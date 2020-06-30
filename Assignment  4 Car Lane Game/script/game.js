@@ -7,7 +7,7 @@ canvas.style.display = 'block';
 
 ctx = canvas.getContext('2d');
 
-let y =10;
+let speed =10;
 
 let car1 = new Car();
 function drawLane(){
@@ -18,7 +18,7 @@ function drawLane(){
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.setLineDash([10, 30]);
-    ctx.lineDashOffset = y++;
+    ctx.lineDashOffset = speed++;
     ctx.strokeStyle = 'white';
     ctx.beginPath();
     ctx.moveTo(108, 0);
@@ -33,7 +33,23 @@ function drawLane(){
     car1.draw();
 }
 
+
+
 drawLane();
 
+window.addEventListener('keydown', (e)=>{
+    console.log("key press");
+        // Left arrow
+        if(e.keyCode == 37){
+            console.log('left');
+            car1.x -= 80;
 
+        }
+        // right arrow
+        else if(e.keyCode == 39){
+            console.log('right');
+            car1.x += 80;
+
+        }
+    });
 
