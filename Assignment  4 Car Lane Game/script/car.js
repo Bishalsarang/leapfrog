@@ -6,16 +6,12 @@ class Car{
         this.isPlayer = isPlayer;
         this.x = 141;
         this.y = 508;
-
+        this.speed = 2;
         this.currentLane = isPlayer ? 1: this.getRandomLane();
         if(!this.isPlayer){
             this.x = VALUE_X[this.currentLane];
             this.y = 0;
         }
-
-      
-       
-        console.log(this.imageSrc);
         this.img = new Image();
         this.img.src = isPlayer ? PLAYER_IMG_PATH: OPPONENT_IMG_PATH;
     }
@@ -26,6 +22,11 @@ class Car{
     
     getRandomPosition(){
 
+    }
+
+    doesCollide(car){
+       
+        return this.currentLane == car.currentLane && Math.abs(this.y - car.y) < CAR_HEIGHT;
     }
 
     draw(){
@@ -53,10 +54,8 @@ class Car{
 
     move(isLeft){
         if(this.isPlayer){
-            let offset = 29;
             let nextLane = 0;
             if(isLeft){
-
                 nextLane = this.currentLane - 1; 
             }
             else{
@@ -72,7 +71,7 @@ class Car{
 
     update(){
         if(!this.isPlayer){
-            this.y++;
+            this.y += this.speed;
             if(!this.isInsideBoundaryHeight(this.y)){
                 this.y = 0;
                 this.currentLane = this.getRandomLane();
