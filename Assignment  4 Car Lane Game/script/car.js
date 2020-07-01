@@ -1,12 +1,12 @@
 const VALUE_X = [PLAYER_START_X - 116, PLAYER_START_X, PLAYER_START_X + 116];
 
 class Car{
-    constructor(isPlayer=false, carList){ 
+    constructor(isPlayer=false, carList, speed){ 
         this.isPlayer = isPlayer;
         this.x = 141;
         this.y = 508;
         this.carList = carList;
-        this.speed = 2;
+        this.speed = speed;
         this.carPassed = 0;
         this.currentLane = isPlayer ? 1: this.getRandomLane();
         if(!this.isPlayer){
@@ -62,8 +62,11 @@ class Car{
                 nextLane = this.currentLane + 1;
             }
             if(this.isValidLane(nextLane)){
+                
+               
                 this.currentLane = nextLane;
-                this.x = VALUE_X[this.currentLane]
+                
+                this.x = VALUE_X[nextLane]
             }
         }
 
