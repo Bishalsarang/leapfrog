@@ -7,6 +7,7 @@ class Car{
         this.y = 508;
         this.carList = carList;
         this.speed = 2;
+        this.carPassed = 0;
         this.currentLane = isPlayer ? 1: this.getRandomLane();
         if(!this.isPlayer){
             this.x = VALUE_X[this.currentLane];
@@ -72,6 +73,7 @@ class Car{
         if(!this.isPlayer){
             this.y += this.speed;
             if(!this.isInsideBoundaryHeight(this.y)){
+                this.carList[0].carPassed++; // Update Player Score
                 this.carList.splice(this.carList.indexOf(this), 1); // Remove from carList if the car is outside viewport
             }
         }

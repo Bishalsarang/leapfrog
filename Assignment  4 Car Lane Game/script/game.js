@@ -72,21 +72,7 @@ class Game {
     }
 
     updateScore(){
-        let indexCarToBeDeleted = [];
-        for (let i = 0; i < this.carList.length; i++) {
-            let car = this.carList[i];
-            if(i!= 0 && !car.isInsideBoundaryHeight(car.y)){
-                console.log(car);
-                indexCarToBeDeleted.push(i);
-            }
-        }
-
-        this.score += indexCarToBeDeleted.length; // Update Score
-        indexCarToBeDeleted.forEach((index)=> {
-            this.carList.splice(index, 1); // Remove the car from carlist
-        })
-        
-
+       this.score = this.player.carPassed;
     }
 
 	drawStartScreen() {
@@ -181,7 +167,7 @@ class Game {
 		img.src = GAME_OVER_IMG_PATH;
 		this.ctx.drawImage(img, 0, 0);
 
-		this.ctx.font = 'bold 18px Arial';
+		this.ctx.font = 'bold 24px Arial';
 		this.ctx.textAlign = 'center';
 		this.ctx.textBaseline = 'middle';
 		this.ctx.fillStyle = '#9E2A2B';
@@ -194,10 +180,9 @@ class Game {
 
 	render() {
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
-		if (!this.gameOver) {
-            // console.log(this.score);
-            
-            if(this.score % 20 == 0){
+		if (!this.gameOver) {  
+            this.updateScore();
+            if(this.score % 5 == 0){
                 this.updateDifficulty();
             }
             this.clearCanvas();
@@ -211,6 +196,7 @@ class Game {
     
     updateDifficulty(){
         // this.lineDashOffset = 0;
+        // // this.laneSpeed = 5;
         // this.laneSpeed += 7;
     }
 }
