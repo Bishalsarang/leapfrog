@@ -22,6 +22,7 @@ class Game {
         this.laneSpeed = 5;
         this.generateDelay = 100;
         this.missile = null;
+        this.missileNum = 2;
     }
 
     init() {
@@ -57,8 +58,9 @@ class Game {
                 this.render();
             }
             // Space Key Launches missile
-            if (this.gameRunning && e.keyCode == 32) {
+            if (this.gameRunning && this.missileNum && e.keyCode == 32 && this.missile == null) {
                 this.missile = new Missile(this.carList[0]);
+                this.missileNum--;
             }
 
             // ESC key restart the game
@@ -131,10 +133,6 @@ class Game {
                 return;
             }
             if (!car.isPlayer && this.missile && this.missile.doesCollide(car)) {
-                let img = new Image();
-                img.src = EXPLOSION_IMG_PATH;
-                this.ctx.drawImage(img, 100, 100);
-
                 if (this.missile) this.missile.draw(this.ctx);
                 deletedCar = this.carList.splice(index, 1);
                 this.clearCanvas(deletedCar.x, deletedCar.y, CAR_WIDTH, CAR_HEIGHT);
@@ -203,16 +201,19 @@ class Game {
         this.ctx.fillStyle = '#9E2A2B';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
-        this.ctx.font = 'bold 22px Arial';
+        this.ctx.font = 'bold 16px Arial';
         this.ctx.fillText(
-            'Score: ' + this.score, 50, 12
+            'Score: ' + this.score, 40, 12
         )
 
+        this.ctx.fillText(
+            'Bullets ' + this.missileNum, CANVAS_WIDTH - 170, 12
+        )
         // Update HighScore
         let highScore = Math.max(parseInt(localStorage.getItem('highScore')), this.score);
         localStorage.setItem('highScore', highScore);
         this.ctx.fillText(
-            'High Score: ' + localStorage.getItem('highScore'), CANVAS_WIDTH - 100, 12
+            'High Score: ' + localStorage.getItem('highScore'), CANVAS_WIDTH - 60, 12
         )
     }
 
@@ -241,12 +242,12 @@ class Game {
         }
         this.lineDashOffset = 0;
         this.laneSpeed++;
-        
+        this.missileNum += 2; // Earn bullets for every update in difficulty
     }
 }
 
 game1 = new Game('canvas');
 game1.startGame();
 
-// game2 = new Game('.multi');
-// game2.startGame();
+game2 = new Game('.multi');
+game2.startGame();
