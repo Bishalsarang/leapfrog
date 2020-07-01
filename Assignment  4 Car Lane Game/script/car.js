@@ -24,8 +24,7 @@ class Car{
 
     }
 
-    doesCollide(car){
-       
+    doesCollide(car){       
         return this.currentLane == car.currentLane && Math.abs(this.y - car.y) <   CAR_HEIGHT;
     }
 
@@ -72,12 +71,24 @@ class Car{
     update(){
         if(!this.isPlayer){
             this.y += this.speed;
-            if(!this.isInsideBoundaryHeight(this.y)){
+            if(!this.isInsideBoundaryHeight(this.y)){ // If outside the view port refresh
                 this.y = 0;
                 this.currentLane = this.getRandomLane();
                 this.x = VALUE_X[this.currentLane];
             }
         }
 
+    }
+
+    overlapsWithAny(carList){
+        carList.forEach((car, index)=>{
+            if(car != this){
+                if(this.doesCollide(car)){
+                    return true;
+                }
+            }
+           
+        });
+        return false;
     }
 }

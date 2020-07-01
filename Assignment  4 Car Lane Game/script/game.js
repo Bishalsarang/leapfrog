@@ -14,10 +14,11 @@ class Game {
 		this.canvas.style.border = '20px solid grey';
 		this.canvas.style.borderBottom = '40px solid grey';
 		this.canvas.style.display = 'inline-block';
-		this.canvas.style.borderRadius = '12px';
+        this.canvas.style.borderRadius = '12px';
+        this.canvas.tabIndex = '1'; // Make canvas clickable
 		this.ctx = this.canvas.getContext('2d');
 		this.score = 0;
-
+        this.tick = 0;
 		this.isStartScreen = true;
 		this.gameRunning = false;
 		this.gameOver = false;
@@ -26,7 +27,8 @@ class Game {
 		this.laneSpeed = 10;
 		this.missile = null;
 
-		window.addEventListener('keydown', (e) => {
+        this.interval = setInterval(this.generateCars.bind(this), 100)
+		this.canvas.addEventListener('keydown', (e) => {
 			if (this.gameRunning && (e.keyCode == 37 || e.keyCode == 39)) {
 				// Check Collision detection
 				// Left arrow
@@ -42,27 +44,29 @@ class Game {
 				this.isStartScreen = false;
 				this.gameRunning = true;
 				this.render();
-			}
+            }
 			if (this.gameRunning && e.keyCode == 32) {
 				this.missile = new Missile(this.carList[0]);
 			}
 		});
 	}
 
-    clearCanvas(){
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    clearCanvas(width=this.canvas.width, height=this.canvas.height){
+        this.ctx.clearRect(0, 0, width, height);
     }
 
 	startGame() {
 		this.player = new Car(true);
 		this.carList.push(this.player);
-
-		for (let i = 0; i < 3; i++) {
-			let opponent = new Car();
-			this.carList.push(opponent);
-		}
 		this.drawStartScreen();
 	}
+
+    generateCars(){
+        for (let i = 0; i < (4 - this.carList.length); i++) {
+            let opponent = new Car();
+            if(!opponent.overlapsWithAny(this.carList)) this.carList.push(opponent);
+		}
+    }
 
 	drawStartScreen() {
 		let ctx = this.canvas.getContext('2d');
@@ -96,21 +100,29 @@ class Game {
 
 	drawCharacters() {
 		this.carList.forEach((car, index) => {
-			
+			let deletedCar = null;
 			if (index != 0 && car.doesCollide(this.carList[0])) {
 				this.collidedX = car.x;
 				this.collidedY = car.y;
-				this.gameOver = true;
+                this.gameOver = true;
+                return;
 			}
 			if (!car.isPlayer && this.missile && this.missile.doesCollide(car)) {
-				let img = new Image();
+				let img = new Image(); 
 				img.src = EXPLOSION_IMG_PATH;
 				this.ctx.drawImage(img, 100, 100);
-				console.log('missile le xoyo');
-				if (this.missile) this.missile.draw(this.ctx);
-				this.missile = null;
+				
+                if (this.missile) this.missile.draw(this.ctx);
+                deletedCar = this.carList.splice(index, 1);
+                console.log(deletedCar, this.carList.length);
+                this.clearCanvas(deletedCar.x, deletedCar.y, CAR_WIDTH, CAR_HEIGHT);
+                console.log('missile le xoyo', deletedCar);
+                this.missile = null;
+                return;
+                
             }
-            car.draw(this.ctx);
+              // console.log(deletedCar, "haha");
+            if(deletedCar == null) car.draw(this.ctx);
 		});
 
 		if (this.missile) this.missile.draw(this.ctx);
@@ -162,7 +174,6 @@ class Game {
 
 	render() {
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
-      
 		if (!this.gameOver) {
             this.clearCanvas();
 			this.drawLane();
