@@ -82,11 +82,16 @@ class Game {
     }
 
     generateCars() {
-        for (let i = 0; i < (4 - this.carList.length); i++) {
+        for (let i = 0; i < (3 - this.carList.length); i++) {
             let opponent = new Car(false, this.carList, this.speed); // Pass reference to carlist as we may need to remove element
 
             if (!opponent.overlapsWithAny(this.carList)) this.carList.push(opponent);
+            
         }
+    }
+
+    onSameLine(){
+       
     }
 
     updateScore() {
