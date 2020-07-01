@@ -21,12 +21,19 @@ class Game{
         this.canvas.style.borderRadius = '12px';
         this.canvas.tabIndex = '1'; // Make canvas clickable
 
-        this.canvas.addEventListener('keydown', (e) => {
+        this.tick = 0;
+
+        this.canvas.addEventListener('keyup', (e) => {
              // Space Key Launches missile
             if (e.keyCode == 32 ) {
                 this.player.moveUp();
             }
         });
+
+        this.canvas.addEventListener('click', (e) => {
+            console.log("click");
+            this.player.moveUp();
+        }, false);
         this.sprite = new Image();
         this.sprite.src = SPRITE_IMG_PATH;
         this.loadAssets();
@@ -60,10 +67,15 @@ class Game{
     }
     
     render(){
+        this.tick++;
+        
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
         this.clearCanvas();
         this.drawScene();
-        this.player.moveDown();
+        if(this.tick % 5 == 0){
+            this.player.flap();
+        }
+        this.player.update();
     }
 }
 
