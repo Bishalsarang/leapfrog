@@ -20,7 +20,7 @@ class Game {
         this.carList = [];
         this.lineDashOffset = 0;
         this.laneSpeed = 5;
-        this.generateDelay = 100;
+        this.generateDelay = 2000;
         this.missile = null;
         this.missileNum = 2;
     }
@@ -82,12 +82,12 @@ class Game {
     }
 
     generateCars() {
-        for (let i = 0; i < (3 - this.carList.length); i++) {
+       
             let opponent = new Car(false, this.carList, this.speed); // Pass reference to carlist as we may need to remove element
 
             if (!opponent.overlapsWithAny(this.carList)) this.carList.push(opponent);
             
-        }
+        
     }
 
     onSameLine(){
