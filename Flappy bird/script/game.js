@@ -22,6 +22,7 @@ class Game{
         this.canvas.tabIndex = '1'; // Make canvas clickable
 
         this.tick = 0;
+        this.resetGameStates();
 
         this.canvas.addEventListener('keyup', (e) => {
              // Space Key Launches missile
@@ -47,12 +48,13 @@ class Game{
 
     startGame(){
         this.player = new Bird(100, 300, this.sprite, this.ctx); 
+        this.ground = new Ground(0, CANVAS_HEIGHT - GROUND.height, this.sprite, this.ctx);
         this.render();
     }
 
     drawBackground(){
         this.ctx.drawImage(this.sprite, BACKGROUND.sx, BACKGROUND.sy, BACKGROUND.width, BACKGROUND.height ,0, 0, CANVAS_WIDTH, CANVAS_HEIGHT - GROUND.height);    
-        this.ctx.drawImage(this.sprite, GROUND.sx, GROUND.sy, GROUND.width, GROUND.height ,0, CANVAS_HEIGHT - GROUND.height, CANVAS_WIDTH, GROUND.height);
+        // this.ctx.drawImage(this.sprite, GROUND.sx, GROUND.sy, GROUND.width, GROUND.height ,0, CANVAS_HEIGHT - GROUND.height, CANVAS_WIDTH, GROUND.height);
     }
 
     drawPlayer(){
@@ -67,16 +69,42 @@ class Game{
         this.ctx.clearRect(0, 0, width, height);
     }
     
+    hitsTopOrBottom(){
+        if(this.player.y + this.player.width > CANVAS_HEIGHT - GROUND.height + 11){
+            return true;
+        }
+        if(this.player.y < 0){
+            return true;
+        }
+    }
+
+    resetGameStates(){
+        this.isStartScreen = true;
+        this.isGameOver = false;
+        this.isGameRunning = true;
+    }
+    
     render(){
         this.tick++;
         
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
-        this.clearCanvas();
-        this.drawScene();
-        if(this.tick % 5 == 0){
-            this.player.flap();
-        }
-        this.player.update();
+        if(this.isGameRunning){
+            this.clearCanvas();
+            this.drawScene();
+            if(this.hitsTopOrBottom()){
+                this.isGameOver = true;
+                this.isGameRunning = false;
+                this.isGameRunning = false;
+                console.log("Game over");
+            }
+            // Flap wings every 5 ticks
+            if(this.tick % 5 == 0){
+                this.player.flap();
+            }
+
+            this.ground.draw();
+            this.player.update();
+        } 
     }
 }
 
