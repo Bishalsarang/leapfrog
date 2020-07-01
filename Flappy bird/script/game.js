@@ -51,7 +51,8 @@ class Game{
     }
 
     drawBackground(){
-        this.ctx.drawImage(this.sprite, BACKGROUND.sx, BACKGROUND.sy, BACKGROUND.width, BACKGROUND.height ,0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);    
+        this.ctx.drawImage(this.sprite, BACKGROUND.sx, BACKGROUND.sy, BACKGROUND.width, BACKGROUND.height ,0, 0, CANVAS_WIDTH, CANVAS_HEIGHT - GROUND.height);    
+        this.ctx.drawImage(this.sprite, GROUND.sx, GROUND.sy, GROUND.width, GROUND.height ,0, CANVAS_HEIGHT - GROUND.height, CANVAS_WIDTH, GROUND.height);
     }
 
     drawPlayer(){
