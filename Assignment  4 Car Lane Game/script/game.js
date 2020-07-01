@@ -83,21 +83,19 @@ class Game {
 
     generateCars() {
         let opponent = new Car(false, this.carList, this.speed); // Pass reference to carlist as we may need to remove element
-        if (!opponent.overlapsWithAny(this.carList)) {
-            if(!this.onSameLine()) this.carList.push(opponent);
-        }
-                
+        if (this.carList.length < 3 && !opponent.overlapsWithAny(this.carList)) {
+            this.carList.push(opponent)
+            if(this.onSameLine()) this.carList.pop();
+        }      
     }
 
     onSameLine(){
-        
         let lastThree = this.carList.slice(-3);
         if(lastThree.length == 3){
             if(Math.abs(lastThree[0].y - lastThree[1].y) < CAR_HEIGHT && Math.abs(lastThree[1].y -lastThree[2].y) < CAR_HEIGHT){
                 return true;
             }
             return lastThree[0].y == lastThree[1].y &&  lastThree[1].y == lastThree[2].y;
-
         }
        
     }
