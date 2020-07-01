@@ -2,7 +2,21 @@ class Game {
 	constructor(container) {
 		this.canvas = document.querySelector(container);
 		this.init();
-	}
+    }
+    
+    reset(){
+        this.score = 0;
+        this.tick = 0;
+		this.isStartScreen = true;
+		this.gameRunning = false;
+		this.gameOver = false;
+
+        this.carList = [];
+        this.lineDashOffset = 0;
+        this.laneSpeed = 5;
+        this.generateDelay = 100 ;
+		this.missile = null;
+    }
 
 	init() {
 		let that = this;
@@ -17,22 +31,11 @@ class Game {
         this.canvas.style.borderRadius = '12px';
         this.canvas.tabIndex = '1'; // Make canvas clickable
 		this.ctx = this.canvas.getContext('2d');
-		this.score = 0;
-        this.tick = 0;
-		this.isStartScreen = true;
-		this.gameRunning = false;
-		this.gameOver = false;
-
-        this.carList = [];
-        this.lineDashOffset = 0;
-        this.laneSpeed = 5;
-        this.generateDelay = 100 ;
-		this.missile = null;
-
+		
+        this.reset();
         this.interval = setInterval(this.generateCars.bind(this), this.generateDelay)
 		this.canvas.addEventListener('keydown', (e) => {
 			if (this.gameRunning && (e.keyCode == 37 || e.keyCode == 39)) {
-				// Check Collision detection
 				// Left arrow
 				if (e.keyCode == 37) {
 					this.player.move(true);
@@ -47,9 +50,16 @@ class Game {
 				this.gameRunning = true;
 				this.render();
             }
+            // Space Key Launches missile
 			if (this.gameRunning && e.keyCode == 32) {
 				this.missile = new Missile(this.carList[0]);
-			}
+            }
+            
+            // ESC key restart the game
+            if(this.gameOver && e.keyCode == 27){
+                this.reset();
+                this.startGame();
+            }
 		});
 	}
 
@@ -174,8 +184,16 @@ class Game {
 		this.ctx.fillText(
 			'Your Score: ' + this.score,
 			CANVAS_WIDTH / 2,
+			CANVAS_HEIGHT - 340
+        );
+
+        this.ctx.font = 'bold 22px Arial';
+        this.ctx.fillText(
+			'Press ESC to restart the game',
+			CANVAS_WIDTH / 2 + 5,
 			CANVAS_HEIGHT - 300
-		);
+        );
+
 	}
 
 	render() {
