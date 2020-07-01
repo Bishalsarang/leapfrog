@@ -23,11 +23,13 @@ class Game {
 		this.gameRunning = false;
 		this.gameOver = false;
 
-		this.carList = [];
-		this.laneSpeed = 10;
+        this.carList = [];
+        this.lineDashOffset = 0;
+        this.laneSpeed = 5;
+        this.generateDelay = 100 ;
 		this.missile = null;
 
-        this.interval = setInterval(this.generateCars.bind(this), 100)
+        this.interval = setInterval(this.generateCars.bind(this), this.generateDelay)
 		this.canvas.addEventListener('keydown', (e) => {
 			if (this.gameRunning && (e.keyCode == 37 || e.keyCode == 39)) {
 				// Check Collision detection
@@ -56,16 +58,35 @@ class Game {
     }
 
 	startGame() {
-		this.player = new Car(true);
+		this.player = new Car(true, this.carList);
 		this.carList.push(this.player);
 		this.drawStartScreen();
 	}
 
     generateCars(){
+        // console.log("length", this.carList.length);
         for (let i = 0; i < (4 - this.carList.length); i++) {
-            let opponent = new Car();
+            let opponent = new Car(false, this.carList); // Pass reference to carlist as we may need to remove element
             if(!opponent.overlapsWithAny(this.carList)) this.carList.push(opponent);
 		}
+    }
+
+    updateScore(){
+        let indexCarToBeDeleted = [];
+        for (let i = 0; i < this.carList.length; i++) {
+            let car = this.carList[i];
+            if(i!= 0 && !car.isInsideBoundaryHeight(car.y)){
+                console.log(car);
+                indexCarToBeDeleted.push(i);
+            }
+        }
+
+        this.score += indexCarToBeDeleted.length; // Update Score
+        indexCarToBeDeleted.forEach((index)=> {
+            this.carList.splice(index, 1); // Remove the car from carlist
+        })
+        
+
     }
 
 	drawStartScreen() {
@@ -114,7 +135,6 @@ class Game {
 				
                 if (this.missile) this.missile.draw(this.ctx);
                 deletedCar = this.carList.splice(index, 1);
-                console.log(deletedCar, this.carList.length);
                 this.clearCanvas(deletedCar.x, deletedCar.y, CAR_WIDTH, CAR_HEIGHT);
                 console.log('missile le xoyo', deletedCar);
                 this.missile = null;
@@ -134,7 +154,7 @@ class Game {
 		ctx.fillStyle = 'black';
 		ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 		ctx.setLineDash([40]);
-		ctx.lineDashOffset = -(this.laneSpeed += 5);
+		ctx.lineDashOffset = -(this.lineDashOffset += this.laneSpeed);
 		ctx.strokeStyle = 'white';
 		ctx.lineWidth = LANE_SEPARATOR_WIDTH;
 		ctx.beginPath();
@@ -175,13 +195,24 @@ class Game {
 	render() {
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
 		if (!this.gameOver) {
+            // console.log(this.score);
+            
+            if(this.score % 20 == 0){
+                this.updateDifficulty();
+            }
             this.clearCanvas();
 			this.drawLane();
-			this.drawCharacters();
+            this.drawCharacters();
+
 		} else {
 			this.drawGameOverScreen();
 		}
-	}
+    }
+    
+    updateDifficulty(){
+        // this.lineDashOffset = 0;
+        // this.laneSpeed += 7;
+    }
 }
 
 game1 = new Game('canvas');

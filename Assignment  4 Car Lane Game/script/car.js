@@ -1,11 +1,11 @@
 const VALUE_X = [PLAYER_START_X - 116, PLAYER_START_X, PLAYER_START_X + 116];
 
 class Car{
-    constructor(isPlayer=false){
-       
+    constructor(isPlayer=false, carList){ 
         this.isPlayer = isPlayer;
         this.x = 141;
         this.y = 508;
+        this.carList = carList;
         this.speed = 2;
         this.currentLane = isPlayer ? 1: this.getRandomLane();
         if(!this.isPlayer){
@@ -25,7 +25,7 @@ class Car{
     }
 
     doesCollide(car){       
-        return this.currentLane == car.currentLane && Math.abs(this.y - car.y) <   CAR_HEIGHT;
+        return this.currentLane == car.currentLane && Math.abs(this.y - car.y) <=   CAR_HEIGHT;
     }
 
     draw(ctx){
@@ -71,24 +71,22 @@ class Car{
     update(){
         if(!this.isPlayer){
             this.y += this.speed;
-            if(!this.isInsideBoundaryHeight(this.y)){ // If outside the view port refresh
-                this.y = 0;
-                this.currentLane = this.getRandomLane();
-                this.x = VALUE_X[this.currentLane];
+            if(!this.isInsideBoundaryHeight(this.y)){
+                this.carList.splice(this.carList.indexOf(this), 1); // Remove from carList if the car is outside viewport
             }
         }
-
     }
 
+
     overlapsWithAny(carList){
-        carList.forEach((car, index)=>{
+        for(let i = 0; i < carList.length; i++){
+            let car = carList[i];
             if(car != this){
                 if(this.doesCollide(car)){
                     return true;
                 }
             }
-           
-        });
+        }
         return false;
     }
 }
