@@ -8,7 +8,6 @@ class Circle{
     }
 
     draw(){
-        console.log("here");
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, 360, false);
         this.ctx.fillStyle = this.color;
