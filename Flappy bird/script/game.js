@@ -1,3 +1,4 @@
+var score = 0;
 class Game {
     constructor(container) {
         this.canvas = document.querySelector(container);
@@ -86,6 +87,7 @@ class Game {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = 'white';
+        this.score = score
         ctx.fillText(this.score, CANVAS_WIDTH - 110, 20); // Score
     }
 
@@ -130,14 +132,9 @@ class Game {
     }
 
     drawPipes() {
-        console.log(this.score);
         let toBedeleted = [];
         let score = 0;
         for (let i = 0; i < this.pipesList.length; i++) {
-            if (this.pipesList.passed == true && this.done == false) {
-                this.score++;
-                console.log("here")
-            }
             if (this.pipesList[i].x <= 0) {
                 toBedeleted.push(i);
             }
@@ -169,6 +166,7 @@ class Game {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = 'white';
+        this.score = score;
         ctx.fillText(this.score, CANVAS_WIDTH - 110, CANVAS_HEIGHT - 220); // Score
         ctx.fillText(this.score, CANVAS_WIDTH - 110, CANVAS_HEIGHT - 180); // High Score
 

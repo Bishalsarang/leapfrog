@@ -15,6 +15,10 @@ class Pipe{
 
     draw(){
         this.x--;
+        if(this.x < 300 && !this.flagged){
+            score++;
+            this.flagged = true;
+        }
         this.ctx.drawImage(this.sprite, TOP_PIPE.sx, TOP_PIPE.sy, TOP_PIPE.width, TOP_PIPE.height , this.x, this.y1, TOP_PIPE.width, this.height1);    
         this.ctx.drawImage(this.sprite, BOTTOM_PIPE.sx, BOTTOM_PIPE.sy, BOTTOM_PIPE.width, BOTTOM_PIPE.height , this.x, CANVAS_HEIGHT - 56 - this.height2, TOP_PIPE.width, this.height2);    
     }

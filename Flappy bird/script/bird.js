@@ -3,7 +3,8 @@ class Bird {
 		this.x = x;
 		this.y = y;
 
-		this.pipeList = pipeList;
+        this.pipeList = pipeList;
+        this.crossed = pipeList.slice();
 
 		// For sprite coordinates
 		this.sx = BIRD.sx;
@@ -47,7 +48,9 @@ class Bird {
 	flap() {
 		// Change the frame to animate birds wings
 		this.sy = BIRD.sy + (this.i++ % 3) * 26;
-	}
+    }
+    
+   
 
 	checkPipeCollision() {
 		for (let i = 0; i < this.pipeList.length; i++) {
@@ -61,24 +64,28 @@ class Bird {
 				this.y + this.height / 3 > p.y1
 			) {
 				return true;
-            }
-            if(!((this.x + this.width < p.x) || (this.x > p.x + p.width) || (this.y + this.height / 3<= p.y1 )|| (this.y > p.y1 + p.height1))){
-                // console.log((this.x + this.width < p.x),
-                console.log(this.y ,this.height, p.y2)
-                console.log(this, p);
-                console.log((this.x + this.width < p.x), (this.x > p.x + p.width), (this.y + this.height / 3 < p.y2 ),  (this.y > p.y2 + p.height2) );
-                 return true;
-            }
+			}
+			if (
+				!(
+					this.x + this.width < p.x ||
+					this.x > p.x + p.width ||
+					this.y + this.height / 3 <= p.y1 ||
+					this.y > p.y1 + p.height1
+				)
+			) {
+				return true;
+			}
 
-			if(!((this.x + this.width < p.x) || (this.x > p.x + p.width) || (this.y + this.height / 3<= p.y2 )|| (this.y > p.y2 + p.height2))){
-                // console.log((this.x + this.width < p.x),
-                console.log(this.y ,this.height, p.y2)
-                console.log(this, p);
-                console.log((this.x + this.width < p.x), (this.x > p.x + p.width), (this.y + this.height / 3 < p.y2 ),  (this.y > p.y2 + p.height2) );
-                 return true;
-            }
-
-	;
+			if (
+				!(
+					this.x + this.width < p.x ||
+					this.x > p.x + p.width ||
+					this.y + this.height / 3 <= p.y2 ||
+					this.y > p.y2 + p.height2
+				)
+			) {
+				return true;
+			}
 		}
 	}
 }
