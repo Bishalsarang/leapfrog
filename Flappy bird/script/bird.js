@@ -57,22 +57,28 @@ class Bird {
 			if (
 				this.x < p.x + p.width &&
 				this.x + this.width > p.x &&
-				this.y < p.y1 + p.height1 &&
-				this.y + this.height > p.y1
+				this.y < p.y1 + p.height &&
+				this.y + this.height / 3 > p.y1
 			) {
 				return true;
-			}
+            }
+            if(!((this.x + this.width < p.x) || (this.x > p.x + p.width) || (this.y + this.height / 3<= p.y1 )|| (this.y > p.y1 + p.height1))){
+                // console.log((this.x + this.width < p.x),
+                console.log(this.y ,this.height, p.y2)
+                console.log(this, p);
+                console.log((this.x + this.width < p.x), (this.x > p.x + p.width), (this.y + this.height / 3 < p.y2 ),  (this.y > p.y2 + p.height2) );
+                 return true;
+            }
 
-			if (
-				this.x + this.width > p.x &&
-				this.x < p.x + p.width &&
-				(this.y < p.y1 + p.height ||
-					this.y + this.height > p.y1 + p.height + 40)
-			) {
-				return true;
-			}
+			if(!((this.x + this.width < p.x) || (this.x > p.x + p.width) || (this.y + this.height / 3<= p.y2 )|| (this.y > p.y2 + p.height2))){
+                // console.log((this.x + this.width < p.x),
+                console.log(this.y ,this.height, p.y2)
+                console.log(this, p);
+                console.log((this.x + this.width < p.x), (this.x > p.x + p.width), (this.y + this.height / 3 < p.y2 ),  (this.y > p.y2 + p.height2) );
+                 return true;
+            }
 
-			return false;
+	;
 		}
 	}
 }
