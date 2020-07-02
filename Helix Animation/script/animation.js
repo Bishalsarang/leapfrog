@@ -1,39 +1,31 @@
-let tick = 0;
-
-
 let canvas = document.querySelector('canvas');
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 let ctx = canvas.getContext('2d');
 
-
-let beginX = 10;
-let beginY = 10;
-
-// let circle = new Circle(1 * beginX, 1 * beginY, 10,ctx);
-// circle.draw();
-
-// circle = new Circle(1 * beginX, 2 * beginY + MAX_RADIUS, 10,ctx, "green");
-// circle.draw();
-
-
-// circle = new Circle(1 * beginX, 3 * beginY + 2 * MAX_RADIUS, 10,ctx, "green");
-// circle.draw();
+let tick = 0;
+let beginX = 50;
+let beginY = 50;
 
 function draw(){
-    for(let i = 0; i < 2; i++){
-        for(let j = 0; j < 2; j++){
-            // console.log("hshshs")
-            let x = (i + 1) * beginX + i * MAX_RADIUS + OFFSET;
-            let y = (j + 1) * beginY + j * MAX_RADIUS + OFFSET;
-            console.log(x, y);
-            let circle = new Circle(x, y, MAX_RADIUS,ctx);
-            circle.draw();
-        }
-    }
-
+    let colOffset = 0;
+    let phase = tick * 0.2;
+    for(let strand = 0; strand < 2; strand++){
+        strandPhase = phase + strand * Math.PI;
+        x = beginX;
+        for (let col = 0; col < NUM_COLUMNS; col++) {        
+            x = x + 2 * MAX_RADIUS;
+            colOffset = col / MAX_RADIUS;
+            for (let row = 0; row < NUM_COLUMNS; row++) {
+              let y = beginY + row * 10  + (Math.sin(strandPhase + colOffset) + 1) * 30;
+              let sizeOffset = (Math.cos(strandPhase + colOffset) + 1) * 0.3;
+              let circleRadius = sizeOffset * MAX_RADIUS;
+              let circle = new Circle(x, y, circleRadius, ctx);
+              circle.draw();
+            }
+          }
 }
-
+}
 
 function drawBackground(){
     ctx.fillStyle = '#043a4a';
@@ -49,9 +41,6 @@ function animate(){
     clearCanvas();
     drawBackground();
     draw();
-    if(tick % 9000 == 0){
-       
-    }
     animationId = window.requestAnimationFrame(animate);
 }
 
