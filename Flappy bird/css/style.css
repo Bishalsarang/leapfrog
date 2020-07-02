@@ -6,3 +6,34 @@
 body {
 	text-align: center;
 }
+
+img {
+	position: absolute;
+	top: 90px;
+	left: 400px;
+}
+
+.menu {
+	width: 320px;
+	height: 480px;
+	margin: auto;
+	background: url('../images/bg.png');
+}
+
+button {
+	width: 52px;
+	outline: none;
+	border: none;
+	/* background: none; */
+	height: 29px;
+	position: absolute;
+	top: 200px;
+	left: 392px;
+	background: url(../images/play.png);
+}
+
+p {
+	padding: 50px;
+	font-size: 28px;
+	color: white;
+}
