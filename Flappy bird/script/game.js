@@ -15,13 +15,14 @@ class Game{
         this.canvas.style.padding = 0;
         this.canvas.style.margin = 'auto';
         this.canvas.style.marginTop = '20px';
-        this.canvas.style.border = '20px solid grey';
-        this.canvas.style.borderBottom = '40px solid grey';
+        // this.canvas.style.border = '20px solid grey';
+        // this.canvas.style.borderBottom = '40px solid grey';
         this.canvas.style.display = 'inline-block';
         this.canvas.style.borderRadius = '12px';
         this.canvas.tabIndex = '1'; // Make canvas clickable
 
         this.tick = 0;
+        this.pipesList = []
         this.resetGameStates();
 
         this.canvas.addEventListener('keyup', (e) => {
@@ -84,13 +85,31 @@ class Game{
         this.isGameRunning = true;
     }
     
+    getRandomInt(maxm, minm = 0) {
+        return Math.floor(Math.random() * (maxm - minm) + minm);
+    }
+    
+    generatePipes(){
+        let height1 = this.getRandomInt(140, 50);
+        let height2 = CANVAS_HEIGHT - height1 - this.player.height - 60;
+        this.pipesList.push(new Pipe(height1, height2, "", this.ctx, this.sprite));
+        console.log(this.pipesList);
+        
+    }
+
+    drawPipes(){
+        for(let i = 0; i < this.pipesList.length; i++){
+            this.pipesList[i].draw();
+        }
+    }
+ 
     render(){
         this.tick++;
-        
         this.animationId = window.requestAnimationFrame(this.render.bind(this));
         if(this.isGameRunning){
             this.clearCanvas();
             this.drawScene();
+            this.drawPipes();
             if(this.hitsTopOrBottom()){
                 this.isGameOver = true;
                 this.isGameRunning = false;
@@ -100,6 +119,10 @@ class Game{
             // Flap wings every 5 ticks
             if(this.tick % 5 == 0){
                 this.player.flap();
+            }
+
+            if(this.tick % 120 == 0){
+                this.generatePipes();
             }
 
             this.ground.draw();
