@@ -5,8 +5,8 @@ import { Cloud } from './components/Cloud.js';
 class Canvas {
 	constructor(selector) {
 		this.canvas = document.querySelector(selector);
-		this.canvas.width = 500;
-		this.canvas.height = 500;
+		this.canvas.width = CANVAS_WIDTH;
+		this.canvas.height = CANVAS_HEIGHT;
 		this.canvas.style.background = BACKGROUND_COLOR;
 
 		this.context = this.canvas.getContext('2d');
@@ -19,8 +19,6 @@ class Canvas {
 		let shape = new this.shapesClasses[id]({
 			x: 100,
 			y: 100,
-			width: 20,
-			height: 20,
 			context: this.context,
 			zIndex: this.shapeList.length,
 		});
@@ -64,7 +62,7 @@ class Canvas {
 	}
 	drawAll() {
 		this.clear();
-		this.drawGrid(10, 'gray');
+		// this.drawGrid(10, 'gray');
 		this.shapeList.forEach((shape, index) => {
 			shape.draw();
 		});
@@ -81,12 +79,12 @@ class Canvas {
 			console.log('bahira');
 			// console.log(event.clientX - rect.left);
 			that.shapeList.forEach((shape, index) => {
-				console.log(event.clientX - rect.left);
-				console.log(event.offsetX);
-				console.log(
-					(event.clientX - rect.left) / shape.sx - shape.tx,
-					(event.clientY - rect.top) / shape.sy - shape.ty
-				);
+				// console.log(event.clientX - rect.left);
+				// console.log(event.offsetX);
+				// console.log(
+				// 	(event.clientX - rect.left) / shape.sx - shape.tx,
+				// 	(event.clientY - rect.top) / shape.sy - shape.ty
+				// );
 				// console.log(shape);
 				if (
 					that.context.isPointInPath(
@@ -123,7 +121,7 @@ let canvas;
 window.onload = function () {
 	// let canvas;
 	canvas = new Canvas('canvas');
-	canvas.drawGrid(10, 'gray');
+	// canvas.drawGrid(10, 'gray');
 
 	let startX, startY;
 	let selectedShapeIndex;
@@ -148,19 +146,28 @@ window.onload = function () {
 		startX = parseInt(e.offsetX);
 		startY = parseInt(e.offsetY);
 
+		// Check if mouse is 
+		// Check if mouse is inside anyone of the shapes
 		for (let i = 0; i < canvas.shapeList.length; i++) {
 			//TODO: Overlapping shape ko lagi z indez use garera drag garney
 			let shape = canvas.shapeList[i];
-			if (isMouseInShape(startX - shape.tx, startY - shape.ty, shape)) {
+			if (isMouseInShape((startX - shape.tx) / shape.sx, (startY - shape.ty) / shape.sy, shape)) {
 				console.log('Selected');
 				// Change cursor type to move
 				canvas.canvas.style.cursor = 'move';
 				selectedShapeIndex = i;
 				isDragging = true;
+				shape.isSelected = true;
+				canvas.drawAll();
 
 				return;
 			}
+			else{
+				shape.isSelected = false; // Unselect selected shape
+			}
 		}
+
+		canvas.drawAll();
 	}
 
 	function handleMouseUp(e) {
@@ -184,7 +191,7 @@ window.onload = function () {
 	}
 
 	function handleMouseMove(e) {
-		console.log('Mouse Move');
+		console.log((e.offsetX - 100) / 2, e.offsetY - 100);
 		if (!isDragging) {
 			return;
 		}
@@ -201,6 +208,7 @@ window.onload = function () {
 		selectedShape.tx += draggedX;
 		selectedShape.ty += draggedY;
 
+		// selectedShape.isSelected = false; // Unselect selected shape
 		canvas.drawAll();
 		// canvas.drawGrid();
 		// selectedShape.draw();

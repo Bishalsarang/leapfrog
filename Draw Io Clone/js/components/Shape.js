@@ -11,6 +11,8 @@ export class Shape{
 
         this.zIndex = zIndex; // Track shape layers
 
+        this.isSelected = true;
+
         this.context = context;
 
         this.stroke = true;
@@ -25,8 +27,9 @@ export class Shape{
         this.ty = y;
 
         // Scaling
-        this.sx = 1;
-        this.sy = 1;
+        this.sx = 2;
+        this.sy = 2;
+        ;
 
         // Rotation
     }
@@ -38,10 +41,25 @@ export class Shape{
     draw(){
         this.context.save();
         this.translate();
-        this.context.stroke(this.path);
+        this.context.scale(this.sx, this.sy);
+        
+       
+        if(this.stroke){
+            this.context.stroke(this.path);
+        }
     
-        this.context.fill(this.path);
+        if(this.fill){
+            this.context.fill(this.path);
+        }
 
+        if(this.isSelected){
+            this.context.fillStyle = CONTROL_BUTTON_FILL_STYLE;
+            this.context.fill(this.boundingBox.boundingPath)
+        }
+       
+        
+        // UNDO fill style
+        this.context.fillStyle = this.fillStyle;
         this.context.restore();
     }
 
