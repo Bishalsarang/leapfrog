@@ -4,26 +4,34 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pinterest</title>
+   <title>Blinkist</title>
    <link rel="stylesheet" href="css/reset.css">
    <link rel="stylesheet" href="css/layout.css">
    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-   <div class="card">
-      <img src="./images/picture.jpg" class="card__picture" alt="Card Picture">
+   <div class="book-card">
+      <img src="./images/book.jpg" alt="Book 1" class="book-card__cover">
+      <div class="book-card__meta">
+         <h1 class="book-card__title">The Design of Everyday Things</h1>
+         <span class="book-card__author">Donald A. Norman</span>
 
-      </img>
-      <div class="card__title">
-         Rick and Morty by glenbw on DeviantArt
-      </div>
-      <div class="card__uploader">
-         <img src="" alt="" class="card__uploader__image">
-         <span class="card__uploader__name">DeviantArt</span>
-         <button>Follow</button>
+         <div class="book-card__stats-wrapper clearfix">
+            <div class="book-card__estimated-time left">
+               <img src="https://img.icons8.com/carbon-copy/16/000000/clock.png" />
+               <span class="book-card__estimated-time__text">15-minute read</span>
+            </div>
+
+            <div class="book-card__read-stats right">
+               <img src="https://img.icons8.com/windows/16/000000/person-male.png" />
+               <span class="book-card__read-stats__text">5.7k reads</span>
+            </div>
+         </div>
+
       </div>
 
+      <button class="book-card__subscribe">Subscribe now</button>
    </div>
 </body>
 
