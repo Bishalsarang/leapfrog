@@ -1,0 +1,20 @@
+body {
+	background-color: azure;
+}
+
+.sign-in-form {
+	width: 450px;
+	height: 660px;
+	padding: 60px 68px 40px 68px;
+}
+
+.sign-in-form--theme--dark {
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+.sign-in-form__header {
+	color: #fff;
+	font-size: 32px;
+	font-weight: 700;
+	margin-bottom: 28px;
+}
