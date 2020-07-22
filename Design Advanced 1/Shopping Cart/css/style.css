@@ -1,0 +1,75 @@
+a:hover {
+	cursor: pointer;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.post-card {
+	margin: 0px auto;
+	margin-top: 100px;
+	padding: 10px;
+	width: 616px;
+	height: 1200px;
+}
+
+.post-card__author__pic {
+	border-radius: 50%;
+	width: 24px;
+	margin-right: 10px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.post-card__author__text {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	color: #000;
+}
+
+.post-card__menu {
+	outline: none;
+	border: 0;
+	background: transparent;
+	font-weight: bold;
+}
+
+.post-card__image {
+	max-width: 100%;
+}
+
+.post-card-btn {
+	background: transparent;
+	border: 0;
+	outline: none;
+	margin: 5px;
+}
+
+.post-card-btn-ico {
+	width: 24px;
+	height: 24px;
+}
+
+.post-card__all-comments {
+	color: #a3a3a3;
+	font-size: 12px;
+}
+
+.post-card__time-wrapper {
+	padding-bottom: 12px;
+}
+.post-card__time {
+	color: #a3a3a3;
+}
+
+.post-card__comment {
+	outline: none;
+	border: 0;
+}
+
+.post-card__comments__item {
+	list-style: none;
+}

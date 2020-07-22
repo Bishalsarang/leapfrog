@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Instagram Post</title>
+   <link rel="stylesheet" href="css/reset.css">
+   <link rel="stylesheet" href="css/layout.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <div class="post-card">
+      <div class="post-card__header clearfix">
+         <div class="post-card__author left">
+            <img class="post-card__author__pic" src="./images/avatar.jpg" alt="Post">
+            <span class="post-card__author__text"> sarcastic_us </span>
+         </div>
+
+         <button class="post-card__menu right">...</button>
+      </div>
+
+      <div class="post-card__image-wrapper">
+         <img src="./images/post.jpg" alt="Post Photo" class="post-card__image">
+      </div>
+
+      <div class="post-card__footer">
+         <div class="post-card_buttons-wrapper clearfix">
+            <button class="post-card-btn left">
+               <img class="post-card-btn-ico" src="./images/like.png" alt="Like Button">
+            </button>
+
+            <button class="post-card-btn left">
+               <img class="post-card-btn-ico" src="./images/comment.png" alt="Comment Button">
+            </button>
+            <button class="post-card-btn left">
+               <img class="post-card-btn-ico" src="./images/share.png" alt="Share Button">
+            </button>
+            <button class="post-card-btn right">
+               <img class="post-card-btn-ico" src="./images/save.png" alt="Save Button">
+            </button>
+
+         </div>
+
+         <a class="post-card__likes">119, 762 likes</a>
+         <div class="post-card__caption">
+            <a href="#" class="post-card__author__text">sarcastic_us</a>
+            <span>Follow our own -
+               <a href="#" title="sadcasm">@sadcasm.co</a>
+            </span>
+            <div>
+               <a href="#" class="post-card__all-comments" title="All Comments">View all 426 comments</a>
+            </div>
+
+            <ul class="post-card__comments">
+               <li class="post-card__comments__item">
+                  <a href="#" title="@trsnoa" class="post-card__author__text">trsnoa</a>
+                  <a href="#" title="violetairisub">@violetairisub</a>
+               </li>
+               <li class="post-card__comments__item">
+                  <a href="#" title="@violetairisub" class="post-card__author__text">violetairisub</a>
+                  <a href="#" title="violetairisub">@trsnoa</a>
+                  <span> enserio</span>
+               </li>
+            </ul>
+            <div class="post-card__time-wrapper">
+               <a class="post-card__time" href="#" title="Published Time">2 days ago</a>
+            </div>
+
+            <input class="post-card__comment" type="text" placeholder="Add a comment">
+
+         </div>
+      </div>
+
+   </div>
+</body>
+
+</html>
