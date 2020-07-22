@@ -1,77 +1,77 @@
 body {
-	background-color: rgb(195, 217, 228);
+  background-color: rgb(195, 217, 228);
 }
 
 a:hover {
-	text-decoration: underline;
-	cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 button:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .book-card {
-	width: 280px;
-	/* height: 500px; */
-	margin: 0px auto;
-	outline: 1px solid gray;
-	margin-top: 50px;
+  width: 280px;
+  /* height: 500px; */
+  margin: 0px auto;
+  outline: 1px solid gray;
+  margin-top: 50px;
 }
 
 .book-card:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .book-card__cover {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .book-card__meta {
-	background-color: white;
-	padding: 15px;
-	margin-top: -4px;
+  background-color: white;
+  padding: 15px;
+  margin-top: -4px;
 }
 
 .book-card__title {
-	font-size: 16px;
-	color: #03314b;
-	padding-bottom: 15px;
+  font-size: 16px;
+  color: #03314b;
+  padding-bottom: 15px;
 }
 
 .book-card__author {
-	color: #6e797f;
-	display: inline-block;
-	padding-bottom: 16px;
+  color: #6e797f;
+  display: inline-block;
+  padding-bottom: 16px;
 }
 
 .book-card__subscribe {
-	width: 100%;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	color: #1775fc;
-	background: white;
-	border: 0;
-	outline: 1px solid gray;
-	margin-top: -30px;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: bold;
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #1775fc;
+  background: white;
+  border: 0;
+  outline: 1px solid gray;
+  margin-top: -30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .book-card__subscribe:hover {
-	background: #1775fc;
-	color: white;
+  background: #1775fc;
+  color: white;
 }
 
 .book-card__stats-wrapper {
-	padding-bottom: 16px;
+  padding-bottom: 16px;
 }
 
 .book-card__estimated-time__text {
-	color: #737c7e;
+  color: #737c7e;
 }
 
 .book-card__read-stats__text {
-	color: #737c7e;
+  color: #737c7e;
 }
