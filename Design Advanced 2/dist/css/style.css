@@ -421,6 +421,12 @@ span:after,
 strong:after {
   display: inherit; }
 
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
 /* Sass Compiled Custom Grid Code Start */
 /* Sass Compiled Custom Grid Code End */
 /* Sass Compiled Theme Code Start */
@@ -534,16 +540,14 @@ option {
 .header__social-media {
   text-align: center;
   width: auto;
-  margin: 0px auto; }
+  margin: 0px auto;
+  list-style: none;
+  padding: 14px 0px; }
   @media (min-width: 768px) {
     .header__social-media {
       display: inline-block;
       float: right; } }
-
-.header__list {
-  list-style: none;
-  padding: 14px 0px; }
-  .header__list li {
+  .header__social-media li {
     margin-right: 20px;
     display: inline-block; }
 
@@ -622,12 +626,23 @@ option {
 .features {
   color: #506A85;
   padding-top: 35px;
-  padding-bottom: 35px; }
+  padding-bottom: 132px; }
   .features__title {
     text-align: center;
     font-size: 44px; }
   .features__content {
     font-size: 22px; }
+  .features__list {
+    padding-top: 88px; }
+  .features__image-wrapper {
+    display: inline-block;
+    font-size: 60px;
+    color: #00BC9C;
+    padding-right: 33px; }
+  .features__description {
+    display: inline-block;
+    width: 60%;
+    vertical-align: top; }
   .features li {
     max-width: 386px;
     display: inline-block; }
