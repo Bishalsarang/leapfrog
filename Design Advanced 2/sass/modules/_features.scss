@@ -1,0 +1,9 @@
+.features {
+   @include e(title) {
+      text-align: center;
+   }
+
+   @include e(content) {
+      color: $blue-bayoux;
+   }
+}

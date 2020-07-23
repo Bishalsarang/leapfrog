@@ -618,6 +618,12 @@ option {
       .banner__button {
         padding: 25px 71px; } }
 
+.features__title {
+  text-align: center; }
+
+.features__content {
+  color: #506A85; }
+
 @media (min-width: 576px) {
   .is-collapsed-mobile {
     visibility: collapse;
