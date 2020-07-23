@@ -647,7 +647,9 @@ option {
 
 .recent-works {
   text-align: center;
-  color: #506A85; }
+  color: #506A85;
+  background: #f2f5f7;
+  padding: 134px; }
   .recent-works__header {
     font-size: 44px; }
   .recent-works__item {
@@ -678,6 +680,17 @@ option {
     color: white;
     font-weight: bold;
     padding: 12px 27px; }
+
+.footer {
+  padding-top: 72px;
+  padding-bottom: 72px;
+  text-align: center;
+  color: #506A85; }
+  .footer__top {
+    background: #2F4052; }
+  .footer__item {
+    float: left;
+    width: 20%; }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {

@@ -1,0 +1,16 @@
+.footer {
+   padding-top: 72px;
+   padding-bottom: 72px;
+   text-align: center;
+   color: $blue-bayoux;
+
+
+   @include e(top) {
+      background: $pickled-bluewood;
+   }
+
+   @include e(item) {
+      float: left;
+      width: 20%;
+   }
+}

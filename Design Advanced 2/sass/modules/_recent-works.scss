@@ -1,6 +1,8 @@
 .recent-works {
    text-align: center;
    color: $blue-bayoux;
+   background: $athens-gray;
+   padding: 134px;
 
    @include e(header) {
       font-size: 44px;
