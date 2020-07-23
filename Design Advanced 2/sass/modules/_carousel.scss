@@ -1,0 +1,11 @@
+.carousel {
+
+   @include e(item) {
+      float: left;
+      width: 25%;
+   }
+
+   @include e(nav) {
+      color: green;
+   }
+}

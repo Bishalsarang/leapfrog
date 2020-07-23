@@ -1,0 +1,13 @@
+.careers {
+   color: $cadet-blue;
+   padding-top: 132px;
+   padding-bottom: 132px;
+   text-align: center;
+
+   @include e(button) {
+      background: $caribbean-green;
+      color: white;
+      font-weight: bold;
+      padding: 12px 27px;
+   }
+}

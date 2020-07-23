@@ -1,0 +1,13 @@
+.recent-works {
+   text-align: center;
+   color: $blue-bayoux;
+
+   @include e(header) {
+      font-size: 44px;
+   }
+
+   @include e(item) {
+      display: inline-block;
+      max-width: 569px;
+   }
+}

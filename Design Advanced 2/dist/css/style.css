@@ -615,8 +615,6 @@ option {
     background: #00BC9C;
     color: white;
     font-weight: bold;
-    border: 0;
-    outline: none;
     padding: 25px 20px; }
     @media (min-width: 768px) {
       .banner__button {
@@ -646,6 +644,40 @@ option {
   .features li {
     max-width: 386px;
     display: inline-block; }
+
+.recent-works {
+  text-align: center;
+  color: #506A85; }
+  .recent-works__header {
+    font-size: 44px; }
+  .recent-works__item {
+    display: inline-block;
+    max-width: 569px; }
+
+.carousel__item {
+  float: left;
+  width: 25%; }
+
+.carousel__nav {
+  color: green; }
+
+.btn {
+  outline: none;
+  border: 0; }
+
+.btn:hover {
+  cursor: pointer; }
+
+.careers {
+  color: #A3B1BF;
+  padding-top: 132px;
+  padding-bottom: 132px;
+  text-align: center; }
+  .careers__button {
+    background: #00BC9C;
+    color: white;
+    font-weight: bold;
+    padding: 12px 27px; }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {
