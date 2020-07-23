@@ -516,10 +516,12 @@ option {
   border: 1px solid #c7c7c7; }
 
 .header__contact {
+  display: none;
   width: 100%;
   padding: 14px 0; }
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     .header__contact {
+      display: inline-block;
       width: auto;
       float: left; } }
 
@@ -530,12 +532,12 @@ option {
     margin-right: 0pxs; }
 
 .header__social-media {
-  display: inline-block;
-  width: 160px;
+  text-align: center;
+  width: auto;
   margin: 0px auto; }
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     .header__social-media {
-      width: auto;
+      display: inline-block;
       float: right; } }
 
 .header__list {
@@ -586,9 +588,13 @@ option {
     .banner {
       height: 882px; } }
   .banner__content-wrapper {
-    width: 48%;
+    width: 90%;
+    font-size: 12px;
     margin: 0px auto;
     padding-top: 10%; }
+    @media (min-width: 768px) {
+      .banner__content-wrapper {
+        width: 48%; } }
   .banner__header {
     color: #fff;
     font-weight: bold;
@@ -607,7 +613,10 @@ option {
     font-weight: bold;
     border: 0;
     outline: none;
-    padding: 25px 71px; }
+    padding: 25px 20px; }
+    @media (min-width: 768px) {
+      .banner__button {
+        padding: 25px 71px; } }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {

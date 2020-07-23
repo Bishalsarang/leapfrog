@@ -15,9 +15,14 @@
    }
 
    @include e(content-wrapper) {
-      width: 48%;
+      width: 90%;
+      font-size: $small-font-size;
       margin: 0px auto;
       padding-top: 10%;
+
+      @include mq(md) {
+         width: 48%;
+      }
    }
 
    @include e(header) {
@@ -41,8 +46,13 @@
       background: $caribbean-green;
       color: white;
       font-weight: bold;
+
       border: 0;
       outline: none;
-      padding: 25px 71px;
+      padding: 25px 20px;
+
+      @include mq(md) {
+         padding: 25px 71px;
+      }
    }
 }

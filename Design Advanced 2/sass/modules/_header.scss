@@ -6,10 +6,12 @@
    }
 
    @include e(contact) {
+      display: none;
       width: 100%;
       padding: 14px 0;
 
-      @include mq(sm) {
+      @include mq(md) {
+         display: inline-block;
          width: auto;
          float: left;
       }
@@ -22,15 +24,18 @@
       &:last-child {
          margin-right: 0pxs;
       }
+
    }
 
    @include e(social-media) {
-      display: inline-block;
-      width: 160px;
+
+      text-align: center;
+      width: auto;
+
       margin: 0px auto;
 
-      @include mq(sm) {
-         width: auto;
+      @include mq(md) {
+         display: inline-block;
          float: right;
       }
    }
