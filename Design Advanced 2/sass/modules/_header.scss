@@ -1,0 +1,48 @@
+.header {
+   @include e(top) {
+      background-color: $catskill-white;
+      font-size: $small-font-size;
+      border: 1px solid $gray;
+   }
+
+   @include e(contact) {
+      width: 100%;
+      padding: 14px 0;
+
+      @include mq(sm) {
+         width: auto;
+         float: left;
+      }
+   }
+
+   @include e(contact-info) {
+      display: inline-block;
+      margin-right: 30px;
+
+      &:last-child {
+         margin-right: 0pxs;
+      }
+   }
+
+   @include e(social-media) {
+      display: inline-block;
+      width: 160px;
+      margin: 0px auto;
+
+      @include mq(sm) {
+         width: auto;
+         float: right;
+      }
+   }
+
+   @include e(list) {
+      list-style: none;
+      padding: 14px 0px;
+
+      li {
+         margin-right: 20px;
+         display: inline-block;
+
+      }
+   }
+}

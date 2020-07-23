@@ -1,0 +1,8 @@
+.container {
+   margin: 0px auto;
+   padding: 0px 15px;
+
+   @include mq(xl) {
+      max-width: $maximum-width;
+   }
+}

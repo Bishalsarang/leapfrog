@@ -29,10 +29,23 @@ $base__line: 24px;
 //  ),
 //);
 
-$font-family-sans-fallback: 'Arial', sans-serif;
-$font-family-sans: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', $font-family-sans-fallback;
-$font-family-serif: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
-$font-family-monospace: 'Inconsolata', 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'Courier', monospace;
+$font-family-sans-fallback: 'Arial',
+sans-serif;
+$font-family-sans: 'Source Sans Pro',
+'Helvetica Neue',
+'Helvetica',
+$font-family-sans-fallback;
+$font-family-serif: 'Georgia',
+'Cambria',
+'Times New Roman',
+'Times',
+serif;
+$font-family-monospace: 'Inconsolata',
+'Menlo',
+'Consolas',
+'Bitstream Vera Sans Mono',
+'Courier',
+monospace;
 $font-family--primary : $font-family-sans;
 $font-family--secondary : $font-family-sans;
 
@@ -47,7 +60,7 @@ $yellow: #F7CA18;
 $green: #36D7B7;
 
 //Message Colors
-$error: lighten($red,5%) !default;
+$error: lighten($red, 5%) !default;
 $success: $green !default;
 $edit: $yellow !default;
 
@@ -58,32 +71,24 @@ $lg-device: 992px;
 $xl-device: 1200px;
 
 //UI Colors
-$ui-colors: (
-  default: $blue,
+$ui-colors: (default: $blue,
   success: $success,
   error: $error,
-  warning: $edit
-);
+  warning: $edit);
 
 //Color Palette
-$palettes: (
-  gray-shades: (
-    base: $gray,
-    dark: darken($gray,20%),
-    light: lighten($gray,20%)
-  ),
-  blue-shades: (
-    base: $blue,
-    dark: darken($blue,20%),
-    light: lighten($blue,20%)
-  )
-);
+$palettes: (gray-shades: (base: $gray,
+    dark: darken($gray, 20%),
+    light: lighten($gray, 20%)),
+  blue-shades: (base: $blue,
+    dark: darken($blue, 20%),
+    light: lighten($blue, 20%)));
 
 
 //Font size variables
 $default-font-size: $base__font-size - 2px;
 $small-font-size: $default-font-size - 2px;
-$lg-font-size: $default-font-size + 2px;
+$lg-font-size: $default-font-size+2px;
 
 //Heading font size vairables
 $heading-line-height: 28px !default;
@@ -100,5 +105,14 @@ $border-color: $gray;
 $color-text: $black;
 $color-link: $blue;
 
+
+
 //Path to Assets
 $path--rel: "../images";
+
+// Project Specific
+
+// Project Colors
+$catskill-white: #F5F7FA;
+
+$maximum-width: 1200px;
