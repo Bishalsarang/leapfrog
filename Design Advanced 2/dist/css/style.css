@@ -616,13 +616,21 @@ option {
     padding: 25px 20px; }
     @media (min-width: 768px) {
       .banner__button {
-        padding: 25px 71px; } }
+        padding: 25px 71px;
+        margin-top: 55px; } }
 
-.features__title {
-  text-align: center; }
-
-.features__content {
-  color: #506A85; }
+.features {
+  color: #506A85;
+  padding-top: 35px;
+  padding-bottom: 35px; }
+  .features__title {
+    text-align: center;
+    font-size: 44px; }
+  .features__content {
+    font-size: 22px; }
+  .features li {
+    max-width: 386px;
+    display: inline-block; }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {
