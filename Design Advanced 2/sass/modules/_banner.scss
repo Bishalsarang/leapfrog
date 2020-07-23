@@ -1,0 +1,48 @@
+.banner {
+   background: url($banner-url);
+   height: fit-content;
+   padding-bottom: calc(36% * 882px);
+   width: 100%;
+   text-align: center;
+   background-size: cover;
+
+   @include mq(md) {
+      height: 600px;
+   }
+
+   @include mq(lg) {
+      height: 882px;
+   }
+
+   @include e(content-wrapper) {
+      width: 48%;
+      margin: 0px auto;
+      padding-top: 10%;
+   }
+
+   @include e(header) {
+      color: $white;
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 20px;
+
+      @include mq(md) {
+         font-size: 78px;
+      }
+   }
+
+   @include e(content) {
+      font-size: 24px;
+      color: $cadet-blue;
+      margin-bottom: 20px;
+   }
+
+   @include e(button) {
+      background: $caribbean-green;
+      color: white;
+      font-weight: bold;
+      border: 0;
+      outline: none;
+      padding: 25px 71px;
+   }
+}
