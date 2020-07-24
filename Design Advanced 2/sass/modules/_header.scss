@@ -92,7 +92,6 @@
 
    @include e(ham-menu) {
       display: inline-block;
-      padding-right: 17px;
 
       @include mq(lg) {
          display: none;
@@ -102,6 +101,7 @@
 
    @include e(search) {
       display: inline-block;
+      padding-right: 17px;
       background: transparent;
    }
 
