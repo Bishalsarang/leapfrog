@@ -53,5 +53,10 @@
          padding: 25px 71px;
          margin-top: 55px;
       }
+
+      &:hover {
+         background-color: $primary-btn-hover-color;
+      }
+
    }
 }

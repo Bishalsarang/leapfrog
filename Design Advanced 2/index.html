@@ -93,7 +93,13 @@
             <li><a href="#" title="REEN| CONTACT"> Contact </a></li>
           </ul>
 
-          <button class="header__search btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <div class="header__buttons">
+            <div class="header__ham-menu">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <button class="header__search btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+
         </div>
 
       </div>
@@ -187,7 +193,11 @@
 
         <div class="recent-works__wrapper">
           <div class="recent-works__item">
+
             <img class="recent-works__image" src="./images/work1.png" alt="Work 1" srcset="">
+            <div class="recent-works__item__overlay">
+              +
+            </div>
 
             <div class="recent-works__caption">
               <p class="recent-works__title">Grand Motel gets an identity brushup</p>
@@ -197,7 +207,9 @@
 
           <div class=" recent-works__item">
             <img class="recent-works__image" src="./images/work2.png" alt="Work 1" srcset="">
-
+            <div class="recent-works__item__overlay">
+              +
+            </div>
             <div class="recent-works__caption">
               <p class="recent-works__title">Fresh branding for a creative startup Identity</p>
               <p class="recent-works__text">Identity</p>
@@ -207,23 +219,35 @@
           <div class="carousel">
             <div class="carousel__item">
               <img src="./images/carousel-1.png" alt="Recent Work 1">
+              <div class="carousel__item__overlay">
+                +
+              </div>
             </div>
             <div class="carousel__item">
               <img src="./images/carousel-2.png" alt="Recent Work 2">
+              <div class="carousel__item__overlay">
+                +
+              </div>
             </div>
             <div class="carousel__item">
               <img src="./images/carousel-3.png" alt="Recent Work 3">
+              <div class="carousel__item__overlay">
+                +
+              </div>
             </div>
             <div class="carousel__item">
               <img src="./images/carousel-4.png" alt="Recent Work 4">
+              <div class="carousel__item__overlay">
+                +
+              </div>
             </div>
             <div class="corousel__nav">
-              <button class="btn">
+              <!-- <button class="btn">
                 <img src="./images/btn-prev.png" alt="">
-              </button>
+              </button> -->
               <ul class="recent-works__pagination">
                 <li>
-                  <button></button>
+                  <button class="btn recent-works__pagination__btn"></button>
                 </li>
 
                 <li>
@@ -234,9 +258,9 @@
                   <button></button>
                 </li>
               </ul>
-              <button class="btn">
+              <!-- <button class="btn">
                 <img src="./images/btn-next.png" alt="">
-              </button>
+              </button> -->
             </div>
           </div>
         </div>
@@ -265,7 +289,7 @@
         <div class="container">
           <div class="footer__who footer__item">
             <h3 class="footer__header">WHO WE ARE</h3>
-            <img src="./images/logo.png" alt="REEN. Logo">
+            <img src="./images/logo-white.png" alt="REEN. Logo" class="footer__logo">
             <p>Magnis modipsae voloratati andigen daepeditem quiate re porem que aut labor. Laceaque eictemperum quiae
               sitiorem rest non restibusaes maio es dem tumquam.</p>
             <a href="#">More about us
@@ -274,6 +298,13 @@
           </div>
 
           <div class="footer__latest-works footer__item">
+            <h3 class="footer__header">LATEST WORKS</h3>
+            <div class="footer__gallery">
+              <img src="./images/grand-motel.png" alt="grand motel" class="footer__item">
+              <img src="./images/thumb-2.png" alt="thumb 2" class="footer__item">
+              <img src="./images/vinyl-record.png" alt="vinyl record" class="footer__item">
+              <img src="./images/windows-phone.png" alt="windows phone" class="footer__item">
+            </div>
           </div>
 
           <div class="footer__contact footer__item">
@@ -283,8 +314,11 @@
               inisita.
             </p>
             <p>
-              84 Street, City, State 24813+00 (123) 456 78 90info@reen.com
+              84 Street, City, State 24813
+
             </p>
+            <p>+00 (123) 456 78 90</p>
+            <p> info@reen.com</p>
           </div>
 
           <div class="footer__news-letter footer__item">

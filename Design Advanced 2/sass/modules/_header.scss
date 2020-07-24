@@ -64,8 +64,9 @@
    }
 
    @include e(nav) {
+      display: none;
+
       @include mq(md) {
-         display: block;
          float: left;
          font-size: 12px;
          font-weight: bold;
@@ -78,13 +79,31 @@
       }
 
       @include mq(lg) {
+         display: inline-block;
          font-size: 15px;
       }
    }
 
-   @include e(search) {
-      background: transparent;
+   @include e(buttons) {
+      // background: transparent;
       vertical-align: -webkit-baseline-middle;
       float: right;
    }
+
+   @include e(ham-menu) {
+      display: inline-block;
+      padding-right: 17px;
+
+      @include mq(lg) {
+         display: none;
+
+      }
+   }
+
+   @include e(search) {
+      display: inline-block;
+      background: transparent;
+   }
+
+
 }

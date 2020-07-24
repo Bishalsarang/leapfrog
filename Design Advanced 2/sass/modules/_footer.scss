@@ -1,12 +1,16 @@
 .footer {
 
    text-align: center;
-   color: $blue-bayoux;
+   color: $cadet-blue;
 
 
    @include e(top) {
       background: $pickled-bluewood;
       padding: 75px 0px;
+   }
+
+   @include e(logo) {
+      margin-bottom: 10px;
    }
 
    @include e(header) {
@@ -17,7 +21,20 @@
 
    @include e(item) {
       float: left;
-      width: 20%;
+      margin-top: 10px;
+
+      @include mq(md) {
+         width: 25%;
+      }
+
+   }
+
+   @include e(latest-works) {
+      display: none;
+
+      @include mq(md) {
+         display: block;
+      }
    }
 
    @include e(bottom) {
@@ -38,9 +55,52 @@
       text-align: right;
       width: 40%;
 
-      & li {
-         list-style: none;
-         display: inline-block;
+      & li>a {
+         color: $cadet-blue;
+
+
+         // display: inline-block;
       }
    }
+
+   @include e(form) {
+      position: relative;
+      background-color: $river-bed;
+      margin-top: 15px;
+      height: 40px;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 270px;
+   }
+
+   @include e(input) {
+      font-size: 13px;
+      color: $regent-gray;
+      background-color: $river-bed;
+      border: none;
+      border-radius: 5px;
+      height: 40px;
+      width: 175px;
+
+      &:focus {
+         outline: none;
+      }
+   }
+
+   @include e(btn) {
+      position: absolute;
+      border-radius: 5px;
+      background-color: $primary-btn-color;
+      color: $white;
+      font-size: 12px;
+      padding-top: 9px;
+      text-align: center;
+      height: 30px;
+      width: 88px;
+      top: 5px;
+      right: 5px;
+   }
+
+
+
 }
