@@ -1,16 +1,46 @@
 .footer {
-   padding-top: 72px;
-   padding-bottom: 72px;
+
    text-align: center;
    color: $blue-bayoux;
 
 
    @include e(top) {
       background: $pickled-bluewood;
+      padding: 75px 0px;
+   }
+
+   @include e(header) {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 26px;
    }
 
    @include e(item) {
       float: left;
       width: 20%;
+   }
+
+   @include e(bottom) {
+      font-size: 14px;
+      background: $ebony-clay;
+      padding: 36px 0px;
+   }
+
+
+   @include e(copyright-wrapper) {
+      float: left;
+      text-align: left;
+      width: 40%
+   }
+
+   @include e(nav) {
+      float: right;
+      text-align: right;
+      width: 40%;
+
+      & li {
+         list-style: none;
+         display: inline-block;
+      }
    }
 }

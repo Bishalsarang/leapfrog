@@ -2,14 +2,81 @@
    text-align: center;
    color: $blue-bayoux;
    background: $athens-gray;
-   padding: 134px;
+   padding: 134px 0px;
 
    @include e(header) {
-      font-size: 44px;
+      font-family: $font-family-title;
+      text-align: center;
+      font-size: $font-title-sm;
+      margin-bottom: 24px;
+
+      @include mq(md) {
+         font-size: $font-title-md;
+         margin-bottom: 24px;
+      }
+
+      @include mq(lg) {
+         font-size: $font-title-lg;
+
+      }
+   }
+
+   @include e(content) {
+      font-size: 22px;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 832px;
+      font-size: 22px;
+      padding: 20px;
+
+   }
+
+   @include e(wrapper) {
+      padding-top: 88px;
+   }
+
+   @include e(caption) {
+      background: white;
+      border: 1px solid #E6E9ED;
+      border-bottom: 2px solid #E6E9ED;
+
+   }
+
+   @include e(title) {
+      font-family: $font-family-title;
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 15px;
+      padding-top: 20px;
+
+      @include mq(md) {
+         font-size: 20px;
+         margin-bottom: 24px;
+
+      }
+
+   }
+
+   @include e(text) {
+      font-size: 14px;
+
+      @include mq(md) {
+         font-size: 18px;
+         margin-bottom: 24px;
+      }
+
    }
 
    @include e(item) {
       display: inline-block;
       max-width: 569px;
+      width: 100%;
+      padding: 0px 15px;
+      padding-bottom: 30px;
+
+      @include mq(md) {
+         width: 49%;
+         padding-bottom: 86px;
+      }
    }
 }

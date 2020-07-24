@@ -111,6 +111,13 @@ $color-link: $blue;
 $path--rel: "../images";
 
 // Project Specific
+// Project Fonts
+$font-family-title: 'Lato',
+$font-family-sans-fallback;
+
+$font-title-lg: 44px;
+$font-title-md: 34px;
+$font-title-sm: 24px;
 
 // Project Colors
 $catskill-white: #F5F7FA;
@@ -118,8 +125,8 @@ $cadet-blue: #A3B1BF;
 $caribbean-green: #00BC9C;
 $blue-bayoux: #506A85;
 $athens-gray: #f2f5f7;
-$pickled-bluewood: #2F4052; // 
-
+$pickled-bluewood: #2F4052;
+$ebony-clay: #283645;
 // Project Image
 $banner-url: "../images/banner_bg.png";
 

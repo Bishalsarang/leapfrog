@@ -81,4 +81,10 @@
          font-size: 15px;
       }
    }
+
+   @include e(search) {
+      background: transparent;
+      vertical-align: -webkit-baseline-middle;
+      float: right;
+   }
 }

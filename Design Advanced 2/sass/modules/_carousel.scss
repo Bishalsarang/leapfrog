@@ -2,7 +2,17 @@
 
    @include e(item) {
       float: left;
-      width: 25%;
+      width: 100%;
+      margin: 0px auto 20px auto;
+
+      @include mq(md) {
+         width: 50%;
+      }
+
+      @include mq(lg) {
+         width: 25%;
+      }
+
    }
 
    @include e(nav) {

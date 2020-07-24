@@ -1,8 +1,34 @@
 .careers {
    color: $cadet-blue;
-   padding-top: 132px;
-   padding-bottom: 132px;
+   padding: 134px 0px;
    text-align: center;
+
+   @include e(header) {
+      font-family: $font-family-title;
+      text-align: center;
+      font-size: $font-title-sm;
+      margin-bottom: 24px;
+
+      @include mq(md) {
+         font-size: $font-title-md;
+         margin-bottom: 24px;
+      }
+
+      @include mq(lg) {
+         font-size: $font-title-lg;
+
+      }
+   }
+
+   @include e(content) {
+      font-size: 22px;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 832px;
+      font-size: 22px;
+      padding: 20px;
+
+   }
 
    @include e(button) {
       background: $caribbean-green;
